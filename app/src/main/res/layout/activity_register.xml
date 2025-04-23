@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:gravity="center"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:textAlignment="center"
+        android:textSize="21sp" />
+
+    <LinearLayout
+        android:layout_width="350sp"
+        android:layout_height="50sp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Email:" />
+
+        <EditText
+            android:hint="Enter Email"
+            android:id="@+id/editTextEmailAddress"
+            android:layout_width="250sp"
+            android:layout_height="50dp"
+            android:autofillHints="email"
+            android:ems="10"
+            android:inputType="textEmailAddress" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="350sp"
+        android:layout_height="50sp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Password:" />
+
+        <EditText
+            android:hint="Enter Password"
+            android:id="@+id/editTextPassword"
+            android:layout_width="250sp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:inputType="textPassword" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="350sp"
+        android:layout_height="50sp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Confirm Pass:" />
+
+        <EditText
+            android:hint="Confirm Password"
+            android:id="@+id/editTextPasswordConfirm"
+            android:layout_width="250sp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:inputType="textPassword" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="350sp"
+        android:layout_height="50sp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Full Name:" />
+
+        <EditText
+            android:hint="Full Name"
+            android:id="@+id/editTextFullName"
+            android:layout_width="250sp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:inputType="textPassword" />
+    </LinearLayout>
+
+    <Button
+        android:layout_margin="10dp"
+        android:id="@+id/registerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register Account" />
+
+    <Button
+        android:layout_margin="10dp"
+        android:id="@+id/loginTransitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login Instead" />
+
+</LinearLayout>

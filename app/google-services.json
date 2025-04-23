@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "346617955817",
+    "project_id": "assignment2-prog7313",
+    "storage_bucket": "assignment2-prog7313.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:346617955817:android:dd1aa4ae828e72e60fb778",
+        "android_client_info": {
+          "package_name": "vcmsa.projects.assignment2_prog7313"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBESwygUbvLBlt_DYnj8vJySjisohJgyiU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
