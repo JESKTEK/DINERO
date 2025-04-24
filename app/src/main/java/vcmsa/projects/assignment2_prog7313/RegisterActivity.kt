@@ -16,7 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-private val firestore = Firebase.firestore
+
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -86,6 +86,7 @@ class RegisterActivity : AppCompatActivity() {
                                     "User $fullName created successfully!",
                                     Toast.LENGTH_SHORT
                                 ).show()
+                                finish()
                             }
                         } catch (e: Exception) {
                             Log.e("RegisterActivity", "User creation failed", e)
