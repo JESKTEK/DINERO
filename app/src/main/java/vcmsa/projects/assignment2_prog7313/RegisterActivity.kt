@@ -28,7 +28,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var fullNameText: EditText
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
-    private lateinit var userDao: UserDao
+    //private lateinit var userDao: UserDao
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
