@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Assignment2_PROG7313</string>
+    <string name="back_to_main_menu_link"><u>BACK TO MAIN MENU</u></string>
+
 </resources>

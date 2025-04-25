@@ -1,13 +1,21 @@
 package vcmsa.projects.assignment2_prog7313
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var loginTransitButton: Button
+    private lateinit var registerTransitButton: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        loginTransitButton = findViewById(R.id.registerButton)
+        registerTransitButton = findViewById(R.id.loginButton)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
@@ -16,5 +24,17 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        loginTransitButton.setOnClickListener {
+            val i = Intent(this, LoginActivity::class.java)
+            startActivity(i)
+        }
+
+        registerTransitButton.setOnClickListener {
+            val i = Intent(this, RegisterActivity::class.java)
+            startActivity(i)
+        }
     }
+
+
 }

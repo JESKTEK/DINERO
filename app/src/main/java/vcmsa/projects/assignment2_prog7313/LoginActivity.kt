@@ -63,7 +63,7 @@ class LoginActivity : AppCompatActivity() {
         registerTransitButton = findViewById(R.id.registerTransitButton)
 
         registerTransitButton.setOnClickListener {
-            val i = Intent(this, RegisterActivity::class.java)
+            val i = Intent(this, MainActivity::class.java)
             startActivity(i)
         }
 
