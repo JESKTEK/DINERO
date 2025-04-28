@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,12 +9,69 @@
     android:padding="24dp"
     android:background="#D6ECD8">
 
+    <TextView
+        android:id="@+id/appTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DINERO"
+        android:textColor="#6AA84F"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:layout_marginTop="24dp"/>
+
+    <TextView
+        android:id="@+id/appSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LA BUDGET PERSONAL"
+        android:textColor="#A4C639"
+        android:textSize="16sp"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/walletTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WALLET VALUE:"
+        android:textColor="#8B0000"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginTop="32dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:id="@+id/plusSign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:textSize="48dp"
+            android:textColor="#6AA84F"
+            android:paddingEnd="48dp"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/walletValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="R0.00"
+            android:textColor="#6AA84F"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
     <Button
         android:id="@+id/btnBudgetPlan"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#6AA84F"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#3B5B19"
         android:text="BUDGET PLAN"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
