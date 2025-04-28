@@ -2,7 +2,6 @@ package vcmsa.projects.assignment2_prog7313
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -12,22 +11,19 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
 
-
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var loginButton : Button
-
-    private lateinit var registerTransitButton : Button
-    private lateinit var passwordText : EditText
-    private lateinit var emailText : EditText
+    private lateinit var loginButton: Button
+    private lateinit var registerTransitButton: Button
+    private lateinit var passwordText: EditText
+    private lateinit var emailText: EditText
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        auth = FirebaseAuth.getInstance()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-
+        auth = FirebaseAuth.getInstance()
 
         setContentView(R.layout.activity_login)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -39,33 +35,32 @@ class LoginActivity : AppCompatActivity() {
         passwordText = findViewById(R.id.editTextPassword)
         emailText = findViewById(R.id.editTextEmailAddress)
         loginButton = findViewById(R.id.loginButton)
+        registerTransitButton = findViewById(R.id.registerTransitButton)
 
         loginButton.setOnClickListener {
             val email = emailText.text.toString()
             val password = passwordText.text.toString()
 
             if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Email, Password must not be empty.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Email and Password must not be empty.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) {
-                    task -> if (task.isSuccessful) {
-                Toast.makeText(this, "Login Successful.", Toast.LENGTH_SHORT).show()
-                val i = Intent(this, MainActivity::class.java)
-                startActivity(i)
-            }
-            else {
-                Toast.makeText(this, "Login Failed.", Toast.LENGTH_SHORT).show()
-            }
+
+            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this, "Login Successful.", Toast.LENGTH_SHORT).show()
+                    val i = Intent(this, HomeActivity::class.java)
+                    startActivity(i)
+                    finish() // <<< THIS was missing!
+                } else {
+                    Toast.makeText(this, "Login Failed.", Toast.LENGTH_SHORT).show()
+                }
             }
         }
-
-        registerTransitButton = findViewById(R.id.registerTransitButton)
 
         registerTransitButton.setOnClickListener {
-            val i = Intent(this, MainActivity::class.java)
+            val i = Intent(this, RegisterActivity::class.java) // <<< It must go to RegisterActivity
             startActivity(i)
         }
-
     }
 }
