@@ -5,6 +5,6 @@ data class Category(
     val catName: String, //Drawable Resource ID, image uploaded with post
     val dateCreated: String, //Caption of Post
     val emailAssociated: String, //Email of Associated User
-    val amountSpent: Double, //Date of Post
-    var amountBudgeted: Double //Number of Likes
+    val amountSpent: Long, //Date of Post
+    var amountBudgeted: Long //Number of Likes
 )
