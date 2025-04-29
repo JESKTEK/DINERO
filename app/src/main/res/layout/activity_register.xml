@@ -17,7 +17,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:contentDescription="Logo"
-        app:srcCompat="@mipmap/dinero_logo_round" />
+        app:srcCompat="@mipmap/avocado_reg_round" />
 
     <!-- Main Form -->
     <LinearLayout

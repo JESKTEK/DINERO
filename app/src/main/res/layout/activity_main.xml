@@ -16,7 +16,7 @@
         android:layout_width="180dp"
         android:layout_height="180dp"
         android:layout_marginBottom="10dp"
-        android:src="@mipmap/dinero_logo" />
+        android:src="@mipmap/avocado_reg" />
 
     <!-- App Title -->
     <TextView
