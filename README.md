@@ -52,7 +52,6 @@ Dinero’s design focuses on *usability, security, and accessibility*, creating 
 - *Budget Analytics Dashboard* (track spending trends)
 - *Gamified Goals and Rankings* (encouraging savings habits)
 - *Recurring Expense Predictions* (smart auto-fill)
-- *Bill Reminders* (linked to calendar)
 - *Multi-device Synchronization* (Firebase Cloud)
 - *Tutorials and Guidance* (led by mascot Dinero)
 
@@ -69,8 +68,6 @@ Dinero’s design focuses on *usability, security, and accessibility*, creating 
 - Filtering of transactions by date and category.
 - View graphical financial analytics (pie charts, bar graphs).
 - Gamified system awarding ranks for good budgeting.
-- Access tutorials and tips from the mascot, Dinero.
-- Sync data between devices via cloud storage.
 
 ### Non-Functional Requirements
 
