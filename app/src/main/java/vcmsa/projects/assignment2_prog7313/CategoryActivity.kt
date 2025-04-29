@@ -88,7 +88,7 @@ class CategoryActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            //  Kian please replace with DB save or new screen later
+            //  Kian please replace with DB/firestore save or new screen later
             Toast.makeText(
                 this,
                 "Category Created:\nName: $name\nDate: $date\nAmount: $finalAmount",
