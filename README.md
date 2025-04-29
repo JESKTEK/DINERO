@@ -28,9 +28,6 @@
 
 Dinero is a personal finance application designed to make budgeting warm, simple, and motivating.  
 Our app combines intuitive design, helpful analytics, and gamification to create a supportive space for users to manage their finances without stress.
-
-<img src="https://github.com/user-attachments/assets/22fac017-0340-44a3-89d8-e0cbf510dcb2" width="200"/>
-
 Dinero is not just an app — it is a *financial companion*, helping users nurture their budget like the growth of an avocado tree: slow, steady, and rewarding.
 
 ---
@@ -95,10 +92,10 @@ Dinero’s design focuses on *usability, security, and accessibility*, creating 
 Dinero’s visual identity is built around:
 
 - **Color Palette:** Shades of green representing growth, money, and positivity.  
-<img src="https://github.com/user-attachments/assets/4d8c1f7c-a0d3-4d7a-a0dd-66c067ef72a1" width="600" height="150"/>
+<img src="https://github.com/user-attachments/assets/22fac017-0340-44a3-89d8-e0cbf510dcb2" width="600" height="150"/>
 
 - *Mascot:* "Dinero" the Avocado — a friendly guide for users.
-<img src="https://github.com/user-attachments/assets/22fac017-0340-44a3-89d8-e0cbf510dcb2" width="200"/>
+<img src="https://github.com/user-attachments/assets/f5c55441-afee-4334-9475-ab2fe62b6b7a" width="200"/>
 
 - *Typography:* Clear, bold, and easily readable fonts.
 - *Icons:* Avocado-themed icons used for navigation and feedback.
@@ -119,22 +116,22 @@ Dinero’s visual identity is built around:
 Key Screens Include:
 
 - **Welcome Page (Register/Login)**  
-<img src="https://github.com/user-attachments/assets/c823ddbe-b8bb-42b9-a1b7-496821d4efe6" width="400"/>
+<img src="https://github.com/user-attachments/assets/7bcff721-e795-4caa-98b5-685fee89aa6a" width="400"/>
 
 - **Home Dashboard**  
-<img src="https://github.com/user-attachments/assets/2cf1c2d7-5ca0-41b8-9f17-606b62eda701" width="400"/>
+<img src="https://github.com/user-attachments/assets/965f86f4-e610-49aa-8218-52849dddc8a1" width="400"/>
 
 - **Budget Creation & Tracking**  
-<img src="https://github.com/user-attachments/assets/b2c2111f-51e0-4dc3-bad8-b8454da07b98" width="400"/>
+<img src="https://github.com/user-attachments/assets/e6936710-e159-48c8-b206-a1b4add15bb5" width="400"/>
 
 - **Expense Entry with Receipt Uploads**  
-<img src="https://github.com/user-attachments/assets/8e11f020-48b7-41c2-aece-7d8c7ce7108e" width="400"/>
+<img src="https://github.com/user-attachments/assets/2002fa79-5f98-4c48-a14f-924881eb75ce" width="400"/>
 
 - **Spending Analytics and Reports**  
-<img src="https://github.com/user-attachments/assets/bfdeb326-9ff9-4691-9bb3-7f851a9ab4a1" width="400"/>
+<img src="https://github.com/user-attachments/assets/ee57997e-81ba-4a9d-951c-0de3efaa1fb3" width="400"/>
 
 - **Gamified Goals Progress**  
-<img src="https://github.com/user-attachments/assets/75a30882-a76c-46ee-8e6c-99d6b8fc2057" width="400"/>
+<img src="https://github.com/user-attachments/assets/c9a61c41-757f-4fe4-9918-44a3f0b840b0" width="400"/>
 
 ---
 
