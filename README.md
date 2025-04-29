@@ -92,7 +92,7 @@ Dinero’s design focuses on *usability, security, and accessibility*, creating 
 Dinero’s visual identity is built around:
 
 - **Color Palette:** Shades of green representing growth, money, and positivity.  
-<img src="https://github.com/user-attachments/assets/22fac017-0340-44a3-89d8-e0cbf510dcb2" width="600" height="150"/>
+<img src="https://github.com/user-attachments/assets/add5696b-8c82-4fc2-9749-069d25a590a2" width="600" height="150"/>
 
 - *Mascot:* "Dinero" the Avocado — a friendly guide for users.
 <img src="https://github.com/user-attachments/assets/f5c55441-afee-4334-9475-ab2fe62b6b7a" width="200"/>
