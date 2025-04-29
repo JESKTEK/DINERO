@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Assignment2_PROG7313"
         tools:targetApi="31">
-      
         <activity
-            android:name=".CreateCategory"
+            android:name=".CategoryActivity"
             android:exported="true" />
+
         <activity
             android:name=".CategoryView"
             android:exported="false" />
