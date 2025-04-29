@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutCreateCategory"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C6E2B2"
+    android:padding="24dp"
+    tools:context=".CategoryActivity">
+
+    <!-- Page Title -->
+    <TextView
+        android:id="@+id/labelTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DINERO"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#7CB518"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp" />
+
+    <!-- Name Field -->
+    <EditText
+        android:id="@+id/inputName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:hint="NAME"
+        android:backgroundTint="#000000"
+        android:layout_below="@id/labelTitle"
+        android:layout_marginTop="40dp" />
+
+    <!-- Date Picker Field -->
+    <EditText
+        android:id="@+id/inputDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:hint="SELECT DATES"
+        android:inputType="none"
+        android:drawableEnd="@android:drawable/ic_menu_my_calendar"
+        android:backgroundTint="#000000"
+        android:layout_below="@id/inputName"
+        android:layout_marginTop="16dp" />
+
+    <!-- Description Field -->
+    <EditText
+        android:id="@+id/inputDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:hint="DESCRIPTION"
+        android:maxLines="4"
+        android:backgroundTint="#000000"
+        android:layout_below="@id/inputDate"
+        android:layout_marginTop="16dp" />
+
+    <!-- Character Counter -->
+    <TextView
+        android:id="@+id/labelCharCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0/250"
+        android:textSize="12sp"
+        android:textColor="#888888"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/inputDescription"
+        android:layout_marginTop="4dp" />
+
+    <!-- Limit Label -->
+    <TextView
+        android:id="@+id/labelLimit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LIMIT"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_below="@id/labelCharCount"
+        android:layout_marginTop="16dp" />
+
+    <!-- SeekBar for Limit -->
+    <SeekBar
+        android:id="@+id/inputLimitSeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="10000"
+        android:layout_below="@id/labelLimit"
+        android:layout_marginTop="8dp" />
+
+    <!-- Limit Value -->
+    <TextView
+        android:id="@+id/labelLimitValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="R1000.00"
+        android:textColor="#000000"
+        android:layout_below="@id/inputLimitSeekBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp" />
+
+    <!-- Custom Amount Field -->
+    <EditText
+        android:id="@+id/inputCustomAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:hint="CUSTOM AMOUNT"
+        android:backgroundTint="#0000FF"
+        android:layout_below="@id/labelLimitValue"
+        android:layout_marginTop="16dp" />
+
+    <!-- Submit Button -->
+    <Button
+        android:id="@+id/AddBudgetbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADD BUDGET"
+        android:backgroundTint="#A9A603"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:layout_below="@id/inputCustomAmount"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp" />
+
+</RelativeLayout>
