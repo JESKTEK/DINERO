@@ -1,0 +1,176 @@
+# Dinero - Personal Budgeting App
+> Created by JESKTEK.
+
+<img src="https://github.com/user-attachments/assets/a4421c94-927f-4395-a241-ba6d3d4d3753" width="400"/>
+
+
+> *Dinero* — Grow your finances steadily, like an avocado tree.
+
+> Manage your money. Grow your future. The Dinero way.
+
+---
+
+## Table of Contents
+- [Introduction](#introduction)
+- [Overview](#overview)
+- [Features](#features)
+- [Application Requirements](#application-requirements)
+  - [Functional Requirements](#functional-requirements)
+  - [Non-Functional Requirements](#non-functional-requirements)
+- [Design Elements and Theme](#design-elements-and-theme)
+- [Mockups and Prototypes](#mockups-and-prototypes)
+- [Project Plan](#project-plan)
+- [Conclusion](#conclusion)
+- [Bibliography](#bibliography)
+
+---
+
+## Introduction
+
+Dinero is a personal finance application designed to make budgeting warm, simple, and motivating.  
+Our app combines intuitive design, helpful analytics, and gamification to create a supportive space for users to manage their finances without stress.
+
+<img src="https://github.com/user-attachments/assets/22fac017-0340-44a3-89d8-e0cbf510dcb2" width="200"/>
+
+Dinero is not just an app — it is a *financial companion*, helping users nurture their budget like the growth of an avocado tree: slow, steady, and rewarding.
+
+---
+
+## Overview
+
+- *Name:* Dinero ("Money" in Spanish, inspired by "Denarius")
+- *Mascot:* Avocado — symbolizing growth, patience, and financial maturity.
+- *Platform:* Android Application
+- *Core Mission:* Empower users with simple, comforting tools for effective budgeting and financial tracking.
+
+Dinero’s design focuses on *usability, security, and accessibility*, creating a positive experience that encourages users to stick to their financial goals.
+
+---
+
+## Features
+
+- *User Registration and Login* (with Firebase authentication)
+- *Create Expense Categories* ("Envelopes" system)
+- *Add Expenses and Income* (with receipt image uploads)
+- *Monthly and Category Limits* (with visual progress bars)
+- *Budget Analytics Dashboard* (track spending trends)
+- *Gamified Goals and Rankings* (encouraging savings habits)
+- *Recurring Expense Predictions* (smart auto-fill)
+- *Bill Reminders* (linked to calendar)
+- *Multi-device Synchronization* (Firebase Cloud)
+- *Tutorials and Guidance* (led by mascot Dinero)
+
+---
+
+## Application Requirements
+
+### Functional Requirements
+
+- Secure account registration and login.
+- Creation and management of budgets and expense categories.
+- Expense entry with optional receipt uploads.
+- Monthly budget limits and spending warnings.
+- Filtering of transactions by date and category.
+- View graphical financial analytics (pie charts, bar graphs).
+- Gamified system awarding ranks for good budgeting.
+- Access tutorials and tips from the mascot, Dinero.
+- Sync data between devices via cloud storage.
+
+### Non-Functional Requirements
+
+- *Security:*  
+  - User authentication with optional multi-factor authentication (MFA).
+  - Regular security updates to protect financial data.
+- *Scalability:*  
+  - Optimized local database and Firebase cloud storage.
+  - Modular code for future feature expansion.
+- *Usability:*  
+  - Simple UI/UX, bold typography, warm color schemes.
+  - Accessibility options for larger fonts and intuitive navigation.
+  - Tutorials available on-demand.
+
+---
+
+## Design Elements and Theme
+
+Dinero’s visual identity is built around:
+
+- **Color Palette:** Shades of green representing growth, money, and positivity.  
+<img src="https://github.com/user-attachments/assets/4d8c1f7c-a0d3-4d7a-a0dd-66c067ef72a1" width="600" height="150"/>
+
+- *Mascot:* "Dinero" the Avocado — a friendly guide for users.
+<img src="https://github.com/user-attachments/assets/22fac017-0340-44a3-89d8-e0cbf510dcb2" width="200"/>
+
+- *Typography:* Clear, bold, and easily readable fonts.
+- *Icons:* Avocado-themed icons used for navigation and feedback.
+- *Feedback System:* 
+  - Green progress bars for staying within budget.
+  - Red progress bars for overspending warnings.
+- *Gamified Experience:* Progress bars, tier rankings, and visual achievements to motivate users.
+
+> Every screen is designed to feel *supportive, friendly, and non-intimidating*.
+
+---
+
+## Mockups and Prototypes
+
+*View Full Prototype:*  
+[Figma Design Link](https://www.figma.com/design/v5kfxf10eg3DvDHpyX49Uv/PROG7313-POE---DINERO?node-id=0-1&t=N8XCfQ1HOtX1SNrq-1)
+
+Key Screens Include:
+
+- **Welcome Page (Register/Login)**  
+<img src="https://github.com/user-attachments/assets/c823ddbe-b8bb-42b9-a1b7-496821d4efe6" width="400"/>
+
+- **Home Dashboard**  
+<img src="https://github.com/user-attachments/assets/2cf1c2d7-5ca0-41b8-9f17-606b62eda701" width="400"/>
+
+- **Budget Creation & Tracking**  
+<img src="https://github.com/user-attachments/assets/b2c2111f-51e0-4dc3-bad8-b8454da07b98" width="400"/>
+
+- **Expense Entry with Receipt Uploads**  
+<img src="https://github.com/user-attachments/assets/8e11f020-48b7-41c2-aece-7d8c7ce7108e" width="400"/>
+
+- **Spending Analytics and Reports**  
+<img src="https://github.com/user-attachments/assets/bfdeb326-9ff9-4691-9bb3-7f851a9ab4a1" width="400"/>
+
+- **Gamified Goals Progress**  
+<img src="https://github.com/user-attachments/assets/75a30882-a76c-46ee-8e6c-99d6b8fc2057" width="400"/>
+
+---
+
+## Project Plan
+
+*Development Timeline:*  
+[View Gantt Chart on Canva](https://www.canva.com/design/DAGhnUT7HrQ/i7ujLOtXladlzXBWEcBf3w/edit?utm_content=DAGhnUT7HrQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
+### Deliverables
+
+- *Part 1:*  
+  Research and initial design prototypes.
+
+- *Part 2:*  
+  Frontend development, backend database setup, and basic user authentication. 
+
+- *Part 3:*  
+  Firebase database integration, error handling, final testing, and demonstration video.
+
+All phases are designed to be collaborative, ensuring a well-rounded final product.
+
+---
+
+## Conclusion
+
+Dinero is designed to *revolutionize personal budgeting* by creating a *supportive, enjoyable, and motivating experience*.  
+Through charming design, simple functionality, and encouraging feedback, Dinero stands apart as a comforting companion in users' financial journeys.
+
+> Manage your money. Grow your future. The Dinero way.
+
+---
+
+## Bibliography
+
+- [How to Grow and Care for an Avocado Tree - The Spruce](https://www.thespruce.com/avocado-tree-growing-guide-5214445)
+- [Functional and Non-Functional Requirements - Grow Solutions](https://medium.com/@growsolutions/functional-and-non-functional-requirements-the-ultimate-checklist-with-examples-cde16aba33d7)
+- [Building Scalable Mobile Apps - Pixbit Solutions](https://pixbitsolutions.com/blogs/building-scalable-mobile-apps)
+- [Why Usability Matters in App Development - UX4Sight](https://ux4sight.com/blog/what-is-usability-and-why-does-it-matter-in-app-development)
