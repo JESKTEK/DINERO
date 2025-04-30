@@ -2,12 +2,10 @@ package vcmsa.projects.assignment2_prog7313
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-
-import androidx.cardview.widget.CardView
-
 
 class BudgetHomePageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,14 +18,14 @@ class BudgetHomePageActivity : AppCompatActivity() {
             insets
         }
 
-        val createCategoryCard = findViewById<CardView>(R.id.cardCreateCategory)
-        createCategoryCard.setOnClickListener {
+        val createCategoryBtn = findViewById<Button>(R.id.btnCreateCategory)
+        createCategoryBtn.setOnClickListener {
             val intent = Intent(this, CategoryActivity::class.java)
             startActivity(intent)
         }
 
-        val viewBudgetCard = findViewById<CardView>(R.id.cardViewBudget)
-        viewBudgetCard.setOnClickListener {
+        val viewBudgetBtn = findViewById<Button>(R.id.btnViewBudget)
+        viewBudgetBtn.setOnClickListener {
             val intent = Intent(this, CategoryView::class.java)
             startActivity(intent)
         }

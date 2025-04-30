@@ -22,7 +22,7 @@
         android:id="@+id/splashLogo"
         android:layout_width="600dp"
         android:layout_height="500dp"
-        android:src="@mipmap/splash_screen_round"
+
         android:layout_centerInParent="true"/>
 
     <TextView
