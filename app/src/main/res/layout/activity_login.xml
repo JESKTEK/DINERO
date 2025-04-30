@@ -1,21 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:gravity="center"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#b1d9b7"
     tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="Logo"
+        app:srcCompat="@mipmap/dinero_logo_round" />
+
+    <LinearLayout
+        android:id="@+id/formLayout"
+        android:layout_width="match_parent"
+        android:layout_height="630dp"
+        android:layout_below="@id/imageView2"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Login"
+        android:layout_height="126dp"
+        android:text="LOGIN"
         android:textAlignment="center"
-        android:textSize="21sp" />
+        android:textColor="#5C9920"
+        android:textSize="40sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="350sp"
@@ -24,15 +45,8 @@
         android:gravity="center">
 
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Email:" />
-
         <EditText
-            android:hint="Enter Email"
+            android:hint="Email"
             android:id="@+id/editTextEmailAddress"
             android:layout_width="250sp"
             android:layout_height="50dp"
@@ -48,15 +62,9 @@
         android:orientation="horizontal"
         android:gravity="center">
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Password:" />
 
         <EditText
-            android:hint="Enter Password"
+            android:hint="Password"
             android:id="@+id/editTextPassword"
             android:layout_width="250sp"
             android:layout_height="50dp"
@@ -64,18 +72,30 @@
             android:inputType="textPassword" />
     </LinearLayout>
 
-    <Button
-        android:layout_margin="10dp"
-        android:id="@+id/loginButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login Account" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/loginButton"
+            android:layout_width="240dp"
+            android:layout_height="63dp"
+            android:layout_marginTop="120dp"
+            android:background="@drawable/btn_log_background"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Login"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <Button
-        android:layout_margin="10dp"
-        android:id="@+id/registerTransitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Register Instead" />
-
-</LinearLayout>
+        <Button
+            android:id="@+id/registerTransitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="8dp"
+            android:text="@string/reg_link"
+            android:textAlignment="center"
+            android:textColor="#58735d"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</RelativeLayout>
