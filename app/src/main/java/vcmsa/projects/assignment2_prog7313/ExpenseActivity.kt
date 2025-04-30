@@ -1,20 +1,215 @@
 package vcmsa.projects.assignment2_prog7313
 
+import android.app.DatePickerDialog
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.VectorDrawable
+import android.net.Uri
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.provider.MediaStore
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Base64
+import android.widget.*
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.firestore
+import java.io.ByteArrayOutputStream
+import java.util.*
 
 class ExpenseActivity : AppCompatActivity() {
+
+    private val firestore = Firebase.firestore
+    private var catId: String? = null
+    private var catName: String? = null
+
+    private lateinit var chosenImageUri: Uri
+
+    private val pickImage = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri: Uri? ->
+        if (uri != null) {
+            chosenImageUri = uri
+            findViewById<ImageButton>(R.id.imageInput).setImageURI(uri)
+            Toast.makeText(this, "Image selected!", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "No image selected", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun pickImageFromGallery() {
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        startActivityForResult(intent, REQUEST_CODE_IMAGE_PICKER)
+    }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE_IMAGE_PICKER && resultCode == RESULT_OK) {
+            chosenImageUri = data?.data!!
+            findViewById<ImageButton>(R.id.imageInput).setImageURI(chosenImageUri)
+        }
+    }
+
+    companion object {
+        private const val REQUEST_CODE_IMAGE_PICKER = 100
+    }
+
+
+
+    private fun convertImageToBase64(drawable: Drawable): String? {
+        val bitmap: Bitmap? = when (drawable) {
+            is BitmapDrawable -> drawable.bitmap
+            is VectorDrawable -> {
+                Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888).also {
+                    val canvas = Canvas(it)
+                    drawable.setBounds(0, 0, canvas.width, canvas.height)
+                    drawable.draw(canvas)
+                }
+            }
+            else -> null // Handle other Drawable types if needed
+        }
+
+        return bitmap?.let {
+            val byteArrayOutputStream = ByteArrayOutputStream()
+            it.compress(Bitmap.CompressFormat.PNG, 10, byteArrayOutputStream) // Or other format/quality
+            val byteArray = byteArrayOutputStream.toByteArray()
+            Base64.encodeToString(byteArray, Base64.DEFAULT)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_expense)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+
+        catId = intent.getStringExtra("catId")
+        catName = intent.getStringExtra("catName")
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.layoutCreateExpense)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        // Link views
+        val inputName = findViewById<EditText>(R.id.inputName)
+        val inputDate = findViewById<EditText>(R.id.inputDate)
+        val inputDescription = findViewById<EditText>(R.id.inputDescription)
+        val labelCharCount = findViewById<TextView>(R.id.labelCharCount)
+        val seekBar = findViewById<SeekBar>(R.id.inputLimitSeekBar)
+        val labelLimitValue = findViewById<TextView>(R.id.labelLimitValue)
+
+        val imageInput = findViewById<ImageButton>(R.id.imageInput)
+        val btnAddExpense = findViewById<Button>(R.id.AddExpenseBtn)
+
+        // Set default SeekBar value
+        labelLimitValue.text = "R${seekBar.progress}.00"
+
+        // Amount changes as seek bar moves
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, value: Int, fromUser: Boolean) {
+                labelLimitValue.text = "R$value.00"
+                // Clear custom amount if user uses SeekBar
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+        })
+
+        findViewById<ImageButton>(R.id.imageInput).setOnClickListener {
+            pickImage.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+            // pickImage.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+        }
+
+
+
+
+        // Calender functionality
+        inputDate.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+            val datePicker = DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
+                inputDate.setText("$selectedDay/${selectedMonth + 1}/$selectedYear")
+            }, year, month, day)
+
+            datePicker.show()
+        }
+
+        // Description character counter
+        inputDescription.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                labelCharCount.text = "${s?.length ?: 0}/250"
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+
+        fun getCurrentUserEmail(): String? {
+            val user = FirebaseAuth.getInstance().currentUser
+            return user?.email
+        }
+
+
+
+
+        // gather all info
+        btnAddExpense.setOnClickListener {
+            val name = inputName.text.toString().trim()
+            val date = inputDate.text.toString().trim()
+            val emailAssociated = getCurrentUserEmail()
+            val amountSpent = (labelLimitValue.text.toString().substring(1)).trim().toDouble()
+            val description = inputDescription.text.toString().trim()
+
+            val image = convertImageToBase64(imageInput.drawable)
+
+
+
+
+            // error
+            if (name.isEmpty() || date.isEmpty() || description.isEmpty() || amountSpent == 0.00) {
+                Toast.makeText(this, "Please fill in all fields, and set an expense above R0.00", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            //  Kian please replace with DB/firestore save or new screen later
+            val expense = hashMapOf(
+                "catId" to catId,
+                "categoryName" to catName,
+                "itemName" to name,
+                "uploadImage" to image,
+                "dateCreated" to date,
+                "amountSpent" to amountSpent,
+                "details" to description,
+                "emailAssociated" to emailAssociated
+            )
+
+            firestore.collection("Expenses")
+                .add(expense)
+                .addOnSuccessListener { documentReference ->
+                    val documentId = documentReference.id
+                    Toast.makeText(this, "Expense Logged Successfully.", Toast.LENGTH_SHORT).show()
+
+
+                    val updateData = hashMapOf("id" to documentId)
+                    documentReference.update(updateData as Map<String, Any>)
+
+                    val intent = Intent(this, BudgetHomePageActivity::class.java)
+                    startActivity(intent)
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, "Error Making Category.", Toast.LENGTH_SHORT)
+                        .show()
+                }
+
         }
     }
 }

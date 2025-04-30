@@ -73,7 +73,7 @@ class CategoryView : AppCompatActivity() {
     private suspend fun loadCategories() {
         firestore.collection("Categories").get()
             .addOnSuccessListener { snapshot ->
-                val posts  = snapshot.documents.map { doc ->
+                val categories  = snapshot.documents.map { doc ->
 
                     /*val base64Image = doc.getString("Image") // Assuming "Image" field stores base64
                     val bitmap = if (base64Image != null) {
@@ -92,7 +92,7 @@ class CategoryView : AppCompatActivity() {
                         amountBudgeted = doc.getLong("amountBudgeted")?.toDouble() ?: 0.0
                     )
                 }
-                categoryAdapter.updateData(posts)
+                categoryAdapter.updateData(categories)
             }
             .addOnFailureListener {
                 Toast.makeText(this, "Error fetching data from Firestore", Toast.LENGTH_SHORT)
