@@ -88,7 +88,7 @@ class CategoryView : AppCompatActivity() {
                         catName = doc.getString("catName") ?: "",
                         dateCreated = doc.getString("dateCreated") ?: "",
                         emailAssociated = doc.getString("emailAssociated") ?: "",
-                        amountSpent = doc.getLong("Likes")?.toDouble() ?: 0.0,
+                        amountSpent = doc.getLong("amountSpent")?.toDouble() ?: 0.0,
                         amountBudgeted = doc.getLong("amountBudgeted")?.toDouble() ?: 0.0
                     )
                 }
