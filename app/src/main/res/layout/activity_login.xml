@@ -51,6 +51,8 @@
             android:layout_width="250sp"
             android:layout_height="50dp"
             android:autofillHints="email"
+            android:textStyle="bold"
+            android:textSize="23dp"
             android:ems="10"
             android:inputType="textEmailAddress" />
     </LinearLayout>
@@ -69,6 +71,8 @@
             android:layout_width="250sp"
             android:layout_height="50dp"
             android:ems="10"
+            android:textStyle="bold"
+            android:textSize="23dp"
             android:inputType="textPassword" />
     </LinearLayout>
 
