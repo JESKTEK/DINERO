@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="#81b622">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="DINERO"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif"/>
+
+    <ImageView
+        android:id="@+id/splashLogo"
+        android:layout_width="600dp"
+        android:layout_height="500dp"
+        android:src="@mipmap/splash_screen_round"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="LA BUDGET PERSONAL"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif"/>
+</RelativeLayout>
