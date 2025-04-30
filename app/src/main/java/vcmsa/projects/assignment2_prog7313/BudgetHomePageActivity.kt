@@ -25,5 +25,11 @@ class BudgetHomePageActivity : AppCompatActivity() {
             val intent = Intent(this, CategoryActivity::class.java)
             startActivity(intent)
         }
+
+        val viewBudgetCard = findViewById<CardView>(R.id.cardViewBudget)
+        viewBudgetCard.setOnClickListener {
+            val intent = Intent(this, CategoryView::class.java)
+            startActivity(intent)
+        }
     }
 }

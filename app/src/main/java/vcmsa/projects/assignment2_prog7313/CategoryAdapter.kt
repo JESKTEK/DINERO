@@ -42,8 +42,10 @@ class CategoryAdapter (private var catList: List<Category>): RecyclerView.Adapte
         //holder.binding.tvProfileImage.setImageResource(post.uploadImage)
         holder.binding.tvName.text = category.catName
         holder.binding.tvDate.text = category.dateCreated
-        holder.binding.tvAmtSpent.text = category.amountSpent.toString()
-        holder.binding.tvAmtBudget.text = category.amountBudgeted.toString()
+        val amtSpentText = "R" + "%.2f".format(category.amountSpent)
+        holder.binding.tvAmtSpent.text = amtSpentText
+        val amtBudgetText = "R" + "%.2f".format(category.amountBudgeted)
+        holder.binding.tvAmtBudget.text =  amtBudgetText
     }
 
     override fun getItemCount() = catList.size

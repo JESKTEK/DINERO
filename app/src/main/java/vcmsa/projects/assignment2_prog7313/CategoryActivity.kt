@@ -1,6 +1,7 @@
 package vcmsa.projects.assignment2_prog7313
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -8,9 +9,15 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.firestore
 import java.util.*
 
 class CategoryActivity : AppCompatActivity() {
+
+    private val firestore = Firebase.firestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)
@@ -46,7 +53,7 @@ class CategoryActivity : AppCompatActivity() {
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
 
-        // Calender functinality
+        // Calender functionality
         inputDate.setOnClickListener {
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
@@ -69,17 +76,25 @@ class CategoryActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
 
+        fun getCurrentUserEmail(): String? {
+            val user = FirebaseAuth.getInstance().currentUser
+            return user?.email
+        }
+
+
         // gather all info
         btnAddBudget.setOnClickListener {
             val name = inputName.text.toString().trim()
             val date = inputDate.text.toString().trim()
+            val emailAssociated = getCurrentUserEmail()
+            val amountSpent = 0.00;
             val description = inputDescription.text.toString().trim()
             val customAmount = inputCustomAmount.text.toString().trim()
 
             val finalAmount = if (customAmount.isNotEmpty()) {
-                "R$customAmount"
+                customAmount.toDouble()
             } else {
-                labelLimitValue.text.toString()
+                (labelLimitValue.text.toString().substring(1)).trim().toDouble()
             }
 
             // error
@@ -89,11 +104,32 @@ class CategoryActivity : AppCompatActivity() {
             }
 
             //  Kian please replace with DB/firestore save or new screen later
-            Toast.makeText(
-                this,
-                "Category Created:\nName: $name\nDate: $date\nAmount: $finalAmount",
-                Toast.LENGTH_LONG
-            ).show()
+            val category = hashMapOf(
+                "catName" to name,
+                "dateCreated" to date,
+                "emailAssociated" to emailAssociated,
+                "amountSpent" to amountSpent,
+                "amountBudgeted" to finalAmount
+                )
+
+            firestore.collection("Categories")
+                .add(category)
+                .addOnSuccessListener { documentReference ->
+                    val documentId = documentReference.id
+                    Toast.makeText(this, "Category Made Successfully.", Toast.LENGTH_SHORT).show()
+
+
+                    val updateData = hashMapOf("id" to documentId)
+                    documentReference.update(updateData as Map<String, Any>)
+
+                    val intent = Intent(this, BudgetHomePageActivity::class.java)
+                    startActivity(intent)
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, "Error Making Category.", Toast.LENGTH_SHORT)
+                        .show()
+                }
+
         }
     }
 }

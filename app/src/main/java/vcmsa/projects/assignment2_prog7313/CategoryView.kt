@@ -58,8 +58,8 @@ class CategoryView : AppCompatActivity() {
             val catName = result.data?.getStringExtra("catName") ?: return@registerForActivityResult
             val dateCreated = result.data?.getStringExtra("dateCreated") ?: return@registerForActivityResult
             val emailAssociated = result.data?.getStringExtra("emailAssociated") ?: return@registerForActivityResult
-            val amountSpent = result.data?.getLongExtra("amountSpent", 0) ?: return@registerForActivityResult
-            val amountBudgeted = result.data?.getLongExtra("amountBudgeted", 0) ?: return@registerForActivityResult
+            val amountSpent = result.data?.getDoubleExtra("amountSpent", 0.0) ?: return@registerForActivityResult
+            val amountBudgeted = result.data?.getDoubleExtra("amountBudgeted", 0.0) ?: return@registerForActivityResult
 
             lifecycleScope.launch {
                 val category = Category(id = id, catName = catName, dateCreated = dateCreated, emailAssociated = emailAssociated, amountSpent = amountSpent, amountBudgeted = amountBudgeted)
@@ -88,8 +88,8 @@ class CategoryView : AppCompatActivity() {
                         catName = doc.getString("catName") ?: "",
                         dateCreated = doc.getString("dateCreated") ?: "",
                         emailAssociated = doc.getString("emailAssociated") ?: "",
-                        amountSpent = doc.getLong("Likes")?.toLong() ?: 0,
-                        amountBudgeted = doc.getLong("amountBudgeted")?.toLong() ?: 0
+                        amountSpent = doc.getLong("Likes")?.toDouble() ?: 0.0,
+                        amountBudgeted = doc.getLong("amountBudgeted")?.toDouble() ?: 0.0
                     )
                 }
                 categoryAdapter.updateData(posts)
