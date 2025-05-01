@@ -49,15 +49,12 @@
         android:padding="10dp">
 
         <!-- Register Button -->
-
-        <!-- Login Button -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/registerButton"
             android:layout_width="250dp"
             android:layout_height="100dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/btn_reg_background"
-
             android:drawablePadding="10dp"
             android:fontFamily="sans-serif-condensed"
             android:gravity="center"
@@ -69,13 +66,13 @@
             android:textSize="20dp"
             android:textStyle="bold" />
 
+        <!-- Login Button -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/loginButton"
             android:layout_width="250dp"
             android:layout_height="100dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/btn_log_background"
-
             android:drawablePadding="10dp"
             android:fontFamily="sans-serif-condensed"
             android:gravity="center"
@@ -87,13 +84,19 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <!-- Footer Text -->
     <TextView
+        android:id="@+id/fromJesktek"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:minWidth="48dp"
+        android:padding="10dp"
         android:text="FROM JESKTEK"
-        android:textColor="#cccccc"
-        android:textSize="12sp"
+        android:textColor="#8fad93"
+        android:textSize="20sp"
         android:layout_marginTop="40dp"
-        android:fontFamily="sans-serif" />
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
+        android:clickable="true"
+        android:focusable="true" />
 </LinearLayout>

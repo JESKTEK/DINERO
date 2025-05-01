@@ -9,97 +9,111 @@
     android:padding="24dp"
     android:background="#D6ECD8">
 
+    <!-- Title -->
     <TextView
         android:id="@+id/appTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="DINERO"
-        android:textColor="#6AA84F"
-        android:textSize="28sp"
+        android:textColor="#76B041"
+        android:textSize="42sp"
         android:textStyle="bold"
-        android:layout_marginTop="24dp"/>
+        android:textAllCaps="true"
+        android:layout_marginTop="32dp"
+        android:fontFamily="sans-serif-condensed"
+        android:letterSpacing="0.05" />
 
+    <!-- Subtitle -->
     <TextView
         android:id="@+id/appSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="LA BUDGET PERSONAL"
-        android:textColor="#A4C639"
-        android:textSize="16sp"
-        android:layout_marginTop="4dp"/>
-
-    <TextView
-        android:id="@+id/walletTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="WALLET VALUE:"
-        android:textColor="#8B0000"
-        android:textSize="14sp"
+        android:textColor="#76B041"
+        android:textSize="22sp"
         android:textStyle="bold"
-        android:layout_marginTop="32dp"/>
+        android:textAllCaps="true"
+        android:layout_marginTop="4dp"
+        android:fontFamily="sans-serif-condensed"
+        android:letterSpacing="0.05" />
 
+    <!-- Wallet Section -->
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginTop="8dp">
+        android:orientation="vertical"
+        android:layout_marginTop="32dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp">
 
         <TextView
-            android:id="@+id/plusSign"
+            android:id="@+id/walletTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="+"
-            android:textSize="48dp"
-            android:textColor="#6AA84F"
-            android:paddingEnd="48dp"
-            android:clickable="true"
-            android:focusable="true" />
-
-        <TextView
-            android:id="@+id/walletValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="R0.00"
-            android:textColor="#6AA84F"
-            android:textSize="20sp"
+            android:text="WALLET VALUE:"
+            android:textColor="#8B0000"
+            android:textSize="14sp"
             android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/plusSign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+"
+                android:textSize="20sp"
+                android:textColor="#6AA84F"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/walletValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="R0.00"
+                android:textColor="#6AA84F"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
 
-    <Button
+    <!-- Buttons -->
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnBudgetPlan"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="32dp"
-        android:backgroundTint="#3B5B19"
+        android:layout_height="100dp"
+        android:layout_marginTop="40dp"
         android:text="BUDGET PLAN"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        android:textSize="16sp"
-        android:drawablePadding="10dp"/>
+        android:textSize="20sp"
+        android:background="@drawable/btn_budget_plan_background" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnMyGoals"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#6AA84F"
+        android:layout_height="100dp"
+        android:layout_marginTop="30dp"
         android:text="MY GOALS"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        android:textSize="16sp"
-        android:drawablePadding="10dp"/>
+        android:textSize="20sp"
+        android:background="@drawable/btn_goals_background" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnDashboard"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#F7DC6F"
+        android:layout_height="100dp"
+        android:layout_marginTop="30dp"
         android:text="DASHBOARD"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textStyle="bold"
-        android:textSize="16sp"
-        android:drawablePadding="10dp"/>
+        android:textSize="20sp"
+        android:background="@drawable/btn_dashboard_background" />
 
 </LinearLayout>
