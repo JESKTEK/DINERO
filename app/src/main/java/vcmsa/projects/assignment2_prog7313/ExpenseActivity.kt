@@ -3,6 +3,7 @@ package vcmsa.projects.assignment2_prog7313
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
@@ -14,6 +15,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Base64
 import android.widget.*
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -31,7 +33,9 @@ class ExpenseActivity : AppCompatActivity() {
     private var catId: String? = null
     private var catName: String? = null
 
-    private lateinit var chosenImageUri: Uri
+    private lateinit var camLauncher: ActivityResultLauncher<Void?>
+    private var chosenImageUri: Uri? = null
+    private var chosenImageBitmap: Bitmap? = null
 
     private val pickImage =
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri: Uri? ->
@@ -63,39 +67,26 @@ class ExpenseActivity : AppCompatActivity() {
     }
 
 
-    private fun convertImageToBase64(drawable: Drawable): String? {
-        val bitmap: Bitmap? = when (drawable) {
-            is BitmapDrawable -> drawable.bitmap
-            is VectorDrawable -> {
-                Bitmap.createBitmap(
-                    drawable.intrinsicWidth,
-                    drawable.intrinsicHeight,
-                    Bitmap.Config.ARGB_8888
-                ).also {
-                    val canvas = Canvas(it)
-                    drawable.setBounds(0, 0, canvas.width, canvas.height)
-                    drawable.draw(canvas)
-                }
-            }
-
-            else -> null // Handle other Drawable types if needed
-        }
-
-        return bitmap?.let {
-            val byteArrayOutputStream = ByteArrayOutputStream()
-            it.compress(
-                Bitmap.CompressFormat.PNG,
-                10,
-                byteArrayOutputStream
-            ) // Or other format/quality
-            val byteArray = byteArrayOutputStream.toByteArray()
-            Base64.encodeToString(byteArray, Base64.DEFAULT)
-        }
+    private fun convertImageToBase64(imageButton: android.widget.ImageButton): String? {
+        val drawable = imageButton.drawable ?: return ""
+        val bitmap = (drawable as BitmapDrawable).bitmap
+        val stream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 10, stream)
+        val byteArray = stream.toByteArray()
+        return Base64.encodeToString(byteArray, Base64.DEFAULT)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_expense)
+
+        camLauncher = registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { bitmap ->
+            if (bitmap != null) {
+                chosenImageBitmap = bitmap
+                findViewById<ImageButton>(R.id.imageInput).setImageBitmap(bitmap)
+                chosenImageUri = null
+            }
+        }
 
         catId = intent.getStringExtra("catId")
         catName = intent.getStringExtra("catName")
@@ -137,9 +128,11 @@ class ExpenseActivity : AppCompatActivity() {
         })
 
         findViewById<ImageButton>(R.id.imageInput).setOnClickListener {
-            pickImage.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
-            // pickImage.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+            //pickImage.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+            camLauncher.launch(null)
         }
+
+
 
         /*****
         Title: How to Implement DatePickerDialog in Android Using Kotlin
@@ -184,10 +177,14 @@ class ExpenseActivity : AppCompatActivity() {
             val amountSpent = (labelLimitValue.text.toString().substring(1)).trim().toDouble()
             val description = inputDescription.text.toString().trim()
 
-            val image = convertImageToBase64(imageInput.drawable)
+            if (chosenImageBitmap == null) {
+                Toast.makeText(this, "Please take an image", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            } //Error strategically placed to not trigger function and cause crash.
+            val image = convertImageToBase64(findViewById<ImageButton>(R.id.imageInput))
 
 
-            // error
+            // error - nothing filled in
             if (name.isEmpty() || date.isEmpty() || description.isEmpty() || amountSpent == 0.00) {
                 Toast.makeText(
                     this,
@@ -228,4 +225,5 @@ class ExpenseActivity : AppCompatActivity() {
 
         }
     }
+
 }

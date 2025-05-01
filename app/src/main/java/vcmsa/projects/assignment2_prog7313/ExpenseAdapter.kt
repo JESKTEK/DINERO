@@ -56,14 +56,19 @@ class ExpenseAdapter(private var expenseList: List<Expense>) :
         holder.binding.tvAmtSpent.text = amtSpentText
 
         try {
-            val imageBytes = Base64.decode(expense.uploadImage)
+            Log.d("Base64Decode", "Attempting to decode image for post: ${expense.emailAssociated}")
+            val imageBytes = Base64.decode(cleanBase64String(expense.uploadImage))
+            Log.d("Base64Decode", "Successfully decoded Base64 for post: ${expense.emailAssociated}, byte array size: ${imageBytes.size}")
             val decodedBitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
             if (decodedBitmap != null) {
+                Log.d("Base64Decode", "Successfully decoded bitmap for post: ${expense.emailAssociated}, width: ${decodedBitmap.width}, height: ${decodedBitmap.height}")
                 holder.binding.tvReceiptImage.setImageBitmap(decodedBitmap)
             } else {
+                Log.w("Base64Decode", "BitmapFactory.decodeByteArray returned null for post: ${expense.uploadImage}. Possible reasons: corrupted data, insufficient memory, unsupported format.") // More specific warning
                 holder.binding.tvReceiptImage.setImageResource(R.drawable.ic_launcher_foreground)
             }
         } catch (e: Exception) {
+            Log.e("Base64Decode", "Failed to decode image for post: ${expense.emailAssociated}. Exception: ${e.message}", e) // Include exception message
             holder.binding.tvReceiptImage.setImageResource(R.drawable.ic_launcher_foreground)
         }
 
@@ -87,5 +92,18 @@ class ExpenseAdapter(private var expenseList: List<Expense>) :
     fun updateData(newList: List<Expense>) {
         expenseList = newList
         notifyDataSetChanged()
+    }
+
+
+    //After much errors, this has been added to ensure the image actually loads properly
+    fun cleanBase64String(base64String: String): String {
+        val trimmedString = base64String.trim()
+        val cleanedString = StringBuilder()
+        for (char in trimmedString) {
+            if (!char.isWhitespace()) {
+                cleanedString.append(char)
+            }
+        }
+        return cleanedString.toString()
     }
 }

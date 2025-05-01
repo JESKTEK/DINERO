@@ -28,7 +28,8 @@
         android:textStyle="bold"
         android:layout_below="@id/labelTitle"
         android:layout_marginTop="40dp"
-        android:hint="ADD RECEIPT" />
+        android:hint="ADD RECEIPT"
+        android:layout_marginBottom="10dp"/>
 
     <!-- ADD RECEIPT image button -->
     <ImageButton
@@ -38,7 +39,9 @@
         android:layout_below="@id/imageTitle"
         android:layout_centerHorizontal="true"
         android:contentDescription="Enter an Image Here"
-        android:src="@drawable/ic_launcher_foreground" />
+        android:src="@mipmap/cameraicon"
+        android:background="@color/white"
+        />
 
     <!-- EXPENSE NAME Field -->
     <EditText

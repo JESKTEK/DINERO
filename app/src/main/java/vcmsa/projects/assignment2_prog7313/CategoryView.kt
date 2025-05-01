@@ -45,8 +45,12 @@ class CategoryView : AppCompatActivity() {
             loadCategories()
         }
 
-
-
+        /*****
+        Title: How to Implement DatePickerDialog in Android Using Kotlin
+        Author: Abhishek Suman
+        Date: 22 April 2025
+        Availability: https://medium.com/%40abhisheksuman413/how-to-implement-datepickerdialog-in-android-using-kotlin-45c413e47464
+         *****/
         var datesInput1 = false
         var datesInput2 = false
         binding.fromDateSel.setOnClickListener() {
