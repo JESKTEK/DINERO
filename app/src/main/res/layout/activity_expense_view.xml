@@ -23,7 +23,6 @@
             android:paddingTop="24dp"
             android:paddingEnd="16dp">
 
-            <!-- DINERO Title centered -->
             <TextView
                 android:id="@+id/appTitle"
                 android:layout_width="wrap_content"
@@ -36,7 +35,6 @@
                 android:textStyle="bold"
                 android:layout_centerHorizontal="true" />
 
-            <!-- Dinero Logo in top right -->
             <ImageView
                 android:id="@+id/ivDineroLogo"
                 android:layout_width="100dp"
@@ -48,13 +46,11 @@
                 android:src="@mipmap/dinero_logo" />
         </RelativeLayout>
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center">
 
-            <!-- SELECT CATEGORY Button -->
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="150dp"
                 android:layout_marginTop="2dp"
@@ -78,7 +74,8 @@
 
         </LinearLayout>
     </LinearLayout>
-    <!-- Monthly Budget Progress -->
+
+    <!-- Monthly Budget Progress Section -->
     <LinearLayout
         android:id="@+id/budgetBarLayout"
         android:layout_width="match_parent"
@@ -86,11 +83,24 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <!-- Set Budget Button -->
+        <Button
+            android:id="@+id/btnSetBudget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Set Budget"
+            android:layout_gravity="end"
+            android:backgroundTint="#81b522"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="6dp"
+            android:layout_marginEnd="8dp"/>
+
+        <!-- Budget Info -->
         <TextView
             android:id="@+id/budgetText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Monthly Budget: R100000"
+            android:text="Monthly Budget: R0.00"
             android:layout_gravity="center"
             android:textStyle="bold"
             android:textSize="16sp"
@@ -113,14 +123,13 @@
             android:text="R0.00 spent"
             android:textSize="14sp"
             android:textColor="#000"
-            android:layout_marginTop="4dp"/>
+            android:layout_marginTop="4dp" />
     </LinearLayout>
 
-    <!-- Recycler view to view expenses -->
+    <!-- Expense List -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity" />
-
 </LinearLayout>
