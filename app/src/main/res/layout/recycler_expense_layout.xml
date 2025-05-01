@@ -70,7 +70,6 @@
 
         </LinearLayout>
 </LinearLayout>
-
     <LinearLayout
         android:layout_weight="1"
         android:layout_width="wrap_content"
@@ -79,6 +78,7 @@
         android:orientation="vertical">
         <ImageButton
             android:id="@+id/tvReceiptImage"
+            android:contentDescription="Receipt Image"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:src="@drawable/ic_launcher_foreground"
