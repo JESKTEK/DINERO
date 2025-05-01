@@ -1,12 +1,17 @@
 package vcmsa.projects.assignment2_prog7313
 
+import android.R
 import android.app.DatePickerDialog
 import android.graphics.BitmapFactory
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.Spinner
+import android.widget.SpinnerAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.activity.result.contract.ActivityResultContracts
@@ -41,6 +46,9 @@ class ExpenseView : AppCompatActivity() {
     private var monthlyBudgetMin: Double = 0.0
     private var monthlyBudgetMax: Double = 100000.0
 
+    private var selectedCategory: String? = null
+    private var fromDateS: String? = null
+    private var toDateS: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,7 +91,9 @@ class ExpenseView : AppCompatActivity() {
             val datePicker = DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
                 binding.fromDate.setText("$selectedDay/${selectedMonth + 1}/$selectedYear")
                 if (datesInput1 && datesInput2) {
-                    filterExpensesDate(binding.fromDate.text.toString(), binding.toDate.text.toString())
+                    fromDateS = binding.fromDate.text.toString()
+                    toDateS = binding.toDate.text.toString()
+                    filterExpenses()
                 }
             }, year, month, day)
 
@@ -101,7 +111,9 @@ class ExpenseView : AppCompatActivity() {
                 binding.toDate.setText("$selectedDay/${selectedMonth + 1}/$selectedYear")
                 datesInput2 = true
                 if (datesInput1 && datesInput2) {
-                    filterExpensesDate(binding.fromDate.text.toString(), binding.toDate.text.toString())
+                    fromDateS = binding.fromDate.text.toString()
+                    toDateS = binding.toDate.text.toString()
+                    filterExpenses()
                 }
             }, year, month, day)
 
@@ -109,32 +121,39 @@ class ExpenseView : AppCompatActivity() {
 
         }
 
+
+        val categorySpinner: Spinner = binding.categorySpinner
+        categorySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: android.view.View?, position: Int, id: Long) {
+                selectedCategory = parent.getItemAtPosition(position).toString()
+                filterExpenses()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                selectedCategory = null
+                filterExpenses()
+            }
+        }
+
     }
 
-    private fun filterExpensesCategory(query: String) {
+
+    private fun filterExpenses() {
         filteredExpenses = unfilteredExpenses.filter { expense ->
-            expense.categoryName.contains(query, ignoreCase = true)
+            val categoryMatch = selectedCategory == null || expense.categoryName == selectedCategory || selectedCategory == "All Categories"
+            val dateMatch = (fromDateS == null || toDateS == null) || filterExpensesDate(expense)
+
+            categoryMatch && dateMatch
         }
         expenseAdapter.updateData(filteredExpenses)
     }
 
 
-    private fun filterExpensesDate(fromDateS: String, toDateS: String){
-
-
-        val fromDate = convertStringDate(fromDateS)
-        val toDate = convertStringDate(toDateS)
-
-        filteredExpenses = unfilteredExpenses.filter { expense ->
-            Log.v("ExpenseDate", expense.dateCreated)
-            Log.v("fromDate", fromDate.toString())
-            Log.v("toDate", toDate.toString())
-            val expenseDate : Date = convertStringDate(expense.dateCreated)
-            expenseDate.after(fromDate) && expenseDate.before(toDate)
-
-        }
-
-        expenseAdapter.updateData(filteredExpenses)
+    private fun filterExpensesDate(expense: Expense): Boolean {
+        val fromDate = convertStringDate(fromDateS!!)
+        val toDate = convertStringDate(toDateS!!)
+        val expenseDate: Date = convertStringDate(expense.dateCreated)
+        return expenseDate.after(fromDate) && expenseDate.before(toDate)
     }
 
     private fun convertStringDate(dateString: String): Date {
@@ -212,6 +231,7 @@ class ExpenseView : AppCompatActivity() {
 
                 unfilteredExpenses = expenses
                 expenseAdapter.updateData(expenses)
+                updateCatSpinner()
 
                 val totalSpent = expenses.sumOf { it.amountSpent }
                 val percentUsed = if (monthlyBudgetMax > 0)
@@ -226,6 +246,18 @@ class ExpenseView : AppCompatActivity() {
                 Toast.makeText(this, "Error fetching data from Firestore", Toast.LENGTH_SHORT).show()
             }
     }
+
+    private fun updateCatSpinner() {
+        val uniqueCategories = unfilteredExpenses.map { it.categoryName }.distinct().toMutableList()
+        uniqueCategories.add(0, "All Categories")
+
+        val categorySpinner: Spinner = binding.categorySpinner
+        val adapter = ArrayAdapter(this, R.layout.simple_spinner_item, uniqueCategories)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        categorySpinner.adapter = adapter
+    }
+
+
 
     private fun showSetBudgetDialog() {
         val layout = LinearLayout(this).apply {
@@ -273,3 +305,4 @@ class ExpenseView : AppCompatActivity() {
             .show()
     }
 }
+
