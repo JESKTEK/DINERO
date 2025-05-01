@@ -6,6 +6,7 @@
     android:background="#b1d9b7"
     android:padding="16dp">
 
+
     <!-- Main title -->
     <TextView
         android:id="@+id/tvTitle"

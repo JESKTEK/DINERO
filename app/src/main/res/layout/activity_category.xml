@@ -111,6 +111,13 @@
         android:max="10000"
         android:thumb="@mipmap/avocado_happy_foreground" />
 
+        <!--
+        Title: SeekBar in Kotlin
+        Author: GeeksforGeeks
+        Date: 28 April 2025
+        Availability: https://www.geeksforgeeks.org/seekbar-in-kotlin/
+         -->
+  
     <!-- LIMIT Value -->
     <TextView
         android:id="@+id/labelLimitValue"
@@ -150,5 +157,12 @@
         android:text="ADD BUDGET"
         android:textColor="#000000"
         android:textStyle="bold" />
+
+    <!--
+    Title: AppCompatButton, API, reference, Android Developers
+    Author: Android Developers
+    Date: 28 April 2025
+    Availability: https://developer.android.com/reference/androidx/appcompat/widget/AppCompatButton
+    -->
 
 </RelativeLayout>
