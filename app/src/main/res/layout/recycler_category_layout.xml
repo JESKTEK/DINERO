@@ -55,6 +55,7 @@
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:fontFamily="sans-serif-condensed"
+                android:textColor="@color/black"
                 android:gravity="right"
                 android:padding="8dp"
                 android:text="@string/view_description"
