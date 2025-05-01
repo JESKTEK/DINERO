@@ -1,22 +1,18 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Outer background: darker green -->
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="#3a3a00" /> <!-- very dark greenish -->
+            <solid android:color="#3e550d" /> <!-- darker shade of #aabb1c -->
             <corners android:radius="20dp" />
         </shape>
     </item>
 
-    <!-- Inner background with inner-shadow effect -->
+    <!-- Main button color: solid #aabb1c -->
     <item android:inset="2dp">
         <shape android:shape="rectangle">
-            <gradient
-                android:startColor="#2a2a00"
-            android:centerColor="#86940c"
-            android:endColor="#aabb1c"
-            android:angle="270" />
-
-            <corners android:radius="10dp" />
+            <solid android:color="#aabb1c" />
+            <corners android:radius="18dp" />
         </shape>
     </item>
 

@@ -51,6 +51,7 @@
                 android:layout_gravity="bottom"
                 android:background="@drawable/btn_add_expense"
                 android:text="Add Expense"
+                android:textStyle="bold"
                 android:textSize="14sp" />
 
             <LinearLayout
