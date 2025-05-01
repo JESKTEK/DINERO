@@ -8,20 +8,20 @@
     android:padding="24dp"
     tools:context=".CategoryActivity">
 
-    <!-- Page Title -->
+    <!-- DINERO Page Title -->
     <TextView
         android:id="@+id/labelTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DINERO"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        android:textColor="#73AD00"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp" />
+        android:layout_marginTop="32dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="DINERO"
+        android:textColor="#73AD00"
+        android:textSize="34sp"
+        android:textStyle="bold" />
 
-    <!--dinero logo-->
+    <!--Dinero Logo-->
     <ImageView
         android:id="@+id/ivDineroLogo"
         android:layout_width="48dp"
@@ -31,74 +31,84 @@
         android:layout_marginTop="16dp"
         android:src="@mipmap/dinero_logo" />
 
-    <!-- Name Field -->
+    <!-- NAME Field -->
     <EditText
         android:id="@+id/inputName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        android:hint="NAME"
-        android:backgroundTint="#000000"
         android:layout_below="@id/labelTitle"
-        android:layout_marginTop="40dp" />
-
-    <!-- Date Picker Field -->
+        android:layout_marginTop="40dp"
+        android:backgroundTint="#000000"
+        android:hint="NAME"
+        android:minHeight="48dp" />
+    <!--
+    Title: How to Implement DatePickerDialog in Android Using Kotlin
+    Author: Abhishek Suman
+    Date: 22 April 2025
+    Availability: https://medium.com/%40abhisheksuman413/how-to-implement-datepickerdialog-in-android-using-kotlin-45c413e47464
+    -->
+    <!-- SELECT DATES Field -->
     <EditText
         android:id="@+id/inputDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="48dp"
+        android:layout_below="@id/inputName"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#000000"
+        android:drawableEnd="@android:drawable/ic_menu_my_calendar"
         android:hint="SELECT DATES"
         android:inputType="none"
-        android:drawableEnd="@android:drawable/ic_menu_my_calendar"
-        android:backgroundTint="#000000"
-        android:layout_below="@id/inputName"
-        android:layout_marginTop="16dp" />
+        android:minHeight="48dp" />
 
-    <!-- Description Field -->
+    <!-- DESCRIPTION Field -->
     <EditText
         android:id="@+id/inputDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="48dp"
+        android:layout_below="@id/inputDate"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#000000"
         android:hint="DESCRIPTION"
         android:maxLines="4"
-        android:backgroundTint="#000000"
-        android:layout_below="@id/inputDate"
-        android:layout_marginTop="16dp" />
+        android:minHeight="48dp" />
 
-    <!-- Character Counter -->
+    <!-- Character Counter for DESCRIPTION -->
     <TextView
         android:id="@+id/labelCharCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0/250"
-        android:textSize="12sp"
-        android:textColor="#888888"
-        android:layout_alignParentEnd="true"
         android:layout_below="@id/inputDescription"
-        android:layout_marginTop="4dp" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="4dp"
+        android:text="0/250"
+        android:textColor="#888888"
+        android:textSize="12sp" />
 
-    <!-- Limit Label -->
+    <!-- LIMIT Label -->
     <TextView
         android:id="@+id/labelLimit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LIMIT"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:textColor="#000000"
         android:layout_below="@id/labelCharCount"
-        android:layout_marginTop="16dp" />
-
-    <!-- SeekBar for Limit -->
+        android:layout_marginTop="16dp"
+        android:text="LIMIT"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+    <!--
+       Title: SeekBar in Kotlin
+       Author: GeeksforGeeks
+       Date: 22 April 2025
+       Availability: https://www.geeksforgeeks.org/seekbar-in-kotlin/
+        -->
+    <!-- SeekBar for LIMIT -->
     <SeekBar
         android:id="@+id/inputLimitSeekBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:max="10000"
         android:layout_below="@id/labelLimit"
         android:layout_marginTop="8dp"
+        android:max="10000"
         android:thumb="@mipmap/avocado_happy_foreground" />
 
         <!--
@@ -107,41 +117,46 @@
         Date: 28 April 2025
         Availability: https://www.geeksforgeeks.org/seekbar-in-kotlin/
          -->
-
-    <!-- Limit Value -->
+  
+    <!-- LIMIT Value -->
     <TextView
         android:id="@+id/labelLimitValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="R0.00"
-        android:textColor="#000000"
         android:layout_below="@id/inputLimitSeekBar"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        android:text="R0.00"
+        android:textColor="#000000" />
 
-    <!-- Custom Amount Field -->
+    <!-- CUSTOM AMOUNT Field -->
     <EditText
         android:id="@+id/inputCustomAmount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        android:hint="CUSTOM AMOUNT"
-        android:backgroundTint="#000000"
         android:layout_below="@id/labelLimitValue"
-        android:layout_marginTop="16dp" />
-
-    <!-- Submit Button -->
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#000000"
+        android:hint="CUSTOM AMOUNT"
+        android:minHeight="48dp" />
+    <!--
+    Title: AppCompatButton, API, reference, Android Developers
+    Author: Android Developers
+    Date: 18 April 2025
+    Availability: https://developer.android.com/reference/androidx/appcompat/widget/AppCompatButton
+     -->
+    <!-- ADD BUDGET Button -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/AddBudgetbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ADD BUDGET"
-        android:backgroundTint="#85930D"
-        android:textColor="#000000"
-        android:textStyle="bold"
         android:layout_below="@id/inputCustomAmount"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#85930D"
+        android:text="ADD BUDGET"
+        android:textColor="#000000"
+        android:textStyle="bold" />
 
     <!--
     Title: AppCompatButton, API, reference, Android Developers

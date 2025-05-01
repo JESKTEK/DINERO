@@ -2,7 +2,7 @@ package vcmsa.projects.assignment2_prog7313
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -18,15 +18,24 @@ class BudgetHomePageActivity : AppCompatActivity() {
             insets
         }
 
-        val createCategoryBtn = findViewById<Button>(R.id.btnCreateCategory)
+        // Create Category Button
+        val createCategoryBtn = findViewById<LinearLayout>(R.id.btnCreateCategory)
         createCategoryBtn.setOnClickListener {
             val intent = Intent(this, CategoryActivity::class.java)
             startActivity(intent)
         }
 
-        val viewBudgetBtn = findViewById<Button>(R.id.btnViewBudget)
+        // View Budget Button
+        val viewBudgetBtn = findViewById<LinearLayout>(R.id.btnViewBudget)
         viewBudgetBtn.setOnClickListener {
             val intent = Intent(this, CategoryView::class.java)
+            startActivity(intent)
+        }
+
+        // View Expense Button
+        val viewExpensesBtn = findViewById<LinearLayout>(R.id.btnViewExpense)
+        viewExpensesBtn.setOnClickListener {
+            val intent = Intent(this, ExpenseView::class.java)
             startActivity(intent)
         }
     }

@@ -1,63 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:background="#b1d8b7"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#b1d8b7"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".LoginActivity">
 
-    <!-- Logo -->
+    <!-- DINERO Logo -->
     <ImageView
         android:id="@+id/logoImage"
         android:layout_width="180dp"
         android:layout_height="180dp"
+        android:layout_gravity="center"
         android:layout_marginBottom="10dp"
         android:src="@mipmap/splash_screen_round" />
 
-    <!-- App Title -->
+    <!-- DINERO App Title -->
     <TextView
         android:id="@+id/appTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif-condensed"
         android:text="DINERO"
         android:textColor="#4d8338"
-        android:textStyle="bold"
-        android:textSize="28sp"
-        android:fontFamily="sans-serif-condensed" />
+        android:textSize="36sp"
+        android:textStyle="bold" />
 
-    <!-- Subtitle -->
+    <!-- DINERO Subtitle -->
     <TextView
         android:id="@+id/subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LA BUDGET PERSONAL"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="30dp"
-        android:fontFamily="sans-serif" />
+        android:fontFamily="sans-serif"
+        android:text="LA BUDGET PERSONAL"
+        android:textColor="#4d8338"
+        android:textSize="20sp" />
 
     <!-- Button Container -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:orientation="vertical"
         android:padding="10dp">
-
-        <!-- Register Button -->
-
-        <!-- Login Button -->
+        <!--
+        Title: AppCompatButton, API, reference, Android Developers
+        Author: Android Developers
+        Date: 18 April 2025
+        Availability: https://developer.android.com/reference/androidx/appcompat/widget/AppCompatButton
+        -->
+        <!-- REGISTER Button -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/registerButton"
             android:layout_width="250dp"
             android:layout_height="100dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/btn_reg_background"
-
             android:drawablePadding="10dp"
             android:fontFamily="sans-serif-condensed"
             android:gravity="center"
@@ -69,13 +73,13 @@
             android:textSize="20dp"
             android:textStyle="bold" />
 
+        <!-- LOGIN Button -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/loginButton"
             android:layout_width="250dp"
             android:layout_height="100dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/btn_log_background"
-
             android:drawablePadding="10dp"
             android:fontFamily="sans-serif-condensed"
             android:gravity="center"
@@ -87,13 +91,20 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <!-- Footer Text -->
+    <!-- Developer Name -->
     <TextView
+        android:id="@+id/fromJesktek"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="FROM JESKTEK"
-        android:textColor="#cccccc"
-        android:textSize="12sp"
         android:layout_marginTop="40dp"
-        android:fontFamily="sans-serif" />
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="sans-serif"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:text="FROM JESKTEK"
+        android:textColor="#8fad93"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 </LinearLayout>

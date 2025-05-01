@@ -7,7 +7,7 @@
     android:background="#b1d9b7"
     tools:context=".MainActivity">
 
-    <!-- Top Right Logo Image -->
+    <!-- DINERO Logo  -->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="100dp"
@@ -29,6 +29,7 @@
         android:gravity="center"
         android:orientation="vertical">
 
+        <!-- REGISTER Tile -->
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
@@ -38,13 +39,14 @@
             android:textSize="40sp"
             android:textStyle="bold" />
 
-        <!-- Full Name -->
+        <!-- NAME Form -->
         <LinearLayout
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:gravity="center"
             android:orientation="horizontal">
 
+            <!-- NAME Field -->
             <EditText
                 android:id="@+id/editTextFullName"
                 android:layout_width="250dp"
@@ -55,13 +57,14 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <!-- Email -->
+        <!-- EMAIL Form -->
         <LinearLayout
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:gravity="center"
             android:orientation="horizontal">
 
+            <!-- EMAIL Field -->
             <EditText
                 android:id="@+id/editTextEmailAddress"
                 android:layout_width="250dp"
@@ -72,13 +75,14 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <!-- Password -->
+        <!-- PASSWORD Form -->
         <LinearLayout
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:gravity="center"
             android:orientation="horizontal">
 
+            <!-- PASSWORD Field -->
             <EditText
                 android:id="@+id/editTextPassword"
                 android:layout_width="250dp"
@@ -89,13 +93,14 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <!-- Confirm Password -->
+        <!-- CONFIRM PASSWORD Form -->
         <LinearLayout
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:gravity="center"
             android:orientation="horizontal">
 
+            <!-- CONFRIM PASSWORD Field -->
             <EditText
                 android:id="@+id/editTextPasswordConfirm"
                 android:layout_width="250dp"
@@ -105,8 +110,13 @@
                 android:textColor="#58735d"
                 android:textStyle="bold" />
         </LinearLayout>
-
-        <!-- Register Button -->
+        <!--
+        Title: AppCompatButton, API, reference, Android Developers
+        Author: Android Developers
+        Date: 18 April 2025
+        Availability: https://developer.android.com/reference/androidx/appcompat/widget/AppCompatButton
+        -->
+        <!-- REGISTER Button -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/registerButton"
             android:layout_width="240dp"
@@ -120,7 +130,7 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <!-- Back to Main Menu (Underlined) -->
+        <!-- BACK Button -->
         <Button
             android:id="@+id/loginTransitButton"
             android:layout_width="wrap_content"

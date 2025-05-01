@@ -2,42 +2,45 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:background="#81b622">
+    android:background="#b1d9b7"
+    android:gravity="center">
 
+    <!-- DINERO Title -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif"
         android:text="DINERO"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="#5C9920"
         android:textSize="50sp"
-        android:textStyle="bold"
-        android:fontFamily="sans-serif"/>
+        android:textStyle="bold" />
 
+    <!-- DINERO Logo -->
     <ImageView
         android:id="@+id/splashLogo"
         android:layout_width="400dp"
-        android:layout_height="400dp"
+        android:layout_height="300dp"
         android:layout_below="@id/textView"
-        android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:src="@mipmap/splash_screen_round" />
 
+    <!-- DINERO Subtitle -->
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/splashLogo"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="sans-serif"
         android:text="LA BUDGET PERSONAL"
         android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="50sp"
+        android:textColor="#5C9920"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
 </RelativeLayout>

@@ -42,7 +42,8 @@ class LoginActivity : AppCompatActivity() {
             val password = passwordText.text.toString()
 
             if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Email and Password must not be empty.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Email and Password must not be empty.", Toast.LENGTH_SHORT)
+                    .show()
                 return@setOnClickListener
             }
 
@@ -51,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this, "Login Successful.", Toast.LENGTH_SHORT).show()
                     val i = Intent(this, HomeActivity::class.java)
                     startActivity(i)
-                    finish() // <<< THIS was missing!
+                    finish()
                 } else {
                     Toast.makeText(this, "Login Failed.", Toast.LENGTH_SHORT).show()
                 }
@@ -59,8 +60,9 @@ class LoginActivity : AppCompatActivity() {
         }
 
         registerTransitButton.setOnClickListener {
-            val i = Intent(this, RegisterActivity::class.java) // <<< It must go to RegisterActivity
+            val i = Intent(this, MainActivity::class.java)
             startActivity(i)
         }
+
     }
 }

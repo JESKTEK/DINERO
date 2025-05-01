@@ -1,10 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/layoutCreateExpense"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#C6E2B2"
+    android:padding="24dp"
     tools:context=".ExpenseActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- DINERO Title -->
+    <TextView
+        android:id="@+id/labelTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="DINERO"
+        android:textColor="#7CB518"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <!-- ADD RECEIPT Field -->
+    <TextView
+        android:id="@+id/imageTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/labelTitle"
+        android:layout_marginTop="40dp"
+        android:hint="ADD RECEIPT" />
+
+    <!-- ADD RECEIPT image button -->
+    <ImageButton
+        android:id="@+id/imageInput"
+        android:layout_width="250dp"
+        android:layout_height="120dp"
+        android:layout_below="@id/imageTitle"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="Enter an Image Here"
+        android:src="@drawable/ic_launcher_foreground" />
+
+    <!-- EXPENSE NAME Field -->
+    <EditText
+        android:id="@+id/inputName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageInput"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="#000000"
+        android:hint="EXPENSE NAME"
+        android:minHeight="48dp" />
+
+
+    <!-- DESCRIPTION Field -->
+    <EditText
+        android:id="@+id/inputDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/inputName"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#000000"
+        android:hint="EXPENSE DESCRIPTION"
+        android:maxLines="4"
+        android:minHeight="48dp" />
+
+    <!-- Character Counter for DESCRIPTION -->
+    <TextView
+        android:id="@+id/labelCharCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/inputDescription"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="4dp"
+        android:text="0/250"
+        android:textColor="#888888"
+        android:textSize="12sp" />
+
+    <!-- EXPENSE AMOUNT Label -->
+    <TextView
+        android:id="@+id/labelLimit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/labelCharCount"
+        android:layout_marginTop="16dp"
+        android:text="EXPENSE AMOUNT"
+        android:textColor="#000000"
+        android:textStyle="bold" />
+    <!--
+    Title: SeekBar in Kotlin
+    Author: GeeksforGeeks
+    Date: 18 April 2025
+    Availability: https://www.geeksforgeeks.org/seekbar-in-kotlin/
+    -->
+    <!-- SeekBar for EXPENSE AMOUNT -->
+    <SeekBar
+        android:id="@+id/inputLimitSeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/labelLimit"
+        android:layout_marginTop="8dp"
+        android:max="10000" />
+
+    <!-- EXPENSE AMOUNT Value -->
+    <TextView
+        android:id="@+id/labelLimitValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/inputLimitSeekBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="R0.00"
+        android:textColor="#000000" />
+    <!--
+    Title: How to Implement DatePickerDialog in Android Using Kotlin
+    Author: Abhishek Suman
+    Date: 22 April 2025
+    Availability: https://medium.com/%40abhisheksuman413/how-to-implement-datepickerdialog-in-android-using-kotlin-45c413e47464
+    -->
+    <!-- SELECT DATES Field -->
+    <EditText
+        android:id="@+id/inputDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/inputLimitSeekBar"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#000000"
+        android:drawableEnd="@android:drawable/ic_menu_my_calendar"
+        android:hint="SELECT DATES"
+        android:inputType="none"
+        android:minHeight="48dp" />
+
+
+    <!-- Submit Button -->
+    <Button
+        android:id="@+id/AddExpenseBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/inputDate"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#A9A603"
+        android:text="ADD EXPENSE"
+        android:textColor="#000000"
+        android:textStyle="bold" />
+
+</RelativeLayout>

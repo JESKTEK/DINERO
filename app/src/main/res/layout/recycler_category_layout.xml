@@ -3,12 +3,12 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:padding="8dp"
+    card_view:cardBackgroundColor="#709051"
     card_view:cardCornerRadius="12dp"
     card_view:cardElevation="12dp"
-    android:layout_margin="8dp"
-    card_view:cardBackgroundColor="#709051"
-    card_view:cardUseCompatPadding="true"
-    android:padding="8dp">
+    card_view:cardUseCompatPadding="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,34 +16,66 @@
         android:orientation="vertical"
         android:padding="8dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tvName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Name"
-                android:textColor="@color/black"
-                android:textSize="30sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvDate"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="01 Jan"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:orientation="vertical">
+
+                <!-- NAME Field -->
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <!-- DATE Field -->
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="01 Jan"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/tvViewDescButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="@color/black"
+                android:gravity="right"
+                android:textColor="@color/black"
+                android:padding="8dp"
+                android:text="@string/view_description"
+
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!--
+            Title: AppCompatButton, API, reference, Android Developers
+            Author: Android Developers
+            Date: 18 April 2025
+            Availability: https://developer.android.com/reference/androidx/appcompat/widget/AppCompatButton
+            -->
+            <!-- ADD EXPENSE Button -->
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/tvAddExpenseButton"
                 android:layout_width="150dp"
@@ -51,8 +83,10 @@
                 android:layout_gravity="bottom"
                 android:background="@drawable/btn_add_expense"
                 android:text="Add Expense"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
+            <!-- Expense Details Form -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -60,6 +94,7 @@
                 android:gravity="right"
                 android:orientation="vertical">
 
+                <!-- AMOUNT SPENT Field -->
                 <TextView
                     android:id="@+id/tvAmtSpentHeading"
                     android:layout_width="wrap_content"
@@ -69,6 +104,7 @@
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
+                <!-- AMOUNT Value -->
                 <TextView
                     android:id="@+id/tvAmtSpent"
                     android:layout_width="wrap_content"
@@ -78,6 +114,7 @@
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
+                <!-- BUDGET VALUE Field -->
                 <TextView
                     android:id="@+id/tvAmtBudgetHeading"
                     android:layout_width="wrap_content"
@@ -87,6 +124,7 @@
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
+                <!-- BUDGET VALUE Value -->
                 <TextView
                     android:id="@+id/tvAmtBudget"
                     android:layout_width="wrap_content"
