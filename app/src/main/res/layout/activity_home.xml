@@ -1,36 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:padding="24dp"
-    android:background="#D6ECD8">
+    android:background="#b1d9b7">
 
-    <!-- Title -->
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="160dp">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:contentDescription="Logo"
+            app:srcCompat="@mipmap/dinero_logo_round" />
+    </FrameLayout>
+
     <TextView
         android:id="@+id/appTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="DINERO"
-        android:textColor="#76B041"
-        android:textSize="42sp"
+        android:textColor="#81b522"
+        android:outlineAmbientShadowColor="@color/black"
+        android:textSize="60sp"
         android:textStyle="bold"
         android:textAllCaps="true"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="1dp"
         android:fontFamily="sans-serif-condensed"
         android:letterSpacing="0.05" />
 
-    <!-- Subtitle -->
     <TextView
         android:id="@+id/appSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="LA BUDGET PERSONAL"
         android:textColor="#76B041"
-        android:textSize="22sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         android:textAllCaps="true"
         android:layout_marginTop="4dp"
@@ -52,14 +66,14 @@
             android:layout_height="wrap_content"
             android:text="WALLET VALUE:"
             android:textColor="#8B0000"
-            android:textSize="14sp"
+            android:textSize="25sp"
             android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="0dp"
             android:gravity="center_vertical">
 
             <TextView
@@ -67,7 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+"
-                android:textSize="20sp"
+                android:textSize="40sp"
                 android:textColor="#6AA84F"
                 android:layout_marginEnd="8dp"/>
 
@@ -75,45 +89,64 @@
                 android:id="@+id/walletValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
                 android:text="R0.00"
                 android:textColor="#6AA84F"
-                android:textSize="20sp"
+                android:textSize="40sp"
                 android:textStyle="bold" />
-        </LinearLayout>
-    </LinearLayout>
 
-    <!-- Buttons -->
+            <Space
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/walletIcon"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@mipmap/home_icon"/>
+        </LinearLayout>
+     </LinearLayout>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnBudgetPlan"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="40dp"
-        android:text="BUDGET PLAN"
+        android:layout_height="120dp"
+        android:layout_marginTop="0dp"
+        android:text=" BUDGET PLAN"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:background="@drawable/btn_budget_plan_background" />
+        android:background="@drawable/btn_budget_plan_background"
+        android:drawableLeft= "@mipmap/stack_icon"
+        android:drawablePadding="12dp"
+        android:paddingStart="10dp"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnMyGoals"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="30dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="10dp"
         android:text="MY GOALS"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:background="@drawable/btn_goals_background" />
+        android:background="@drawable/btn_goals_background"
+        android:drawableLeft= "@mipmap/goal_icon"
+        android:drawablePadding="12dp"
+        android:paddingStart="10dp"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnDashboard"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="30dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="10dp"
         android:text="DASHBOARD"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:background="@drawable/btn_dashboard_background" />
+        android:background="@drawable/btn_dashboard_background"
+        android:drawableLeft= "@mipmap/dash_icon"
+        android:drawablePadding="12dp"
+        android:paddingStart="10dp"/>
 
 </LinearLayout>
