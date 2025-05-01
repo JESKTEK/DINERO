@@ -116,7 +116,12 @@ class ExpenseActivity : AppCompatActivity() {
 
         val imageInput = findViewById<ImageButton>(R.id.imageInput)
         val btnAddExpense = findViewById<Button>(R.id.AddExpenseBtn)
-
+        /*****
+        Title: SeekBar in Kotlin
+        Author: GeeksforGeeks
+        Date: 18 April 2025
+        Availability: https://www.geeksforgeeks.org/seekbar-in-kotlin/
+         *****/
         // Set default SeekBar value
         labelLimitValue.text = "R${seekBar.progress}.00"
 
@@ -136,7 +141,12 @@ class ExpenseActivity : AppCompatActivity() {
             // pickImage.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
         }
 
-
+        /*****
+        Title: How to Implement DatePickerDialog in Android Using Kotlin
+        Author: Abhishek Suman
+        Date: 22 April 2025
+        Availability: https://medium.com/%40abhisheksuman413/how-to-implement-datepickerdialog-in-android-using-kotlin-45c413e47464
+         *****/
         // Calender functionality
         inputDate.setOnClickListener {
             val calendar = Calendar.getInstance()
@@ -166,7 +176,6 @@ class ExpenseActivity : AppCompatActivity() {
             return user?.email
         }
 
-
         // gather all info
         btnAddExpense.setOnClickListener {
             val name = inputName.text.toString().trim()
@@ -188,7 +197,6 @@ class ExpenseActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            //  Kian please replace with DB/firestore save or new screen later
             val expense = hashMapOf(
                 "catId" to catId,
                 "categoryName" to catName,

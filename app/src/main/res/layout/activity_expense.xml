@@ -85,7 +85,12 @@
         android:text="EXPENSE AMOUNT"
         android:textColor="#000000"
         android:textStyle="bold" />
-
+    <!--
+    Title: SeekBar in Kotlin
+    Author: GeeksforGeeks
+    Date: 18 April 2025
+    Availability: https://www.geeksforgeeks.org/seekbar-in-kotlin/
+    -->
     <!-- SeekBar for EXPENSE AMOUNT -->
     <SeekBar
         android:id="@+id/inputLimitSeekBar"
@@ -105,7 +110,12 @@
         android:layout_marginTop="8dp"
         android:text="R0.00"
         android:textColor="#000000" />
-
+    <!--
+    Title: How to Implement DatePickerDialog in Android Using Kotlin
+    Author: Abhishek Suman
+    Date: 22 April 2025
+    Availability: https://medium.com/%40abhisheksuman413/how-to-implement-datepickerdialog-in-android-using-kotlin-45c413e47464
+    -->
     <!-- SELECT DATES Field -->
     <EditText
         android:id="@+id/inputDate"

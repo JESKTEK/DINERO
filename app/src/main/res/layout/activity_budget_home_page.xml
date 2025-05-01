@@ -38,7 +38,7 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <!-- Custom Button: CREATE CATEGORY -->
+        <!-- Button "CREATE CATEGORY" -->
         <LinearLayout
             android:id="@+id/btnCreateCategory"
             android:layout_width="280dp"
@@ -65,7 +65,7 @@
                 android:src="@mipmap/avocado_cool_foreground" />
         </LinearLayout>
 
-        <!-- Custom Button: VIEW BUDGET -->
+        <!--Button "VIEW BUDGET" -->
         <LinearLayout
             android:id="@+id/btnViewBudget"
             android:layout_width="280dp"
@@ -92,7 +92,7 @@
                 android:src="@mipmap/avocado_happy_foreground" />
         </LinearLayout>
 
-        <!-- Custom Button: VIEW EXPENSE -->
+        <!-- Button "VIEW EXPENSE" -->
         <LinearLayout
             android:id="@+id/btnViewExpense"
             android:layout_width="280dp"

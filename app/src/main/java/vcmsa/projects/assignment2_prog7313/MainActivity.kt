@@ -44,6 +44,12 @@ class MainActivity : AppCompatActivity() {
         registerTransitButton = findViewById(R.id.registerButton)
         val fromJesktekText: TextView = findViewById(R.id.fromJesktek)
 
+        /*****
+        Title: Android: underlined text in a TextView
+        Author: Paolo Montalto
+        Date: 20 April 2025
+        Availability: https://xabaras.medium.com/android-underlined-text-in-a-textview-ff647d427bab
+         *****/
         // Set underlined text
         val underlinedText = SpannableString("FROM JESKTEK")
         underlinedText.setSpan(UnderlineSpan(), 0, underlinedText.length, 0)

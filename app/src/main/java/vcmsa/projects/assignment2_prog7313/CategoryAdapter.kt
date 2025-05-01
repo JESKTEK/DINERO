@@ -35,9 +35,6 @@ class CategoryAdapter(private var catList: List<Category>) :
             false
         )
         return categoryViewHolder(binding)
-        //val view = LayoutInflater.from(parent.context)
-        //    .inflate(R.layout.recycler_item_layout, parent, false)
-        //return UserViewHolder(view)
     }
 
     @OptIn(ExperimentalEncodingApi::class)

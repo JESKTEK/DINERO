@@ -59,7 +59,6 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-
         <LinearLayout
             android:layout_width="350sp"
             android:layout_height="50sp"
@@ -77,7 +76,12 @@
                 android:textSize="23dp"
                 android:textStyle="bold" />
         </LinearLayout>
-
+        <!--
+        Title: AppCompatButton, API, reference, Android Developers
+        Author: Android Developers
+        Date: 18 April 2025
+        Availability: https://developer.android.com/reference/androidx/appcompat/widget/AppCompatButton
+        -->
         <!-- LOGIN Button -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/loginButton"

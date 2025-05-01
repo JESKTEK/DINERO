@@ -28,7 +28,12 @@
             android:fontFamily="sans-serif-black"
             android:textSize="40sp"
             android:textStyle="bold" />
-
+        <!--
+        Title: AppCompatButton, API, reference, Android Developers
+        Author: Android Developers
+        Date: 18 April 2025
+        Availability: https://developer.android.com/reference/androidx/appcompat/widget/AppCompatButton
+        -->
         <!-- select date button added -->
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="150dp"

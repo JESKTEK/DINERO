@@ -28,7 +28,6 @@ class CategoryActivity : AppCompatActivity() {
             insets
         }
 
-        // Link views
         val inputName = findViewById<EditText>(R.id.inputName)
         val inputDate = findViewById<EditText>(R.id.inputDate)
         val inputDescription = findViewById<EditText>(R.id.inputDescription)
@@ -41,6 +40,12 @@ class CategoryActivity : AppCompatActivity() {
         // Set default SeekBar value
         labelLimitValue.text = "R${seekBar.progress}.00"
 
+        /*****
+        Title: SeekBar in Kotlin
+        Author: GeeksforGeeks
+        Date: 18 April 2025
+        Availability: https://www.geeksforgeeks.org/seekbar-in-kotlin/
+         *****/
         // Amount changes as seek bar moves
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, value: Int, fromUser: Boolean) {
@@ -52,7 +57,12 @@ class CategoryActivity : AppCompatActivity() {
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
-
+        /*****
+        Title: How to Implement DatePickerDialog in Android Using Kotlin
+        Author: Abhishek Suman
+        Date: 22 April 2025
+        Availability: https://medium.com/%40abhisheksuman413/how-to-implement-datepickerdialog-in-android-using-kotlin-45c413e47464
+         *****/
         // Calender functionality
         inputDate.setOnClickListener {
             val calendar = Calendar.getInstance()
@@ -81,7 +91,6 @@ class CategoryActivity : AppCompatActivity() {
             val user = FirebaseAuth.getInstance().currentUser
             return user?.email
         }
-
 
         // gather all info
         btnAddBudget.setOnClickListener {

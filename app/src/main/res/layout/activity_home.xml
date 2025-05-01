@@ -112,8 +112,12 @@
                 android:src="@mipmap/home_icon" />
         </LinearLayout>
     </LinearLayout>
-
-
+    <!--
+    Title: AppCompatButton, API, reference, Android Developers
+    Author: Android Developers
+    Date: 18 April 2025
+    Availability: https://developer.android.com/reference/androidx/appcompat/widget/AppCompatButton
+    -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnBudgetPlan"
         android:layout_width="match_parent"
