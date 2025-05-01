@@ -6,7 +6,7 @@
     android:background="#b1d9b7"
     android:padding="16dp">
 
-    <!--main title-->
+    <!-- Main title -->
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
@@ -19,7 +19,7 @@
         android:textSize="40sp"
         android:textStyle="bold" />
 
-    <!--dinero logo-->
+    <!-- Dinero logo -->
     <ImageView
         android:id="@+id/ivDineroLogo"
         android:layout_width="48dp"
@@ -29,66 +29,93 @@
         android:layout_marginTop="16dp"
         android:src="@mipmap/dinero_logo" />
 
+    <!-- Buttons Container -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvTitle"
         android:layout_marginTop="48dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
-        <!--create category button-->
-        <Button
+        <!-- Custom Button: CREATE CATEGORY -->
+        <LinearLayout
             android:id="@+id/btnCreateCategory"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_width="280dp"
+            android:layout_height="160dp"
             android:layout_marginBottom="24dp"
-            android:backgroundTint="#7AA04A"
-            android:drawableStart="@mipmap/avocado_cool_foreground"
-            android:drawablePadding="16dp"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:gravity="center_horizontal"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:text="CREATE CATEGORY"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/btn_createcategory_background"
+            android:clickable="true"
+            android:focusable="true">
 
-        <!--view budget button-->
-        <Button
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CREATE CATEGORY"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed-medium" />
+
+            <ImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:src="@mipmap/avocado_cool_foreground" />
+        </LinearLayout>
+
+        <!-- Custom Button: VIEW BUDGET -->
+        <LinearLayout
             android:id="@+id/btnViewBudget"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_width="280dp"
+            android:layout_height="160dp"
             android:layout_marginBottom="24dp"
-            android:backgroundTint="#A3B66B"
-            android:drawableStart="@mipmap/avocado_happy_foreground"
-            android:drawablePadding="16dp"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:gravity="center_horizontal"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:text="VIEW BUDGET"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/btn_view_budget"
+            android:clickable="true"
+            android:focusable="true">
 
-        <!--view expense button-->
-        <Button
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VIEW BUDGET"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed-medium" />
+
+            <ImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:src="@mipmap/avocado_happy_foreground" />
+        </LinearLayout>
+
+        <!-- Custom Button: VIEW EXPENSE -->
+        <LinearLayout
             android:id="@+id/btnViewExpense"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:backgroundTint="#D7C15B"
-            android:drawableStart="@mipmap/avocado_sad_foreground"
-            android:drawablePadding="16dp"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:gravity="center_horizontal"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:text="VIEW EXPENSE"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_width="280dp"
+            android:layout_height="160dp"
+            android:background="@drawable/btn_view_expense"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VIEW EXPENSE"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed-medium" />
+
+            <ImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:src="@mipmap/avocado_sad_foreground" />
+        </LinearLayout>
     </LinearLayout>
-
 </RelativeLayout>
