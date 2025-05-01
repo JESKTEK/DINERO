@@ -20,6 +20,7 @@ class ExpenseView : AppCompatActivity() {
     private lateinit var binding: ActivityExpenseViewBinding
     private lateinit var expenseAdapter: ExpenseAdapter
 
+
     //private lateinit var database: AppDatabase
     private val firestore = Firebase.firestore
 

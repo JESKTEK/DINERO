@@ -78,6 +78,43 @@
 
         </LinearLayout>
     </LinearLayout>
+    <!-- Monthly Budget Progress -->
+    <LinearLayout
+        android:id="@+id/budgetBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/budgetText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Monthly Budget: R100000"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#000" />
+
+        <ProgressBar
+            android:id="@+id/budgetProgressBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:progressDrawable="@drawable/progress_bar"
+            android:max="100"
+            android:progress="0"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/amountSpentText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="R0.00 spent"
+            android:textSize="14sp"
+            android:textColor="#000"
+            android:layout_marginTop="4dp"/>
+    </LinearLayout>
 
     <!-- Recycler view to view expenses -->
     <androidx.recyclerview.widget.RecyclerView
