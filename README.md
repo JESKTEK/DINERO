@@ -51,7 +51,6 @@ Dinero’s design focuses on *usability, security, and accessibility*, creating 
 - *Monthly and Category Limits* (with visual progress bars)
 - *Budget Analytics Dashboard* (track spending trends)
 - *Gamified Goals and Rankings* (encouraging savings habits)
-- *Recurring Expense Predictions* (smart auto-fill)
 - *Multi-device Synchronization* (Firebase Cloud)
 - *Tutorials and Guidance* (led by mascot Dinero)
 
@@ -79,8 +78,6 @@ Dinero’s design focuses on *usability, security, and accessibility*, creating 
   - Modular code for future feature expansion.
 - *Usability:*  
   - Simple UI/UX, bold typography, warm color schemes.
-  - Accessibility options for larger fonts and intuitive navigation.
-  - Tutorials available on-demand.
 
 ---
 
