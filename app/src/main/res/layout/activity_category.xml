@@ -101,6 +101,13 @@
         android:layout_marginTop="8dp"
         android:thumb="@mipmap/avocado_happy_foreground" />
 
+        <!--
+        Title: SeekBar in Kotlin
+        Author: GeeksforGeeks
+        Date: 28 April 2025
+        Availability: https://www.geeksforgeeks.org/seekbar-in-kotlin/
+         -->
+
     <!-- Limit Value -->
     <TextView
         android:id="@+id/labelLimitValue"
@@ -135,5 +142,12 @@
         android:layout_below="@id/inputCustomAmount"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp" />
+
+    <!--
+    Title: AppCompatButton, API, reference, Android Developers
+    Author: Android Developers
+    Date: 28 April 2025
+    Availability: https://developer.android.com/reference/androidx/appcompat/widget/AppCompatButton
+    -->
 
 </RelativeLayout>

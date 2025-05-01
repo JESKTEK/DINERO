@@ -6,7 +6,7 @@
     android:background="#b1d9b7"
     android:padding="16dp">
 
-    <!--main title-->
+    <!--DINERO title-->
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
@@ -19,7 +19,7 @@
         android:textSize="40sp"
         android:textStyle="bold" />
 
-    <!--dinero logo-->
+    <!-- DINERO logo-->
     <ImageView
         android:id="@+id/ivDineroLogo"
         android:layout_width="48dp"
