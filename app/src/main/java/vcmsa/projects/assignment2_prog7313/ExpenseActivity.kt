@@ -14,6 +14,7 @@ import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Base64
+import android.util.Log
 import android.widget.*
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.PickVisualMediaRequest
@@ -192,6 +193,19 @@ class ExpenseActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
                 return@setOnClickListener
+            }
+
+            if (catId != null){
+                firestore.collection("Categories").document(catId!!).get()
+                    .addOnSuccessListener {
+                        document -> if (document.exists()) {
+                        val currentAmtSpent = document.getDouble("amountSpent") ?: 0.0
+                        val newAmtSpent = currentAmtSpent + amountSpent
+                        firestore.collection("Categories").document(catId!!).update("amountSpent", newAmtSpent)
+                            .addOnSuccessListener { d -> Log.d("Category", "Amount spent updated successfully.") }
+                            .addOnFailureListener { e -> Log.w("Category", "Error updating amount spent.", e) }
+                        }
+                    }
             }
 
             val expense = hashMapOf(
