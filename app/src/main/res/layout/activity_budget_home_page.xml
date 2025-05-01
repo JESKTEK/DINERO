@@ -17,17 +17,18 @@
         android:fontFamily="sans-serif-condensed-medium"
         android:text="DINERO"
         android:textColor="#73AD00"
-        android:textSize="50sp"
+        android:textSize="60sp"
         android:textStyle="bold" />
 
     <!-- Dinero Logo -->
     <ImageView
         android:id="@+id/ivDineroLogo"
         android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_height="120dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="5dp"
+        android:padding="10dp"
         android:src="@mipmap/dinero_logo" />
 
     <!-- Buttons Container -->
@@ -42,8 +43,8 @@
         <!-- Button "CREATE CATEGORY" -->
         <LinearLayout
             android:id="@+id/btnCreateCategory"
-            android:layout_width="280dp"
-            android:layout_height="160dp"
+            android:layout_width="350dp"
+            android:layout_height="200dp"
             android:layout_marginBottom="24dp"
             android:background="@drawable/btn_createcategory_background"
             android:clickable="true"
@@ -57,20 +58,20 @@
                 android:fontFamily="sans-serif-condensed-medium"
                 android:text="CREATE CATEGORY"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp"
+                android:textSize="25sp"
                 android:textStyle="bold" />
 
             <ImageView
-                android:layout_width="72dp"
-                android:layout_height="72dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:src="@mipmap/avocado_cool_foreground" />
         </LinearLayout>
 
         <!--Button "VIEW BUDGET" -->
         <LinearLayout
             android:id="@+id/btnViewBudget"
-            android:layout_width="280dp"
-            android:layout_height="160dp"
+            android:layout_width="350dp"
+            android:layout_height="200dp"
             android:layout_marginBottom="24dp"
             android:background="@drawable/btn_view_budget"
             android:clickable="true"
@@ -84,7 +85,7 @@
                 android:fontFamily="sans-serif-condensed-medium"
                 android:text="VIEW BUDGET"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp"
+                android:textSize="25sp"
                 android:textStyle="bold" />
 
             <ImageView
@@ -96,8 +97,8 @@
         <!-- Button "VIEW EXPENSE" -->
         <LinearLayout
             android:id="@+id/btnViewExpense"
-            android:layout_width="280dp"
-            android:layout_height="160dp"
+            android:layout_width="350dp"
+            android:layout_height="200dp"
             android:background="@drawable/btn_view_expense"
             android:clickable="true"
             android:focusable="true"
@@ -110,12 +111,13 @@
                 android:fontFamily="sans-serif-condensed-medium"
                 android:text="VIEW EXPENSE"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp"
+                android:textSize="25sp"
                 android:textStyle="bold" />
 
             <ImageView
                 android:layout_width="72dp"
                 android:layout_height="72dp"
+                android:layout_marginTop="15dp"
                 android:src="@mipmap/avocado_sad_foreground" />
         </LinearLayout>
     </LinearLayout>
