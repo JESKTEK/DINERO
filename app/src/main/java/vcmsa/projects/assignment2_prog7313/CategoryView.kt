@@ -58,11 +58,12 @@ class CategoryView : AppCompatActivity() {
             val catName = result.data?.getStringExtra("catName") ?: return@registerForActivityResult
             val dateCreated = result.data?.getStringExtra("dateCreated") ?: return@registerForActivityResult
             val emailAssociated = result.data?.getStringExtra("emailAssociated") ?: return@registerForActivityResult
+            val description = result.data?.getStringExtra("description") ?: return@registerForActivityResult
             val amountSpent = result.data?.getDoubleExtra("amountSpent", 0.0) ?: return@registerForActivityResult
             val amountBudgeted = result.data?.getDoubleExtra("amountBudgeted", 0.0) ?: return@registerForActivityResult
 
             lifecycleScope.launch {
-                val category = Category(id = id, catName = catName, dateCreated = dateCreated, emailAssociated = emailAssociated, amountSpent = amountSpent, amountBudgeted = amountBudgeted)
+                val category = Category(id = id, catName = catName, dateCreated = dateCreated, emailAssociated = emailAssociated, description = description, amountSpent = amountSpent, amountBudgeted = amountBudgeted)
                 //database.postDao().insertPost(newPost)
                 loadCategories()
             }
@@ -73,7 +74,7 @@ class CategoryView : AppCompatActivity() {
     private suspend fun loadCategories() {
         firestore.collection("Categories").get()
             .addOnSuccessListener { snapshot ->
-                val posts  = snapshot.documents.map { doc ->
+                val categories  = snapshot.documents.map { doc ->
 
                     /*val base64Image = doc.getString("Image") // Assuming "Image" field stores base64
                     val bitmap = if (base64Image != null) {
@@ -88,11 +89,12 @@ class CategoryView : AppCompatActivity() {
                         catName = doc.getString("catName") ?: "",
                         dateCreated = doc.getString("dateCreated") ?: "",
                         emailAssociated = doc.getString("emailAssociated") ?: "",
+                        description = doc.getString("description") ?: "",
                         amountSpent = doc.getLong("amountSpent")?.toDouble() ?: 0.0,
                         amountBudgeted = doc.getLong("amountBudgeted")?.toDouble() ?: 0.0
                     )
                 }
-                categoryAdapter.updateData(posts)
+                categoryAdapter.updateData(categories)
             }
             .addOnFailureListener {
                 Toast.makeText(this, "Error fetching data from Firestore", Toast.LENGTH_SHORT)

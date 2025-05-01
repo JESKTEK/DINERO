@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         registerTransitButton.setOnClickListener {
-            val ix = Intent(this, MainActivity::class.java)
+            val ix = Intent(this, RegisterActivity::class.java)
             startActivity(ix)
         }
     }

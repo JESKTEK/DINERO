@@ -5,7 +5,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#b1d9b7"
     android:orientation="vertical">
 
     <LinearLayout
@@ -17,7 +16,7 @@
         android:paddingStart="16dp"
         android:paddingEnd="16dp">
 
-        <!-- DINERO title -->
+        <!-- DINERO Title -->
         <TextView
             android:id="@+id/appTitle"
             android:layout_width="wrap_content"
@@ -27,16 +26,30 @@
             android:textColor="#6AA84F"
             android:textSize="28sp"
             android:textStyle="bold" />
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <!-- SELECT DATE button -->
+        <!-- SELECT CATEGORY Button -->
         <Button
-            android:text="Select Date"
-            android:layout_width="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="Select Category"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             />
+
+        <!-- SELECT DATE Button -->
+        <Button
+            android:layout_marginLeft="10dp"
+            android:text="Select Date"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            />
+        </LinearLayout>
     </LinearLayout>
 
-    <!-- Recycler View to view categories -->
+    <!-- Recycler view to view expenses -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"

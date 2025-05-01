@@ -59,8 +59,9 @@ class LoginActivity : AppCompatActivity() {
         }
 
         registerTransitButton.setOnClickListener {
-            val i = Intent(this, RegisterActivity::class.java) // <<< It must go to RegisterActivity
+            val i = Intent(this, MainActivity::class.java) // <<< It must go to RegisterActivity
             startActivity(i)
         }
+
     }
 }

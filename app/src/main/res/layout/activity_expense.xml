@@ -1,10 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/layoutCreateExpense"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#C6E2B2"
+    android:padding="24dp"
     tools:context=".ExpenseActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- DINERO Title -->
+    <TextView
+        android:id="@+id/labelTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DINERO"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#7CB518"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp" />
+
+    <!-- ADD RECEIPT Field -->
+    <TextView
+        android:id="@+id/imageTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ADD RECEIPT"
+        android:layout_below="@id/labelTitle"
+        android:layout_marginTop="40dp" />
+
+    <!-- ADD RECEIPT image button -->
+    <ImageButton
+        android:id="@+id/imageInput"
+        android:contentDescription="Enter an Image Here"
+        android:layout_width="250dp"
+        android:layout_height="120dp"
+        android:layout_below="@id/imageTitle"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_launcher_foreground"
+        />
+
+    <!-- EXPENSE NAME Field -->
+    <EditText
+        android:id="@+id/inputName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:hint="EXPENSE NAME"
+        android:backgroundTint="#000000"
+        android:layout_below="@id/imageInput"
+        android:layout_marginTop="40dp" />
+
+
+    <!-- DESCRIPTION Field -->
+    <EditText
+        android:id="@+id/inputDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:hint="EXPENSE DESCRIPTION"
+        android:maxLines="4"
+        android:backgroundTint="#000000"
+        android:layout_below="@id/inputName"
+        android:layout_marginTop="16dp" />
+
+    <!-- Character Counter for DESCRIPTION -->
+    <TextView
+        android:id="@+id/labelCharCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0/250"
+        android:textSize="12sp"
+        android:textColor="#888888"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/inputDescription"
+        android:layout_marginTop="4dp" />
+
+    <!-- EXPENSE AMOUNT Label -->
+    <TextView
+        android:id="@+id/labelLimit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EXPENSE AMOUNT"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_below="@id/labelCharCount"
+        android:layout_marginTop="16dp" />
+
+    <!-- SeekBar for EXPENSE AMOUNT -->
+    <SeekBar
+        android:id="@+id/inputLimitSeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="10000"
+        android:layout_below="@id/labelLimit"
+        android:layout_marginTop="8dp" />
+
+    <!-- EXPENSE AMOUNT Value -->
+    <TextView
+        android:id="@+id/labelLimitValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="R0.00"
+        android:textColor="#000000"
+        android:layout_below="@id/inputLimitSeekBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp" />
+
+    <!-- SELECT DATES Field -->
+    <EditText
+        android:id="@+id/inputDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:hint="SELECT DATES"
+        android:inputType="none"
+        android:drawableEnd="@android:drawable/ic_menu_my_calendar"
+        android:backgroundTint="#000000"
+        android:layout_below="@id/inputLimitSeekBar"
+        android:layout_marginTop="16dp" />
+
+
+    <!-- Submit Button -->
+    <Button
+        android:id="@+id/AddExpenseBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADD EXPENSE"
+        android:backgroundTint="#A9A603"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:layout_below="@id/inputDate"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp" />
+
+</RelativeLayout>

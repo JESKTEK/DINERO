@@ -24,6 +24,7 @@
             app:srcCompat="@mipmap/dinero_logo_round" />
     </FrameLayout>
 
+
     <TextView
         android:id="@+id/appTitle"
         android:layout_width="wrap_content"
@@ -37,6 +38,7 @@
         android:layout_marginTop="1dp"
         android:fontFamily="sans-serif-condensed"
         android:letterSpacing="0.05" />
+
 
     <TextView
         android:id="@+id/appSubtitle"
@@ -60,6 +62,7 @@
         android:paddingStart="8dp"
         android:paddingEnd="8dp">
 
+        <!-- WALLET VALUE Field -->
         <TextView
             android:id="@+id/walletTitle"
             android:layout_width="wrap_content"
@@ -76,6 +79,7 @@
             android:layout_marginTop="0dp"
             android:gravity="center_vertical">
 
+            <!-- AMOUNT Field -->
             <TextView
                 android:id="@+id/plusSign"
                 android:layout_width="wrap_content"
@@ -85,6 +89,7 @@
                 android:textColor="#6AA84F"
                 android:layout_marginEnd="8dp"/>
 
+            <!-- AMOUNT Field -->
             <TextView
                 android:id="@+id/walletValue"
                 android:layout_width="wrap_content"
@@ -107,6 +112,7 @@
         </LinearLayout>
      </LinearLayout>
 
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnBudgetPlan"
         android:layout_width="match_parent"
@@ -121,6 +127,7 @@
         android:drawablePadding="12dp"
         android:paddingStart="10dp"/>
 
+    <!-- MY GOALS Button -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnMyGoals"
         android:layout_width="match_parent"
@@ -135,6 +142,7 @@
         android:drawablePadding="12dp"
         android:paddingStart="10dp"/>
 
+    <!-- DASHBOARD Button -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnDashboard"
         android:layout_width="match_parent"
