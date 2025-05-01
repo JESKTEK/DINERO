@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_width="400dp"
+    android:layout_height="215dp"
     android:layout_margin="8dp"
     android:padding="8dp"
-    card_view:cardBackgroundColor="#709051"
+    card_view:cardBackgroundColor="@android:color/transparent"
     card_view:cardCornerRadius="12dp"
     card_view:cardElevation="12dp"
     card_view:cardUseCompatPadding="true">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/card_border"
+        android:padding="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="8dp">
+        android:padding="2dp">
 
 
         <LinearLayout
@@ -82,7 +88,7 @@
                 android:layout_gravity="bottom"
                 android:background="@drawable/btn_add_expense"
                 android:text="Add Expense"
-                android:textSize="14sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <!-- Expense Details Form -->
@@ -101,7 +107,7 @@
                     android:layout_gravity="right"
                     android:text="AMOUNT SPENT"
                     android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textSize="12sp" />
 
                 <!-- AMOUNT Value -->
                 <TextView
@@ -111,7 +117,7 @@
                     android:layout_gravity="right"
                     android:text="R 5000.00"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="15sp" />
 
                 <!-- BUDGET VALUE Field -->
                 <TextView
@@ -121,7 +127,7 @@
                     android:layout_gravity="right"
                     android:text="BUDGET VALUE"
                     android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textSize="12sp" />
 
                 <!-- BUDGET VALUE Value -->
                 <TextView
@@ -131,8 +137,10 @@
                     android:layout_gravity="right"
                     android:text="R 13000.00"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="15sp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+</FrameLayout>
+
+    </androidx.cardview.widget.CardView>
