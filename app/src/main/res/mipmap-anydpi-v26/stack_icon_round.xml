@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@drawable/stack_icon_background"/>
+    <foreground android:drawable="@mipmap/stack_icon_foreground"/>
+    <inset xmlns:android="http://schemas.android.com/apk/res/android"
+        android:insetRight="5dp">
+        <bitmap android:src="@mipmap/stack_icon_round" />
+    </inset>
+</adaptive-icon>
