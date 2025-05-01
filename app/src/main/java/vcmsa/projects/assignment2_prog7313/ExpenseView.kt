@@ -1,18 +1,32 @@
 package vcmsa.projects.assignment2_prog7313
 
+import android.app.DatePickerDialog
+import android.graphics.BitmapFactory
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.ParseException
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 import kotlinx.coroutines.launch
 import vcmsa.projects.assignment2_prog7313.databinding.ActivityExpenseViewBinding
+import java.io.ByteArrayInputStream
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeParseException
+import java.util.Calendar
+import java.util.Date
+import kotlin.io.encoding.Base64
+import java.util.Locale
 
 class ExpenseView : AppCompatActivity() {
 
@@ -20,8 +34,13 @@ class ExpenseView : AppCompatActivity() {
     private lateinit var expenseAdapter: ExpenseAdapter
     private val firestore = Firebase.firestore
 
+
+    private var unfilteredExpenses: List<Expense> = emptyList()
+    private var filteredExpenses: List<Expense> = emptyList()
+
     private var monthlyBudgetMin: Double = 0.0
     private var monthlyBudgetMax: Double = 100000.0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +52,7 @@ class ExpenseView : AppCompatActivity() {
         monthlyBudgetMax = prefs.getFloat("monthlyBudgetMax", 100000f).toDouble()
 
         expenseAdapter = ExpenseAdapter(emptyList())
+
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = expenseAdapter
 
@@ -40,9 +60,131 @@ class ExpenseView : AppCompatActivity() {
             loadExpenses()
         }
 
+
         binding.btnSetBudget.setOnClickListener {
+            Toast.makeText(this, "Set Budget", Toast.LENGTH_SHORT).show()
             showSetBudgetDialog()
         }
+
+        var datesInput1 = false
+        var datesInput2 = false
+        binding.fromDate.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+            val datePicker = DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
+                binding.fromDate.setText("$selectedDay/${selectedMonth + 1}/$selectedYear")
+                if (datesInput1 && datesInput2) {
+                    filterExpensesDate(binding.fromDate.text.toString(), binding.toDate.text.toString())
+                }
+            }, year, month, day)
+
+            datePicker.show()
+            datesInput1 = true
+
+        }
+        binding.toDate.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+            val datePicker = DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
+                binding.toDate.setText("$selectedDay/${selectedMonth + 1}/$selectedYear")
+                datesInput2 = true
+                if (datesInput1 && datesInput2) {
+                    filterExpensesDate(binding.fromDate.text.toString(), binding.toDate.text.toString())
+                }
+            }, year, month, day)
+
+            datePicker.show()
+
+        }
+
+    }
+
+    private fun filterExpensesCategory(query: String) {
+        filteredExpenses = unfilteredExpenses.filter { expense ->
+            expense.categoryName.contains(query, ignoreCase = true)
+        }
+        expenseAdapter.updateData(filteredExpenses)
+    }
+
+
+    private fun filterExpensesDate(fromDateS: String, toDateS: String){
+
+
+        val fromDate = convertStringDate(fromDateS)
+        val toDate = convertStringDate(toDateS)
+
+        filteredExpenses = unfilteredExpenses.filter { expense ->
+            Log.v("ExpenseDate", expense.dateCreated)
+            Log.v("fromDate", fromDate.toString())
+            Log.v("toDate", toDate.toString())
+            val expenseDate : Date = convertStringDate(expense.dateCreated)
+            expenseDate.after(fromDate) && expenseDate.before(toDate)
+
+        }
+
+        expenseAdapter.updateData(filteredExpenses)
+    }
+
+    private fun convertStringDate(dateString: String): Date {
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy", java.util.Locale.getDefault())
+        val fromDate: Date = try {
+            dateFormat.parse(dateString)
+        } catch (e: Exception) {
+            Toast.makeText(this, "Invalid From Date format", Toast.LENGTH_SHORT).show()
+            return Date()
+        }
+        return fromDate
+    }
+
+
+    private val addExpenseResultLaunch = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    )
+    { result ->
+        if (result.resultCode == RESULT_OK) {
+
+            val id = result.data?.getStringExtra("id") ?: return@registerForActivityResult
+            val parentId =
+                result.data?.getStringExtra("parentId") ?: return@registerForActivityResult
+            val categoryName =
+                result.data?.getStringExtra("categoryName") ?: return@registerForActivityResult
+            val itemName =
+                result.data?.getStringExtra("itemName") ?: return@registerForActivityResult
+            val amountSpent =
+                result.data?.getDoubleExtra("amountSpent", 0.0) ?: return@registerForActivityResult
+            val dateCreated =
+                result.data?.getStringExtra("dateCreated") ?: return@registerForActivityResult
+            val uploadImage =
+                result.data?.getStringExtra("uploadImage") ?: return@registerForActivityResult
+            val details = result.data?.getStringExtra("details") ?: return@registerForActivityResult
+            val emailAssociated =
+                result.data?.getStringExtra("emailAssociated") ?: return@registerForActivityResult
+
+            lifecycleScope.launch {
+                val expense = Expense(
+                    id = id,
+                    parentId = parentId,
+                    categoryName = categoryName,
+                    itemName = itemName,
+                    amountSpent = amountSpent,
+                    dateCreated = dateCreated,
+                    uploadImage = uploadImage,
+                    details = details,
+                    emailAssociated = emailAssociated
+                )
+                //database.postDao().insertPost(newPost)
+                loadExpenses()
+            }
+        }
+
+
+
     }
 
     private suspend fun loadExpenses() {
@@ -62,6 +204,7 @@ class ExpenseView : AppCompatActivity() {
                     )
                 }
 
+                unfilteredExpenses = expenses
                 expenseAdapter.updateData(expenses)
 
                 val totalSpent = expenses.sumOf { it.amountSpent }

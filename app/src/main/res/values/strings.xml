@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Assignment2_PROG7313</string>
     <string name="back_to_main_menu_link"><u>BACK TO MAIN MENU</u></string>
+    <string name="set_budget"><u>SET BUDGET</u></string>
     <string name="view_description"><u>VIEW DESCRIPTION</u></string>
     <string name="reg_link"><u>REGISTER INSTEAD</u></string>
 </resources>
