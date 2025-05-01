@@ -9,35 +9,37 @@
     android:orientation="vertical"
     tools:context=".LoginActivity">
 
-    <!-- DINERO Logo -->
-    <ImageView
-        android:id="@+id/logoImage"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
-        android:src="@mipmap/splash_screen_round" />
-
     <!-- DINERO App Title -->
     <TextView
         android:id="@+id/appTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="sans-serif-condensed"
         android:text="DINERO"
         android:textColor="#4d8338"
         android:textSize="36sp"
         android:textStyle="bold" />
 
+    <!-- DINERO Logo -->
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:src="@mipmap/splash_screen_round" />
+
     <!-- DINERO Subtitle -->
     <TextView
         android:id="@+id/subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="15dp"
         android:layout_marginBottom="30dp"
         android:fontFamily="sans-serif"
+        android:textStyle="bold"
         android:text="LA BUDGET PERSONAL"
         android:textColor="#4d8338"
         android:textSize="20sp" />
@@ -59,35 +61,35 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/registerButton"
             android:layout_width="250dp"
-            android:layout_height="100dp"
+            android:layout_height="140dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/btn_reg_background"
-            android:drawablePadding="10dp"
             android:fontFamily="sans-serif-condensed"
             android:gravity="center"
-            android:paddingLeft="20dp"
             android:text="REGISTER"
+            android:drawableBottom="@mipmap/btn_reg_background"
+            android:paddingBottom="10dp"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="#FFFFFF"
-            android:textSize="20dp"
+            android:textSize="25dp"
             android:textStyle="bold" />
 
         <!-- LOGIN Button -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/loginButton"
             android:layout_width="250dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="25dp"
             android:background="@drawable/btn_log_background"
-            android:drawablePadding="10dp"
             android:fontFamily="sans-serif-condensed"
             android:gravity="center"
-            android:paddingLeft="20dp"
             android:text="LOGIN"
             android:textAllCaps="true"
             android:textColor="#FFFFFF"
-            android:textSize="18sp"
+            android:drawableBottom="@mipmap/btn_log_background"
+            android:paddingBottom="10dp"
+            android:textSize="25sp"
             android:textStyle="bold" />
     </LinearLayout>
 
