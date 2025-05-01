@@ -29,5 +29,11 @@ class BudgetHomePageActivity : AppCompatActivity() {
             val intent = Intent(this, CategoryView::class.java)
             startActivity(intent)
         }
+
+        val viewExpensesBtn = findViewById<Button>(R.id.btnViewExpense)
+        viewExpensesBtn.setOnClickListener {
+            val intent = Intent(this, ExpenseView::class.java)
+            startActivity(intent)
+        }
     }
 }

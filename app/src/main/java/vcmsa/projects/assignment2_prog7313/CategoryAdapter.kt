@@ -1,6 +1,7 @@
 package vcmsa.projects.assignment2_prog7313
 
 
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.util.Log
 import android.view.LayoutInflater
@@ -21,6 +22,7 @@ class CategoryAdapter (private var catList: List<Category>): RecyclerView.Adapte
 
     private val firestore = FirebaseFirestore.getInstance()
     class categoryViewHolder(val binding: RecyclerCategoryLayoutBinding): RecyclerView.ViewHolder(binding.root)
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): categoryViewHolder {
@@ -51,9 +53,14 @@ class CategoryAdapter (private var catList: List<Category>): RecyclerView.Adapte
     override fun getItemCount() = catList.size
 
     public fun onAddExpenseClick(category: Category, position: Int, holder: categoryViewHolder) {
-        //val postChoice = postList[position]
-        //postChoice.likes++
-        return
+        val catChoice = catList[position]
+        val catName = catChoice.catName
+        val catId = catChoice.id
+
+        val intent = Intent(holder.itemView.context, ExpenseActivity::class.java)
+        intent.putExtra("catName", catName)
+        intent.putExtra("catId", catId)
+        holder.itemView.context.startActivity(intent)
     }
 
     fun updateData(newList: List<Category>) {
