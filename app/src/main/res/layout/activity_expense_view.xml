@@ -16,6 +16,7 @@
         android:paddingStart="16dp"
         android:paddingEnd="16dp">
 
+        <!-- DINERO Title -->
         <TextView
             android:id="@+id/appTitle"
             android:layout_width="wrap_content"
@@ -29,12 +30,16 @@
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+        <!-- SELECT CATEGORY Button -->
         <Button
             android:layout_marginRight="10dp"
             android:text="Select Category"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             />
+
+        <!-- SELECT DATE Button -->
         <Button
             android:layout_marginLeft="10dp"
             android:text="Select Date"
@@ -44,6 +49,7 @@
         </LinearLayout>
     </LinearLayout>
 
+    <!-- Recycler view to view expenses -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"

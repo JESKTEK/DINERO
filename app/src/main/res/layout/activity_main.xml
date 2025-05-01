@@ -10,7 +10,7 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
-    <!-- Logo -->
+    <!-- DINERO Logo -->
     <ImageView
         android:id="@+id/logoImage"
         android:layout_width="180dp"
@@ -18,7 +18,7 @@
         android:layout_marginBottom="10dp"
         android:src="@mipmap/splash_screen_round" />
 
-    <!-- App Title -->
+    <!-- DINERO App Title -->
     <TextView
         android:id="@+id/appTitle"
         android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
         android:textSize="28sp"
         android:fontFamily="sans-serif-condensed" />
 
-    <!-- Subtitle -->
+    <!-- DINERO Subtitle -->
     <TextView
         android:id="@+id/subtitle"
         android:layout_width="wrap_content"
@@ -48,7 +48,7 @@
         android:orientation="vertical"
         android:padding="10dp">
 
-        <!-- Register Button -->
+        <!-- REGISTER Button -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/registerButton"
             android:layout_width="250dp"
@@ -66,7 +66,7 @@
             android:textSize="20dp"
             android:textStyle="bold" />
 
-        <!-- Login Button -->
+        <!-- LOGIN Button -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/loginButton"
             android:layout_width="250dp"
@@ -84,6 +84,7 @@
             android:textStyle="bold" />
     </LinearLayout>
 
+    <!-- Developer Name -->
     <TextView
         android:id="@+id/fromJesktek"
         android:layout_width="wrap_content"

@@ -8,7 +8,7 @@
     android:padding="24dp"
     tools:context=".ExpenseActivity">
 
-    <!-- Page Title -->
+    <!-- DINERO Title -->
     <TextView
         android:id="@+id/labelTitle"
         android:layout_width="wrap_content"
@@ -20,7 +20,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp" />
 
-    <!-- Image -->
+    <!-- ADD RECEIPT Field -->
     <TextView
         android:id="@+id/imageTitle"
         android:layout_width="match_parent"
@@ -29,6 +29,7 @@
         android:layout_below="@id/labelTitle"
         android:layout_marginTop="40dp" />
 
+    <!-- ADD RECEIPT image button -->
     <ImageButton
         android:id="@+id/imageInput"
         android:contentDescription="Enter an Image Here"
@@ -39,7 +40,7 @@
         android:src="@drawable/ic_launcher_foreground"
         />
 
-    <!-- Name Field -->
+    <!-- EXPENSE NAME Field -->
     <EditText
         android:id="@+id/inputName"
         android:layout_width="match_parent"
@@ -51,7 +52,7 @@
         android:layout_marginTop="40dp" />
 
 
-    <!-- Description Field -->
+    <!-- DESCRIPTION Field -->
     <EditText
         android:id="@+id/inputDescription"
         android:layout_width="match_parent"
@@ -63,7 +64,7 @@
         android:layout_below="@id/inputName"
         android:layout_marginTop="16dp" />
 
-    <!-- Character Counter -->
+    <!-- Character Counter for DESCRIPTION -->
     <TextView
         android:id="@+id/labelCharCount"
         android:layout_width="wrap_content"
@@ -75,7 +76,7 @@
         android:layout_below="@id/inputDescription"
         android:layout_marginTop="4dp" />
 
-    <!-- Limit Label -->
+    <!-- EXPENSE AMOUNT Label -->
     <TextView
         android:id="@+id/labelLimit"
         android:layout_width="wrap_content"
@@ -86,7 +87,7 @@
         android:layout_below="@id/labelCharCount"
         android:layout_marginTop="16dp" />
 
-    <!-- SeekBar for Limit -->
+    <!-- SeekBar for EXPENSE AMOUNT -->
     <SeekBar
         android:id="@+id/inputLimitSeekBar"
         android:layout_width="match_parent"
@@ -95,7 +96,7 @@
         android:layout_below="@id/labelLimit"
         android:layout_marginTop="8dp" />
 
-    <!-- Limit Value -->
+    <!-- EXPENSE AMOUNT Value -->
     <TextView
         android:id="@+id/labelLimitValue"
         android:layout_width="wrap_content"
@@ -106,7 +107,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="8dp" />
 
-    <!-- Date Picker Field -->
+    <!-- SELECT DATES Field -->
     <EditText
         android:id="@+id/inputDate"
         android:layout_width="match_parent"

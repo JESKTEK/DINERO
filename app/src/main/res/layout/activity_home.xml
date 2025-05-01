@@ -9,7 +9,7 @@
     android:padding="24dp"
     android:background="#D6ECD8">
 
-    <!-- Title -->
+    <!-- DINERO Title -->
     <TextView
         android:id="@+id/appTitle"
         android:layout_width="wrap_content"
@@ -23,7 +23,7 @@
         android:fontFamily="sans-serif-condensed"
         android:letterSpacing="0.05" />
 
-    <!-- Subtitle -->
+    <!-- DINERO Subtitle -->
     <TextView
         android:id="@+id/appSubtitle"
         android:layout_width="wrap_content"
@@ -46,6 +46,7 @@
         android:paddingStart="8dp"
         android:paddingEnd="8dp">
 
+        <!-- WALLET VALUE Field -->
         <TextView
             android:id="@+id/walletTitle"
             android:layout_width="wrap_content"
@@ -62,6 +63,7 @@
             android:layout_marginTop="4dp"
             android:gravity="center_vertical">
 
+            <!-- AMOUNT Field -->
             <TextView
                 android:id="@+id/plusSign"
                 android:layout_width="wrap_content"
@@ -71,6 +73,7 @@
                 android:textColor="#6AA84F"
                 android:layout_marginEnd="8dp"/>
 
+            <!-- AMOUNT Field -->
             <TextView
                 android:id="@+id/walletValue"
                 android:layout_width="wrap_content"
@@ -83,6 +86,7 @@
     </LinearLayout>
 
     <!-- Buttons -->
+    <!-- BUDGET PLAN Button -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnBudgetPlan"
         android:layout_width="match_parent"
@@ -94,6 +98,7 @@
         android:textSize="20sp"
         android:background="@drawable/btn_budget_plan_background" />
 
+    <!-- MY GOALS Button -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnMyGoals"
         android:layout_width="match_parent"
@@ -105,6 +110,7 @@
         android:textSize="20sp"
         android:background="@drawable/btn_goals_background" />
 
+    <!-- DASHBOARD Button -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnDashboard"
         android:layout_width="match_parent"

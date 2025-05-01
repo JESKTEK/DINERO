@@ -5,6 +5,7 @@
     android:gravity="center"
     android:background="#b1d9b7">
 
+    <!-- DINERO Title -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
@@ -18,6 +19,7 @@
         android:textStyle="bold"
         android:fontFamily="sans-serif"/>
 
+    <!-- DINERO Logo -->
     <ImageView
         android:id="@+id/splashLogo"
         android:layout_width="400dp"
@@ -27,6 +29,7 @@
         android:layout_centerHorizontal="true"
         android:src="@mipmap/splash_screen_round" />
 
+    <!-- DINERO Subtitle -->
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
