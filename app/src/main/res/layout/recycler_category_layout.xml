@@ -57,6 +57,7 @@
                 android:fontFamily="sans-serif-condensed"
                 android:textColor="@color/black"
                 android:gravity="right"
+                android:textColor="@color/black"
                 android:padding="8dp"
                 android:text="@string/view_description"
 
@@ -68,7 +69,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
+            <!--
+            Title: AppCompatButton, API, reference, Android Developers
+            Author: Android Developers
+            Date: 18 April 2025
+            Availability: https://developer.android.com/reference/androidx/appcompat/widget/AppCompatButton
+            -->
             <!-- ADD EXPENSE Button -->
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/tvAddExpenseButton"

@@ -41,7 +41,12 @@
         android:backgroundTint="#000000"
         android:hint="NAME"
         android:minHeight="48dp" />
-
+    <!--
+    Title: How to Implement DatePickerDialog in Android Using Kotlin
+    Author: Abhishek Suman
+    Date: 22 April 2025
+    Availability: https://medium.com/%40abhisheksuman413/how-to-implement-datepickerdialog-in-android-using-kotlin-45c413e47464
+    -->
     <!-- SELECT DATES Field -->
     <EditText
         android:id="@+id/inputDate"
@@ -90,7 +95,12 @@
         android:textColor="#000000"
         android:textSize="20dp"
         android:textStyle="bold" />
-
+    <!--
+       Title: SeekBar in Kotlin
+       Author: GeeksforGeeks
+       Date: 22 April 2025
+       Availability: https://www.geeksforgeeks.org/seekbar-in-kotlin/
+        -->
     <!-- SeekBar for LIMIT -->
     <SeekBar
         android:id="@+id/inputLimitSeekBar"
@@ -122,7 +132,12 @@
         android:backgroundTint="#000000"
         android:hint="CUSTOM AMOUNT"
         android:minHeight="48dp" />
-
+    <!--
+    Title: AppCompatButton, API, reference, Android Developers
+    Author: Android Developers
+    Date: 18 April 2025
+    Availability: https://developer.android.com/reference/androidx/appcompat/widget/AppCompatButton
+     -->
     <!-- ADD BUDGET Button -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/AddBudgetbtn"

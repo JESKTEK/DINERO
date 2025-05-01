@@ -29,6 +29,16 @@ class HomeActivity : AppCompatActivity() {
         val plusSign = findViewById<TextView>(R.id.plusSign)
         plusSign.setOnClickListener {
             Toast.makeText(this, "Feature coming soon", Toast.LENGTH_SHORT).show()
+
+            val btnMyGoals = findViewById<TextView>(R.id.btnMyGoals)
+            btnMyGoals.setOnClickListener {
+                Toast.makeText(this, "Feature coming soon", Toast.LENGTH_SHORT).show()
+
+                val btnDashboard = findViewById<TextView>(R.id.btnDashboard)
+                btnDashboard.setOnClickListener {
+                    Toast.makeText(this, "Feature coming soon", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 }

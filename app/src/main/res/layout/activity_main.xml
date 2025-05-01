@@ -49,7 +49,12 @@
         android:layout_gravity="center"
         android:orientation="vertical"
         android:padding="10dp">
-
+        <!--
+        Title: AppCompatButton, API, reference, Android Developers
+        Author: Android Developers
+        Date: 18 April 2025
+        Availability: https://developer.android.com/reference/androidx/appcompat/widget/AppCompatButton
+        -->
         <!-- REGISTER Button -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/registerButton"

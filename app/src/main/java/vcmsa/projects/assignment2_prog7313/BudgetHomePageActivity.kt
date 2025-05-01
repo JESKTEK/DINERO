@@ -12,7 +12,6 @@ class BudgetHomePageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_budget_home_page)
 
-        // Handle window insets for edge-to-edge layout
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -33,6 +32,7 @@ class BudgetHomePageActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // View Expense Button
         val viewExpensesBtn = findViewById<LinearLayout>(R.id.btnViewExpense)
         viewExpensesBtn.setOnClickListener {
             val intent = Intent(this, ExpenseView::class.java)

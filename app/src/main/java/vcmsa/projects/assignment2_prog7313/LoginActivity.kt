@@ -52,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this, "Login Successful.", Toast.LENGTH_SHORT).show()
                     val i = Intent(this, HomeActivity::class.java)
                     startActivity(i)
-                    finish() // <<< THIS was missing!
+                    finish()
                 } else {
                     Toast.makeText(this, "Login Failed.", Toast.LENGTH_SHORT).show()
                 }
@@ -60,7 +60,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         registerTransitButton.setOnClickListener {
-            val i = Intent(this, MainActivity::class.java) // <<< It must go to RegisterActivity
+            val i = Intent(this, MainActivity::class.java)
             startActivity(i)
         }
 

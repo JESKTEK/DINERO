@@ -14,6 +14,7 @@
       <SelectionState runConfigName="ExpenseView (1)">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
+
     </selectionStates>
   </component>
 </project>
