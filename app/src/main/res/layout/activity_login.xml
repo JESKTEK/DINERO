@@ -96,7 +96,7 @@
             android:background="@android:color/transparent"
             android:fontFamily="sans-serif-condensed"
             android:padding="8dp"
-            android:text="@string/reg_link"
+            android:text="@string/back_to_main_menu_link"
             android:textAlignment="center"
             android:textColor="#58735d"
             android:textSize="18sp"
