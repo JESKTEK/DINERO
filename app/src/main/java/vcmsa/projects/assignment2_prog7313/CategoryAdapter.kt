@@ -19,15 +19,21 @@ import java.io.ByteArrayInputStream
 import kotlin.io.encoding.Base64
 import kotlin.io.encoding.ExperimentalEncodingApi
 
-class CategoryAdapter (private var catList: List<Category>): RecyclerView.Adapter<CategoryAdapter.categoryViewHolder>() {
+class CategoryAdapter(private var catList: List<Category>) :
+    RecyclerView.Adapter<CategoryAdapter.categoryViewHolder>() {
 
     private val firestore = FirebaseFirestore.getInstance()
-    class categoryViewHolder(val binding: RecyclerCategoryLayoutBinding): RecyclerView.ViewHolder(binding.root)
 
+    class categoryViewHolder(val binding: RecyclerCategoryLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): categoryViewHolder {
-        val binding = RecyclerCategoryLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = RecyclerCategoryLayoutBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
         return categoryViewHolder(binding)
         //val view = LayoutInflater.from(parent.context)
         //    .inflate(R.layout.recycler_item_layout, parent, false)
@@ -51,7 +57,7 @@ class CategoryAdapter (private var catList: List<Category>): RecyclerView.Adapte
         val amtSpentText = "R" + "%.2f".format(category.amountSpent)
         holder.binding.tvAmtSpent.text = amtSpentText
         val amtBudgetText = "R" + "%.2f".format(category.amountBudgeted)
-        holder.binding.tvAmtBudget.text =  amtBudgetText
+        holder.binding.tvAmtBudget.text = amtBudgetText
     }
 
     override fun getItemCount() = catList.size
@@ -70,9 +76,10 @@ class CategoryAdapter (private var catList: List<Category>): RecyclerView.Adapte
     public fun onViewDetailsClick(category: Category, position: Int, holder: categoryViewHolder) {
         val catChoice = catList[position]
         val stringDetails = catChoice.description
-        AlertDialog.Builder(holder.itemView.context).setMessage(stringDetails).setPositiveButton("Okay"){
-                dialog, _ -> dialog.dismiss()
-        }.show()
+        AlertDialog.Builder(holder.itemView.context).setMessage(stringDetails)
+            .setPositiveButton("Okay") { dialog, _ ->
+                dialog.dismiss()
+            }.show()
         return
     }
 

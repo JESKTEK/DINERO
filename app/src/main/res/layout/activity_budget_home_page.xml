@@ -35,8 +35,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvTitle"
         android:layout_marginTop="48dp"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
         <!-- Custom Button: CREATE CATEGORY -->
         <LinearLayout
@@ -44,20 +44,20 @@
             android:layout_width="280dp"
             android:layout_height="160dp"
             android:layout_marginBottom="24dp"
-            android:orientation="vertical"
-            android:gravity="center"
             android:background="@drawable/btn_createcategory_background"
             android:clickable="true"
-            android:focusable="true">
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
                 android:text="CREATE CATEGORY"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-condensed-medium" />
+                android:textStyle="bold" />
 
             <ImageView
                 android:layout_width="72dp"
@@ -71,20 +71,20 @@
             android:layout_width="280dp"
             android:layout_height="160dp"
             android:layout_marginBottom="24dp"
-            android:orientation="vertical"
-            android:gravity="center"
             android:background="@drawable/btn_view_budget"
             android:clickable="true"
-            android:focusable="true">
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
                 android:text="VIEW BUDGET"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-condensed-medium" />
+                android:textStyle="bold" />
 
             <ImageView
                 android:layout_width="72dp"
@@ -98,19 +98,19 @@
             android:layout_width="280dp"
             android:layout_height="160dp"
             android:background="@drawable/btn_view_expense"
-            android:orientation="vertical"
-            android:gravity="center"
             android:clickable="true"
-            android:focusable="true">
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
                 android:text="VIEW EXPENSE"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-condensed-medium" />
+                android:textStyle="bold" />
 
             <ImageView
                 android:layout_width="72dp"

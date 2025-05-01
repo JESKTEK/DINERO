@@ -8,13 +8,13 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="20dp"
+        android:gravity="center"
+        android:orientation="vertical"
         android:paddingStart="16dp"
-        android:paddingEnd="16dp">
+        android:paddingEnd="16dp"
+        android:paddingBottom="20dp">
 
         <!-- DINERO Title -->
         <TextView
@@ -26,26 +26,25 @@
             android:textColor="#6AA84F"
             android:textSize="28sp"
             android:textStyle="bold" />
+
         <LinearLayout
-            android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <!-- SELECT CATEGORY Button -->
-        <Button
-            android:layout_marginRight="10dp"
-            android:text="Select Category"
-            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            />
+            android:gravity="center">
 
-        <!-- SELECT DATE Button -->
-        <Button
-            android:layout_marginLeft="10dp"
-            android:text="Select Date"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            />
+            <!-- SELECT CATEGORY Button -->
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="Select Category" />
+
+            <!-- SELECT DATE Button -->
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Select Date" />
         </LinearLayout>
     </LinearLayout>
 

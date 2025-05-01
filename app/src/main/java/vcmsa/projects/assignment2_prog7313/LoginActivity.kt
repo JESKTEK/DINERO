@@ -42,7 +42,8 @@ class LoginActivity : AppCompatActivity() {
             val password = passwordText.text.toString()
 
             if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Email and Password must not be empty.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Email and Password must not be empty.", Toast.LENGTH_SHORT)
+                    .show()
                 return@setOnClickListener
             }
 

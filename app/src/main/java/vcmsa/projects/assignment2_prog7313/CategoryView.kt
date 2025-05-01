@@ -15,6 +15,7 @@ class CategoryView : AppCompatActivity() {
 
     private lateinit var binding: ActivityCategoryViewBinding
     private lateinit var categoryAdapter: CategoryAdapter
+
     //private lateinit var database: AppDatabase
     private val firestore = Firebase.firestore
 
@@ -37,8 +38,6 @@ class CategoryView : AppCompatActivity() {
         }
 
 
-
-
         //enableEdgeToEdge()
         /*setContentView(R.layout.activity_category_view)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -56,14 +55,27 @@ class CategoryView : AppCompatActivity() {
         if (result.resultCode == RESULT_OK) {
             val id = result.data?.getStringExtra("id") ?: return@registerForActivityResult
             val catName = result.data?.getStringExtra("catName") ?: return@registerForActivityResult
-            val dateCreated = result.data?.getStringExtra("dateCreated") ?: return@registerForActivityResult
-            val emailAssociated = result.data?.getStringExtra("emailAssociated") ?: return@registerForActivityResult
-            val description = result.data?.getStringExtra("description") ?: return@registerForActivityResult
-            val amountSpent = result.data?.getDoubleExtra("amountSpent", 0.0) ?: return@registerForActivityResult
-            val amountBudgeted = result.data?.getDoubleExtra("amountBudgeted", 0.0) ?: return@registerForActivityResult
+            val dateCreated =
+                result.data?.getStringExtra("dateCreated") ?: return@registerForActivityResult
+            val emailAssociated =
+                result.data?.getStringExtra("emailAssociated") ?: return@registerForActivityResult
+            val description =
+                result.data?.getStringExtra("description") ?: return@registerForActivityResult
+            val amountSpent =
+                result.data?.getDoubleExtra("amountSpent", 0.0) ?: return@registerForActivityResult
+            val amountBudgeted = result.data?.getDoubleExtra("amountBudgeted", 0.0)
+                ?: return@registerForActivityResult
 
             lifecycleScope.launch {
-                val category = Category(id = id, catName = catName, dateCreated = dateCreated, emailAssociated = emailAssociated, description = description, amountSpent = amountSpent, amountBudgeted = amountBudgeted)
+                val category = Category(
+                    id = id,
+                    catName = catName,
+                    dateCreated = dateCreated,
+                    emailAssociated = emailAssociated,
+                    description = description,
+                    amountSpent = amountSpent,
+                    amountBudgeted = amountBudgeted
+                )
                 //database.postDao().insertPost(newPost)
                 loadCategories()
             }
@@ -74,7 +86,7 @@ class CategoryView : AppCompatActivity() {
     private suspend fun loadCategories() {
         firestore.collection("Categories").get()
             .addOnSuccessListener { snapshot ->
-                val categories  = snapshot.documents.map { doc ->
+                val categories = snapshot.documents.map { doc ->
 
                     /*val base64Image = doc.getString("Image") // Assuming "Image" field stores base64
                     val bitmap = if (base64Image != null) {

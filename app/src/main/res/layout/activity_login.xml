@@ -30,53 +30,53 @@
         android:orientation="vertical">
 
         <!-- LOGIN Field -->
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="126dp"
-        android:text="LOGIN"
-        android:textAlignment="center"
-        android:textColor="#5C9920"
-        android:textSize="40sp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="126dp"
+            android:text="LOGIN"
+            android:textAlignment="center"
+            android:textColor="#5C9920"
+            android:textSize="40sp"
+            android:textStyle="bold" />
 
-    <LinearLayout
-        android:layout_width="350sp"
-        android:layout_height="50sp"
-        android:orientation="horizontal"
-        android:gravity="center">
+        <LinearLayout
+            android:layout_width="350sp"
+            android:layout_height="50sp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <!-- EMAIL Field -->
-        <EditText
-            android:hint="Email"
-            android:id="@+id/editTextEmailAddress"
-            android:layout_width="250sp"
-            android:layout_height="50dp"
-            android:autofillHints="email"
-            android:textStyle="bold"
-            android:textSize="23dp"
-            android:ems="10"
-            android:inputType="textEmailAddress" />
-    </LinearLayout>
+            <!-- EMAIL Field -->
+            <EditText
+                android:id="@+id/editTextEmailAddress"
+                android:layout_width="250sp"
+                android:layout_height="50dp"
+                android:autofillHints="email"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:textSize="23dp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="350sp"
-        android:layout_height="50sp"
-        android:orientation="horizontal"
-        android:gravity="center">
+        <LinearLayout
+            android:layout_width="350sp"
+            android:layout_height="50sp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <!-- PASSWORD Field -->
-        <EditText
-            android:hint="Password"
-            android:id="@+id/editTextPassword"
-            android:layout_width="250sp"
-            android:layout_height="50dp"
-            android:ems="10"
-            android:textStyle="bold"
-            android:textSize="23dp"
-            android:inputType="textPassword" />
-    </LinearLayout>
+            <!-- PASSWORD Field -->
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="250sp"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textSize="23dp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <!-- LOGIN Button -->
         <androidx.appcompat.widget.AppCompatButton

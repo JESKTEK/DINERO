@@ -19,16 +19,20 @@ import java.io.ByteArrayInputStream
 import kotlin.io.encoding.Base64
 import kotlin.io.encoding.ExperimentalEncodingApi
 
-class ExpenseAdapter (private var expenseList: List<Expense>): RecyclerView.Adapter<ExpenseAdapter.expenseViewHolder>() {
+class ExpenseAdapter(private var expenseList: List<Expense>) :
+    RecyclerView.Adapter<ExpenseAdapter.expenseViewHolder>() {
 
     val orderedExpenses = mutableListOf<Expense>()
 
     private val firestore = FirebaseFirestore.getInstance()
-    class expenseViewHolder(val binding: RecyclerExpenseLayoutBinding): RecyclerView.ViewHolder(binding.root)
+
+    class expenseViewHolder(val binding: RecyclerExpenseLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): expenseViewHolder {
-        val binding = RecyclerExpenseLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            RecyclerExpenseLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return expenseViewHolder(binding)
         //val view = LayoutInflater.from(parent.context)
         //    .inflate(R.layout.recycler_item_layout, parent, false)
@@ -73,9 +77,10 @@ class ExpenseAdapter (private var expenseList: List<Expense>): RecyclerView.Adap
     public fun onViewDetailsClick(expense: Expense, position: Int, holder: expenseViewHolder) {
         val expenseChoice = expenseList[position]
         val stringDetails = expenseChoice.details
-        AlertDialog.Builder(holder.itemView.context).setMessage(stringDetails).setPositiveButton("Okay"){
-            dialog, _ -> dialog.dismiss()
-        }.show()
+        AlertDialog.Builder(holder.itemView.context).setMessage(stringDetails)
+            .setPositiveButton("Okay") { dialog, _ ->
+                dialog.dismiss()
+            }.show()
         return
     }
 

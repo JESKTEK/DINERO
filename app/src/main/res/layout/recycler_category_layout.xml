@@ -3,12 +3,12 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:padding="8dp"
+    card_view:cardBackgroundColor="#709051"
     card_view:cardCornerRadius="12dp"
     card_view:cardElevation="12dp"
-    android:layout_margin="8dp"
-    card_view:cardBackgroundColor="#709051"
-    card_view:cardUseCompatPadding="true"
-    android:padding="8dp">
+    card_view:cardUseCompatPadding="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,44 +20,44 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:orientation="vertical">
-
-            <!-- NAME Field -->
-            <TextView
-                android:id="@+id/tvName"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Name"
-                android:textColor="@color/black"
-                android:textSize="30sp"
-                android:textStyle="bold" />
+                android:layout_height="80dp"
+                android:orientation="vertical">
 
-            <!-- DATE Field -->
-            <TextView
-                android:id="@+id/tvDate"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="01 Jan"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-        </LinearLayout>
+                <!-- NAME Field -->
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <!-- DATE Field -->
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="01 Jan"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
             <Button
                 android:id="@+id/tvViewDescButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:fontFamily="sans-serif-condensed"
-                android:padding="8dp"
-                android:text="@string/view_description"
                 android:layout_gravity="right"
                 android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:fontFamily="sans-serif-condensed"
                 android:gravity="right"
+                android:padding="8dp"
+                android:text="@string/view_description"
 
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -76,8 +76,8 @@
                 android:layout_gravity="bottom"
                 android:background="@drawable/btn_add_expense"
                 android:text="Add Expense"
-                android:textStyle="bold"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <!-- Expense Details Form -->
             <LinearLayout

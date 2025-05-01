@@ -17,7 +17,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 
-
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var loginTransitButton: Button
@@ -62,12 +61,14 @@ class RegisterActivity : AppCompatActivity() {
         val fullName = fullNameText.text.toString().trim()
 
         if (email.isEmpty() || password.isEmpty() || fullName.isEmpty()) {
-            Toast.makeText(this, "Email, Password, and Name must not be empty.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Email, Password, and Name must not be empty.", Toast.LENGTH_SHORT)
+                .show()
             return
         }
 
         if (confirmText != password) {
-            Toast.makeText(this, "Password and Confirm Password must match.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Password and Confirm Password must match.", Toast.LENGTH_SHORT)
+                .show()
             return
         }
 
