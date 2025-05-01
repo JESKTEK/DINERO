@@ -3,6 +3,7 @@ package vcmsa.projects.assignment2_prog7313
 
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -55,6 +56,12 @@ class CategoryAdapter(private var catList: List<Category>) :
         holder.binding.tvAmtSpent.text = amtSpentText
         val amtBudgetText = "R" + "%.2f".format(category.amountBudgeted)
         holder.binding.tvAmtBudget.text = amtBudgetText
+
+        if (category.amountSpent > category.amountBudgeted) {
+            holder.binding.tvAmtSpent.setTextColor(Color.RED)
+        } else {
+            holder.binding.tvAmtSpent.setTextColor(Color.BLACK)
+        }
     }
 
     override fun getItemCount() = catList.size
