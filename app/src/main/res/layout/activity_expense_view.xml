@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#b1d9b7"
     android:orientation="vertical">
 
     <LinearLayout
@@ -16,16 +17,37 @@
         android:paddingEnd="16dp"
         android:paddingBottom="20dp">
 
-        <!-- DINERO Title -->
-        <TextView
-            android:id="@+id/appTitle"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="DINERO"
-            android:textColor="#6AA84F"
-            android:textSize="28sp"
-            android:textStyle="bold" />
+            android:paddingTop="24dp"
+            android:paddingEnd="16dp">
+
+            <!-- DINERO Title centered -->
+            <TextView
+                android:id="@+id/appTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DINERO"
+                android:gravity="center"
+                android:textColor="#81b522"
+                android:fontFamily="sans-serif-black"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true" />
+
+            <!-- Dinero Logo in top right -->
+            <ImageView
+                android:id="@+id/ivDineroLogo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="-15dp"
+                android:layout_marginEnd="-30dp"
+                android:src="@mipmap/dinero_logo" />
+        </RelativeLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,18 +55,27 @@
             android:gravity="center">
 
             <!-- SELECT CATEGORY Button -->
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="150dp"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:text="Select Category" />
+                android:background="@drawable/btn_add_expense"
+                android:text="Select Category"
+                android:textStyle="bold"
+                android:textSize="14sp" />
 
-            <!-- SELECT DATE Button -->
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="150dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="20dp"
+                android:gravity="center"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Select Date" />
+                android:background="@drawable/btn_add_expense"
+                android:text="Select Date"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+
         </LinearLayout>
     </LinearLayout>
 
