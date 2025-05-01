@@ -6,80 +6,75 @@
     android:padding="16dp">
 
 
-<LinearLayout
-    android:layout_weight="1"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="vertical"
-        >
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-        <!-- EXPENSE CATEGORY Field -->
-        <TextView
-            android:id="@+id/tvCategoryName"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="vertical">
+
+            <!-- EXPENSE CATEGORY Field -->
+            <TextView
+                android:id="@+id/tvCategoryName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Exp. Category"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <!-- EXPENSE ITEM Field -->
+            <TextView
+                android:id="@+id/tvCategoryItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Expense Item"
+                android:textColor="#666666"
+                android:textSize="18sp" />
+
+            <!-- DATE Field -->
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="01 Jan"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Exp. Category"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            />
-
-        <!-- EXPENSE ITEM Field -->
-        <TextView
-            android:id="@+id/tvCategoryItem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Expense Item"
-            android:textSize="18sp"
-            android:textColor="#666666"
-            />
-
-        <!-- DATE Field -->
-        <TextView
-            android:id="@+id/tvDate"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:text="01 Jan"
-            android:textSize="14sp"
-            android:textColor="#666666"
-            />
+            android:orientation="horizontal">
+            <!-- VIEW DTEAILS Button -->
+            <Button
+                android:id="@+id/tvViewDetailsButton"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="View Details"
+                android:textSize="14sp" />
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <!-- VIEW DTEAILS Button -->
-        <Button
-            android:id="@+id/tvViewDetailsButton"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:text="View Details"
-            android:textSize="14sp" />
-        </LinearLayout>
-</LinearLayout>
-
-    <LinearLayout
-        android:layout_weight="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical">
 
         <!-- IMAGE Button -->
         <ImageButton
             android:id="@+id/tvReceiptImage"
-            android:contentDescription="Receipt Image"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/ic_launcher_foreground"
             android:layout_marginBottom="10dp"
-            />
+            android:contentDescription="Receipt Image"
+            android:src="@drawable/ic_launcher_foreground" />
 
         <!-- AMOUNT SPENT Field -->
         <TextView
@@ -87,9 +82,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="AMOUNT SPENT"
-            android:textSize="10sp"
             android:textColor="#666666"
-            />
+            android:textSize="10sp" />
 
         <!-- AMOUNT Value -->
         <TextView
@@ -97,9 +91,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="R 5000.00"
-            android:textSize="20sp"
             android:textColor="#666666"
-            />
+            android:textSize="20sp" />
     </LinearLayout>
 
 </LinearLayout>

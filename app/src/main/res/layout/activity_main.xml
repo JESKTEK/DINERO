@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:background="#b1d8b7"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#b1d8b7"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".LoginActivity">
 
     <!-- DINERO Logo -->
@@ -24,24 +23,24 @@
         android:id="@+id/appTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif-condensed"
         android:text="DINERO"
         android:textColor="#4d8338"
-        android:layout_marginTop="5dp"
-        android:textStyle="bold"
         android:textSize="36sp"
-        android:fontFamily="sans-serif-condensed" />
+        android:textStyle="bold" />
 
     <!-- DINERO Subtitle -->
     <TextView
         android:id="@+id/subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LA BUDGET PERSONAL"
-        android:textColor="#4d8338"
-        android:textSize="20sp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="30dp"
-        android:fontFamily="sans-serif" />
+        android:fontFamily="sans-serif"
+        android:text="LA BUDGET PERSONAL"
+        android:textColor="#4d8338"
+        android:textSize="20sp" />
 
     <!-- Button Container -->
     <LinearLayout
@@ -92,15 +91,15 @@
         android:id="@+id/fromJesktek"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minHeight="48dp"
+        android:layout_marginTop="40dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="sans-serif"
         android:minWidth="48dp"
+        android:minHeight="48dp"
         android:padding="10dp"
         android:text="FROM JESKTEK"
         android:textColor="#8fad93"
         android:textSize="20sp"
-        android:layout_marginTop="40dp"
-        android:fontFamily="sans-serif"
-        android:textStyle="bold"
-        android:clickable="true"
-        android:focusable="true" />
+        android:textStyle="bold" />
 </LinearLayout>

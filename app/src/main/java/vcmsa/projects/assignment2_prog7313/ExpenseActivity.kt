@@ -33,15 +33,16 @@ class ExpenseActivity : AppCompatActivity() {
 
     private lateinit var chosenImageUri: Uri
 
-    private val pickImage = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri: Uri? ->
-        if (uri != null) {
-            chosenImageUri = uri
-            findViewById<ImageButton>(R.id.imageInput).setImageURI(uri)
-            Toast.makeText(this, "Image selected!", Toast.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(this, "No image selected", Toast.LENGTH_SHORT).show()
+    private val pickImage =
+        registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri: Uri? ->
+            if (uri != null) {
+                chosenImageUri = uri
+                findViewById<ImageButton>(R.id.imageInput).setImageURI(uri)
+                Toast.makeText(this, "Image selected!", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "No image selected", Toast.LENGTH_SHORT).show()
+            }
         }
-    }
 
     private fun pickImageFromGallery() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
@@ -62,23 +63,31 @@ class ExpenseActivity : AppCompatActivity() {
     }
 
 
-
     private fun convertImageToBase64(drawable: Drawable): String? {
         val bitmap: Bitmap? = when (drawable) {
             is BitmapDrawable -> drawable.bitmap
             is VectorDrawable -> {
-                Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888).also {
+                Bitmap.createBitmap(
+                    drawable.intrinsicWidth,
+                    drawable.intrinsicHeight,
+                    Bitmap.Config.ARGB_8888
+                ).also {
                     val canvas = Canvas(it)
                     drawable.setBounds(0, 0, canvas.width, canvas.height)
                     drawable.draw(canvas)
                 }
             }
+
             else -> null // Handle other Drawable types if needed
         }
 
         return bitmap?.let {
             val byteArrayOutputStream = ByteArrayOutputStream()
-            it.compress(Bitmap.CompressFormat.PNG, 10, byteArrayOutputStream) // Or other format/quality
+            it.compress(
+                Bitmap.CompressFormat.PNG,
+                10,
+                byteArrayOutputStream
+            ) // Or other format/quality
             val byteArray = byteArrayOutputStream.toByteArray()
             Base64.encodeToString(byteArray, Base64.DEFAULT)
         }
@@ -128,8 +137,6 @@ class ExpenseActivity : AppCompatActivity() {
         }
 
 
-
-
         // Calender functionality
         inputDate.setOnClickListener {
             val calendar = Calendar.getInstance()
@@ -149,6 +156,7 @@ class ExpenseActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable?) {
                 labelCharCount.text = "${s?.length ?: 0}/250"
             }
+
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
@@ -157,8 +165,6 @@ class ExpenseActivity : AppCompatActivity() {
             val user = FirebaseAuth.getInstance().currentUser
             return user?.email
         }
-
-
 
 
         // gather all info
@@ -172,11 +178,13 @@ class ExpenseActivity : AppCompatActivity() {
             val image = convertImageToBase64(imageInput.drawable)
 
 
-
-
             // error
             if (name.isEmpty() || date.isEmpty() || description.isEmpty() || amountSpent == 0.00) {
-                Toast.makeText(this, "Please fill in all fields, and set an expense above R0.00", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Please fill in all fields, and set an expense above R0.00",
+                    Toast.LENGTH_SHORT
+                ).show()
                 return@setOnClickListener
             }
 

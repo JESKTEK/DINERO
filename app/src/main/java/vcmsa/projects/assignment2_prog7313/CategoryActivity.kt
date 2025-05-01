@@ -72,6 +72,7 @@ class CategoryActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable?) {
                 labelCharCount.text = "${s?.length ?: 0}/250"
             }
+
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
@@ -110,7 +111,7 @@ class CategoryActivity : AppCompatActivity() {
                 "description" to description,
                 "amountSpent" to amountSpent,
                 "amountBudgeted" to finalAmount
-                )
+            )
 
             firestore.collection("Categories")
                 .add(category)

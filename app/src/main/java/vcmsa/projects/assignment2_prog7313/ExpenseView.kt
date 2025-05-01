@@ -19,6 +19,7 @@ class ExpenseView : AppCompatActivity() {
 
     private lateinit var binding: ActivityExpenseViewBinding
     private lateinit var expenseAdapter: ExpenseAdapter
+
     //private lateinit var database: AppDatabase
     private val firestore = Firebase.firestore
 
@@ -55,18 +56,35 @@ class ExpenseView : AppCompatActivity() {
         if (result.resultCode == RESULT_OK) {
 
             val id = result.data?.getStringExtra("id") ?: return@registerForActivityResult
-            val parentId = result.data?.getStringExtra("parentId") ?: return@registerForActivityResult
-            val categoryName = result.data?.getStringExtra("categoryName") ?: return@registerForActivityResult
-            val itemName = result.data?.getStringExtra("itemName") ?: return@registerForActivityResult
-            val amountSpent = result.data?.getDoubleExtra("amountSpent", 0.0) ?: return@registerForActivityResult
-            val dateCreated = result.data?.getStringExtra("dateCreated") ?: return@registerForActivityResult
-            val uploadImage = result.data?.getStringExtra("uploadImage") ?: return@registerForActivityResult
+            val parentId =
+                result.data?.getStringExtra("parentId") ?: return@registerForActivityResult
+            val categoryName =
+                result.data?.getStringExtra("categoryName") ?: return@registerForActivityResult
+            val itemName =
+                result.data?.getStringExtra("itemName") ?: return@registerForActivityResult
+            val amountSpent =
+                result.data?.getDoubleExtra("amountSpent", 0.0) ?: return@registerForActivityResult
+            val dateCreated =
+                result.data?.getStringExtra("dateCreated") ?: return@registerForActivityResult
+            val uploadImage =
+                result.data?.getStringExtra("uploadImage") ?: return@registerForActivityResult
             val details = result.data?.getStringExtra("details") ?: return@registerForActivityResult
-            val emailAssociated = result.data?.getStringExtra("emailAssociated") ?: return@registerForActivityResult
+            val emailAssociated =
+                result.data?.getStringExtra("emailAssociated") ?: return@registerForActivityResult
 
             lifecycleScope.launch {
-                val expense = Expense(id = id, parentId = parentId, categoryName = categoryName, itemName = itemName, amountSpent = amountSpent, dateCreated = dateCreated, uploadImage = uploadImage, details = details, emailAssociated = emailAssociated)
-                    //database.postDao().insertPost(newPost)
+                val expense = Expense(
+                    id = id,
+                    parentId = parentId,
+                    categoryName = categoryName,
+                    itemName = itemName,
+                    amountSpent = amountSpent,
+                    dateCreated = dateCreated,
+                    uploadImage = uploadImage,
+                    details = details,
+                    emailAssociated = emailAssociated
+                )
+                //database.postDao().insertPost(newPost)
                 loadExpenses()
             }
         }
@@ -76,7 +94,7 @@ class ExpenseView : AppCompatActivity() {
     private suspend fun loadExpenses() {
         firestore.collection("Expenses").get()
             .addOnSuccessListener { snapshot ->
-                val expenses  = snapshot.documents.map { doc ->
+                val expenses = snapshot.documents.map { doc ->
                     Expense(
                         id = doc.getString("id") ?: "",
                         parentId = doc.getString("parentId") ?: "",
