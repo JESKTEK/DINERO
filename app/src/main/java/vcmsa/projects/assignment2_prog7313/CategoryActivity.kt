@@ -108,6 +108,7 @@ class CategoryActivity : AppCompatActivity() {
                 "catName" to name,
                 "dateCreated" to date,
                 "emailAssociated" to emailAssociated,
+                "description" to description,
                 "amountSpent" to amountSpent,
                 "amountBudgeted" to finalAmount
                 )

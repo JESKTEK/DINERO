@@ -5,6 +5,7 @@ data class Category(
     val catName: String, //Name of the Category
     val dateCreated: String, //Date of Budget Created
     val emailAssociated: String, //Email of Associated User
+    val description: String, //Description of Budget
     val amountSpent: Double, //Amount Spent by User in Budget
     var amountBudgeted: Double //Amount Budgeted by User
 )
