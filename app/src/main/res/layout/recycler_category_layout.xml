@@ -28,6 +28,7 @@
             android:layout_height="80dp"
             android:orientation="vertical">
 
+            <!-- NAME Field -->
             <TextView
                 android:id="@+id/tvName"
                 android:layout_width="wrap_content"
@@ -37,6 +38,7 @@
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
+            <!-- DATE Field -->
             <TextView
                 android:id="@+id/tvDate"
                 android:layout_width="wrap_content"
@@ -66,6 +68,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
+            <!-- ADD EXPENSE Button -->
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/tvAddExpenseButton"
                 android:layout_width="150dp"
@@ -76,6 +79,7 @@
                 android:textStyle="bold"
                 android:textSize="14sp" />
 
+            <!-- Expense Details Form -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -83,6 +87,7 @@
                 android:gravity="right"
                 android:orientation="vertical">
 
+                <!-- AMOUNT SPENT Field -->
                 <TextView
                     android:id="@+id/tvAmtSpentHeading"
                     android:layout_width="wrap_content"
@@ -92,6 +97,7 @@
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
+                <!-- AMOUNT Value -->
                 <TextView
                     android:id="@+id/tvAmtSpent"
                     android:layout_width="wrap_content"
@@ -101,6 +107,7 @@
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
+                <!-- BUDGET VALUE Field -->
                 <TextView
                     android:id="@+id/tvAmtBudgetHeading"
                     android:layout_width="wrap_content"
@@ -110,6 +117,7 @@
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
+                <!-- BUDGET VALUE Value -->
                 <TextView
                     android:id="@+id/tvAmtBudget"
                     android:layout_width="wrap_content"

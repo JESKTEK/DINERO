@@ -17,6 +17,7 @@
         android:orientation="vertical"
         >
 
+        <!-- EXPENSE CATEGORY Field -->
         <TextView
             android:id="@+id/tvCategoryName"
             android:layout_width="wrap_content"
@@ -26,7 +27,7 @@
             android:textStyle="bold"
             />
 
-
+        <!-- EXPENSE ITEM Field -->
         <TextView
             android:id="@+id/tvCategoryItem"
             android:layout_width="wrap_content"
@@ -36,6 +37,7 @@
             android:textColor="#666666"
             />
 
+        <!-- DATE Field -->
         <TextView
             android:id="@+id/tvDate"
             android:layout_width="wrap_content"
@@ -44,11 +46,6 @@
             android:textSize="14sp"
             android:textColor="#666666"
             />
-
-
-
-
-
     </LinearLayout>
 
     <LinearLayout
@@ -56,7 +53,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
-
+        <!-- VIEW DTEAILS Button -->
         <Button
             android:id="@+id/tvViewDetailsButton"
             android:layout_width="150dp"
@@ -64,18 +61,17 @@
             android:layout_gravity="bottom"
             android:text="View Details"
             android:textSize="14sp" />
-
-
-
-
         </LinearLayout>
 </LinearLayout>
+
     <LinearLayout
         android:layout_weight="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical">
+
+        <!-- IMAGE Button -->
         <ImageButton
             android:id="@+id/tvReceiptImage"
             android:contentDescription="Receipt Image"
@@ -84,6 +80,8 @@
             android:src="@drawable/ic_launcher_foreground"
             android:layout_marginBottom="10dp"
             />
+
+        <!-- AMOUNT SPENT Field -->
         <TextView
             android:id="@+id/tvAmtSpentHeading"
             android:layout_width="wrap_content"
@@ -92,6 +90,8 @@
             android:textSize="10sp"
             android:textColor="#666666"
             />
+
+        <!-- AMOUNT Value -->
         <TextView
             android:id="@+id/tvAmtSpent"
             android:layout_width="wrap_content"
@@ -100,8 +100,6 @@
             android:textSize="20sp"
             android:textColor="#666666"
             />
-
     </LinearLayout>
-
 
 </LinearLayout>
