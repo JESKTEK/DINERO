@@ -14,7 +14,7 @@
         android:layout_alignParentTop="true"
         android:text="DINERO"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="#5C9920"
         android:textSize="50sp"
         android:textStyle="bold"
         android:fontFamily="sans-serif"/>
@@ -35,11 +35,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/splashLogo"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="sans-serif"
         android:text="LA BUDGET PERSONAL"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="#5C9920"
         android:textSize="30sp"
         android:textStyle="bold" />
 

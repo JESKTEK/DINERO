@@ -103,7 +103,6 @@ class CategoryActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            //  Kian please replace with DB/firestore save or new screen later
             val category = hashMapOf(
                 "catName" to name,
                 "dateCreated" to date,
