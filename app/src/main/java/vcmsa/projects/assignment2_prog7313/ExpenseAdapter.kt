@@ -52,7 +52,7 @@ class ExpenseAdapter(private var expenseList: List<Expense>) :
         holder.binding.tvCategoryName.text = expense.categoryName
         holder.binding.tvCategoryItem.text = expense.itemName
         holder.binding.tvDate.text = expense.dateCreated
-        val amtSpentText = "R" + "%.2f".format(expense.amountSpent)
+        val amtSpentText = "-R" + "%.2f".format(expense.amountSpent)
         holder.binding.tvAmtSpent.text = amtSpentText
 
         try {

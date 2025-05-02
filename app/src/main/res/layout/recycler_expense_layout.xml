@@ -98,7 +98,8 @@
                 android:id="@+id/tvAmtSpentHeading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="AMOUNT SPENT"
+
+                android:textStyle="bold"
                 android:textSize="15sp"
                 android:textColor="@color/black"
 
@@ -111,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:text="R 5000.00"
                 android:textSize="20sp"
-                android:textColor="@color/black"
+                android:textColor="#ff0000"
 
                 android:textStyle="bold" />
         </LinearLayout>

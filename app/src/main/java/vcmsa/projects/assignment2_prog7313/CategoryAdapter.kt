@@ -60,7 +60,7 @@ class CategoryAdapter(private var catList: List<Category>) :
         if (category.amountSpent > category.amountBudgeted) {
             holder.binding.tvAmtSpent.setTextColor(Color.RED)
         } else {
-            holder.binding.tvAmtSpent.setTextColor(Color.BLACK)
+            holder.binding.tvAmtSpent.setTextColor(Color.GREEN)
         }
     }
 

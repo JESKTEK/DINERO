@@ -106,6 +106,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:text="AMOUNT SPENT"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="12sp" />
 
@@ -116,6 +117,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:text="R 5000.00"
+                    style="bold"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
@@ -126,6 +128,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:text="BUDGET VALUE"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="12sp" />
 
@@ -136,6 +139,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:text="R 13000.00"
+                    style="bold"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
             </LinearLayout>
