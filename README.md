@@ -1,5 +1,7 @@
 # Dinero - Personal Budgeting App
 > Created by JESKTEK.
+>
+> 
 > SAJANA BIDESI – ST10249843 
 > JADIN NAICKER – ST10275486
 > KIAN JOSE LIMA CAMPBELL – ST10252440
