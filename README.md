@@ -1,5 +1,9 @@
 # Dinero - Personal Budgeting App
 > Created by JESKTEK.
+> SAJANA BIDESI – ST10249843 
+> JADIN NAICKER – ST10275486
+> KIAN JOSE LIMA CAMPBELL – ST10252440
+> EMMA MAE ATKINSON – ST10258496
 
 <img src="https://github.com/user-attachments/assets/1af88c1d-63b0-4aef-a787-4e952d35ce7b" width="400"/>
 
@@ -10,6 +14,7 @@
 ---
 
 ## Table of Contents
+- [Links](#links)
 - [Introduction](#introduction)
 - [Overview](#overview)
 - [Features](#features)
@@ -24,6 +29,13 @@
 
 ---
 
+##Links
+Figma Prototype Design Link: <https://www.figma.com/design/v5kfxf10eg3DvDHpyX49Uv/PROG7313-POE---DINERO?node-id=0-1&t=N8XCfQ1HOtX1SNrq-1>  
+Github Repo Source Code Link: <https://github.com/JESKTEK/DINERO.git> 
+YouTube video tutorial Link: <https://youtu.be/dbIvylC07t8?si=SXxgn5JAmHXFtL_5> 
+Gantt Chart Project Plan on Canva: <https://www.canva.com/design/DAGhnUT7HrQ/i7ujLOtXladlzXBWEcBf3w/edit?utm_content=DAGhnUT7HrQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton>
+
+---
 ## Introduction
 
 Dinero is a personal finance application designed to make budgeting warm, simple, and motivating.  
