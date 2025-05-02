@@ -18,14 +18,14 @@
         android:fontFamily="sans-serif-condensed-medium"
         android:text="DINERO"
         android:textColor="#73AD00"
-        android:textSize="34sp"
+        android:textSize="50sp"
         android:textStyle="bold" />
 
     <!--Dinero Logo-->
     <ImageView
         android:id="@+id/ivDineroLogo"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="16dp"
@@ -34,14 +34,14 @@
     <!-- NAME Field -->
     <EditText
         android:id="@+id/inputName"
-        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/labelTitle"
         android:layout_marginTop="40dp"
         android:backgroundTint="#000000"
         android:hint="NAME"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:textStyle="bold" />
     <!--
     Title: How to Implement DatePickerDialog in Android Using Kotlin
     Author: Abhishek Suman
@@ -53,27 +53,27 @@
         android:id="@+id/inputDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
         android:layout_below="@id/inputName"
         android:layout_marginTop="16dp"
         android:backgroundTint="#000000"
         android:drawableEnd="@android:drawable/ic_menu_my_calendar"
         android:hint="SELECT DATES"
         android:inputType="none"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:textStyle="bold" />
 
     <!-- DESCRIPTION Field -->
     <EditText
         android:id="@+id/inputDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
         android:layout_below="@id/inputDate"
         android:layout_marginTop="16dp"
         android:backgroundTint="#000000"
         android:hint="DESCRIPTION"
         android:maxLines="4"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:textStyle="bold" />
 
     <!-- Character Counter for DESCRIPTION -->
     <TextView
@@ -111,15 +111,14 @@
         android:layout_below="@id/labelLimit"
         android:layout_marginTop="8dp"
         android:max="10000"
-        android:thumb="@mipmap/avocado_happy_foreground" />
+        android:thumb="@mipmap/seek_bar_icon_round" />
+    <!--
+    Title: SeekBar in Kotlin
+    Author: GeeksforGeeks
+    Date: 28 April 2025
+    Availability: https://www.geeksforgeeks.org/seekbar-in-kotlin/
+     -->
 
-        <!--
-        Title: SeekBar in Kotlin
-        Author: GeeksforGeeks
-        Date: 28 April 2025
-        Availability: https://www.geeksforgeeks.org/seekbar-in-kotlin/
-         -->
-  
     <!-- LIMIT Value -->
     <TextView
         android:id="@+id/labelLimitValue"
@@ -138,10 +137,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/labelLimitValue"
         android:layout_marginTop="16dp"
-        android:textStyle="bold"
         android:backgroundTint="#000000"
         android:hint="CUSTOM AMOUNT"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:textStyle="bold" />
     <!--
     Title: AppCompatButton, API, reference, Android Developers
     Author: Android Developers

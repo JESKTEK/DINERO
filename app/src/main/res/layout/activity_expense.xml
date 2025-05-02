@@ -4,7 +4,7 @@
     android:id="@+id/layoutCreateExpense"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#C6E2B2"
+    android:background="#b3d9b7"
     android:padding="24dp"
     tools:context=".ExpenseActivity">
 
@@ -103,6 +103,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/labelLimit"
         android:layout_marginTop="8dp"
+        android:thumb="@mipmap/seek_bar_icon_round"
         android:max="10000" />
 
     <!-- EXPENSE AMOUNT Value -->
