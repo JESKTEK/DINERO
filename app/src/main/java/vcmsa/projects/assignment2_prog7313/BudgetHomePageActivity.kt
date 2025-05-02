@@ -2,6 +2,7 @@ package vcmsa.projects.assignment2_prog7313
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -36,6 +37,11 @@ class BudgetHomePageActivity : AppCompatActivity() {
         val viewExpensesBtn = findViewById<LinearLayout>(R.id.btnViewExpense)
         viewExpensesBtn.setOnClickListener {
             val intent = Intent(this, ExpenseView::class.java)
+            startActivity(intent)
+        }
+        val btnBack = findViewById<ImageButton>(R.id.btnBack)
+        btnBack.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
     }

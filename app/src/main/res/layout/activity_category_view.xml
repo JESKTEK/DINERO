@@ -36,6 +36,19 @@
                 android:textStyle="bold"
                 android:layout_centerHorizontal="true" />
 
+            <!-- Back button -->
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="Back"
+                android:src="@drawable/btn_back" />
+
             <!-- Dinero Logo in top right -->
             <ImageView
                 android:id="@+id/ivDineroLogo"

@@ -105,9 +105,15 @@ class ExpenseActivity : AppCompatActivity() {
         val labelCharCount = findViewById<TextView>(R.id.labelCharCount)
         val seekBar = findViewById<SeekBar>(R.id.inputLimitSeekBar)
         val labelLimitValue = findViewById<TextView>(R.id.labelLimitValue)
-
         val imageInput = findViewById<ImageButton>(R.id.imageInput)
         val btnAddExpense = findViewById<Button>(R.id.AddExpenseBtn)
+        val btnBack = findViewById<ImageButton>(R.id.btnBack)
+
+        btnBack.setOnClickListener {
+            val intent = Intent(this, CategoryView::class.java)
+            startActivity(intent)
+            finish()
+        }
         /*****
         Title: SeekBar in Kotlin
         Author: GeeksforGeeks
@@ -132,8 +138,6 @@ class ExpenseActivity : AppCompatActivity() {
             //pickImage.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
             camLauncher.launch(null)
         }
-
-
 
         /*****
         Title: How to Implement DatePickerDialog in Android Using Kotlin
@@ -236,8 +240,8 @@ class ExpenseActivity : AppCompatActivity() {
                     Toast.makeText(this, "Error Making Category.", Toast.LENGTH_SHORT)
                         .show()
                 }
-
+            }
         }
     }
 
-}
+

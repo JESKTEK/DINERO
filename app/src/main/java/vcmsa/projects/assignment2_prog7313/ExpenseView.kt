@@ -4,6 +4,7 @@ import android.R
 import android.app.DatePickerDialog
 import android.graphics.BitmapFactory
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.AdapterView
@@ -133,6 +134,11 @@ class ExpenseView : AppCompatActivity() {
                 selectedCategory = null
                 filterExpenses()
             }
+        }
+        binding.btnBack.setOnClickListener {
+            val intent = Intent(this, BudgetHomePageActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
     }
@@ -307,9 +313,12 @@ class ExpenseView : AppCompatActivity() {
                 } else {
                     Toast.makeText(this, "Please enter a valid min < max", Toast.LENGTH_SHORT).show()
                 }
+
             }
             .setNegativeButton("Cancel", null)
             .show()
+
     }
+
 }
 

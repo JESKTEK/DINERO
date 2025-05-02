@@ -36,7 +36,13 @@ class CategoryActivity : AppCompatActivity() {
         val labelLimitValue = findViewById<TextView>(R.id.labelLimitValue)
         val inputCustomAmount = findViewById<EditText>(R.id.inputCustomAmount)
         val btnAddBudget = findViewById<Button>(R.id.AddBudgetbtn)
+        val btnBack = findViewById<ImageButton>(R.id.btnBack)
 
+        btnBack.setOnClickListener {
+            val intent = Intent(this, BudgetHomePageActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
         // Set default SeekBar value
         labelLimitValue.text = "R${seekBar.progress}.00"
 
@@ -140,6 +146,7 @@ class CategoryActivity : AppCompatActivity() {
                         .show()
                 }
 
+            }
         }
     }
-}
+

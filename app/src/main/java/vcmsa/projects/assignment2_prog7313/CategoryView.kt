@@ -1,8 +1,10 @@
 package vcmsa.projects.assignment2_prog7313
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -198,6 +200,11 @@ class CategoryView : AppCompatActivity() {
         //val userDao = database.userDao()
         //val users = userDao.getAllUsers()
         //userAdapter.updateData(users)
+        val btnBack = findViewById<ImageButton>(R.id.btnBack)
+        btnBack.setOnClickListener {
+            val intent = Intent(this, BudgetHomePageActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 }
