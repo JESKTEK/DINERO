@@ -2,9 +2,12 @@
 > Created by JESKTEK.
 >
 > 
-> SAJANA BIDESI – ST10249843 
+> SAJANA BIDESI – ST10249843
+> 
 > JADIN NAICKER – ST10275486
+> 
 > KIAN JOSE LIMA CAMPBELL – ST10252440
+> 
 > EMMA MAE ATKINSON – ST10258496
 
 <img src="https://github.com/user-attachments/assets/1af88c1d-63b0-4aef-a787-4e952d35ce7b" width="400"/>
