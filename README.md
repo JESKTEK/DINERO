@@ -20,7 +20,7 @@
 - [Mockups and Prototypes](#mockups-and-prototypes)
 - [Project Plan](#project-plan)
 - [Conclusion](#conclusion)
-- [Bibliography](#bibliography)
+- [Reference List](#reference-list)
 
 ---
 
@@ -159,7 +159,7 @@ Through charming design, simple functionality, and encouraging feedback, Dinero 
 
 ---
 
-## Bibliography
+## Reference List
 
 Android Developers, 2019. ProgressBar  |  Android Developers. [online] Available at: <https://developer.android.com/reference/android/widget/ProgressBar> [Accessed 1 May 2025].
 Android Developers, 2025. AppCompatButton  |  API reference  |  Android Developers. [online] Available at: <https://developer.android.com/reference/androidx/appcompat/widget/AppCompatButton> [Accessed 18 April 2025].
