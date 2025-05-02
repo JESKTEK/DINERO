@@ -187,5 +187,7 @@ Suman, A., 2024. How to Implement DatePickerDialog in Android Using Kotlin. [onl
 
 > *Dinero* — Grow your finances steadily, like an avocado tree.
 
+<img src="https://github.com/user-attachments/assets/1af88c1d-63b0-4aef-a787-4e952d35ce7b" width="400"/>
+
 > Manage your money. Grow your future. The Dinero way.
 
