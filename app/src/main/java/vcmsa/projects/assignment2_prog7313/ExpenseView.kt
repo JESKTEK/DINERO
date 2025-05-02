@@ -237,7 +237,14 @@ class ExpenseView : AppCompatActivity() {
                 val percentUsed = if (monthlyBudgetMax > 0)
                     ((totalSpent / monthlyBudgetMax) * 100).toInt().coerceAtMost(100)
                 else 0
-
+                /******
+                • Title: ProgressBar | Android Developers
+                • Author: Android Developers
+                • Date: 2019
+                • Code version: Not specified
+                • Availability: https://developer.android.com/reference/android/widget/ProgressBar
+                • Accessed: 1 May 2025
+                *****/
                 binding.budgetProgressBar.progress = percentUsed
                 binding.amountSpentText.text = "R${"%.2f".format(totalSpent)} spent"
                 binding.budgetText.text = "Monthly Budget: R${"%.2f".format(monthlyBudgetMin)} - R${"%.2f".format(monthlyBudgetMax)}"
