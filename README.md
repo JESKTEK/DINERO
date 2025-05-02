@@ -35,9 +35,13 @@
 ---
 
 ##Links
+
 Figma Prototype Design Link: <https://www.figma.com/design/v5kfxf10eg3DvDHpyX49Uv/PROG7313-POE---DINERO?node-id=0-1&t=N8XCfQ1HOtX1SNrq-1>  
+
 Github Repo Source Code Link: <https://github.com/JESKTEK/DINERO.git> 
+
 YouTube video tutorial Link: <https://youtu.be/dbIvylC07t8?si=SXxgn5JAmHXFtL_5> 
+
 Gantt Chart Project Plan on Canva: <https://www.canva.com/design/DAGhnUT7HrQ/i7ujLOtXladlzXBWEcBf3w/edit?utm_content=DAGhnUT7HrQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton>
 
 ---
