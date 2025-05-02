@@ -13,10 +13,6 @@
 > 
 > EMMA MAE ATKINSON – ST10258496
 
-> *Dinero* — Grow your finances steadily, like an avocado tree.
-
-> Manage your money. Grow your future. The Dinero way.
-
 ---
 
 ## Table of Contents
@@ -188,4 +184,8 @@ Android Developers, 2025. AppCompatButton  |  API reference  |  Android Develope
 GeeksforGeeks, 2019. SeekBar in Kotlin. [online] Available at: <https://www.geeksforgeeks.org/seekbar-in-kotlin>[Accessed 22 April 2025].
 Montalto, P., 2017. Android: underlined text in a TextView - Paolo Montalto - Medium. [online] Available at: <https://xabaras.medium.com/android-underlined-text-in-a-textview-ff647d427bab>[Accessed 20 April 2025].
 Suman, A., 2024. How to Implement DatePickerDialog in Android Using Kotlin. [online] Available at: <https://medium.com/%40abhisheksuman413/how-to-implement-datepickerdialog-in-android-using-kotlin-45c413e47464>Accessed 22 April 2025].
+
+> *Dinero* — Grow your finances steadily, like an avocado tree.
+
+> Manage your money. Grow your future. The Dinero way.
 
