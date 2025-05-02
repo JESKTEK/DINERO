@@ -3,11 +3,7 @@ package vcmsa.projects.assignment2_prog7313
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
-import android.graphics.drawable.VectorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -17,7 +13,6 @@ import android.util.Base64
 import android.util.Log
 import android.widget.*
 import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -54,7 +49,6 @@ class ExpenseActivity : AppCompatActivity() {
         startActivityForResult(intent, REQUEST_CODE_IMAGE_PICKER)
     }
 
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE_IMAGE_PICKER && resultCode == RESULT_OK) {
@@ -67,9 +61,8 @@ class ExpenseActivity : AppCompatActivity() {
         private const val REQUEST_CODE_IMAGE_PICKER = 100
     }
 
-
     private fun convertImageToBase64(imageButton: android.widget.ImageButton): String? {
-        val drawable = imageButton.drawable ?: return ""
+        val drawable = imageButton.drawable ?: return null
         val bitmap = (drawable as BitmapDrawable).bitmap
         val stream = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.JPEG, 10, stream)
@@ -114,6 +107,7 @@ class ExpenseActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
         /*****
         Title: SeekBar in Kotlin
         Author: GeeksforGeeks
@@ -182,13 +176,6 @@ class ExpenseActivity : AppCompatActivity() {
             val amountSpent = (labelLimitValue.text.toString().substring(1)).trim().toDouble()
             val description = inputDescription.text.toString().trim()
 
-            if (chosenImageBitmap == null) {
-                Toast.makeText(this, "Please take an image", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            } //Error strategically placed to not trigger function and cause crash.
-            val image = convertImageToBase64(findViewById<ImageButton>(R.id.imageInput))
-
-
             // error - nothing filled in
             if (name.isEmpty() || date.isEmpty() || description.isEmpty() || amountSpent == 0.00) {
                 Toast.makeText(
@@ -199,16 +186,23 @@ class ExpenseActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            // image is now optional
+            val image = if (chosenImageBitmap != null) {
+                convertImageToBase64(findViewById<ImageButton>(R.id.imageInput))
+            } else {
+                null
+            }
+
             if (catId != null){
                 firestore.collection("Categories").document(catId!!).get()
                     .addOnSuccessListener {
-                        document -> if (document.exists()) {
+                            document -> if (document.exists()) {
                         val currentAmtSpent = document.getDouble("amountSpent") ?: 0.0
                         val newAmtSpent = currentAmtSpent + amountSpent
                         firestore.collection("Categories").document(catId!!).update("amountSpent", newAmtSpent)
                             .addOnSuccessListener { d -> Log.d("Category", "Amount spent updated successfully.") }
                             .addOnFailureListener { e -> Log.w("Category", "Error updating amount spent.", e) }
-                        }
+                    }
                     }
             }
 
@@ -216,19 +210,21 @@ class ExpenseActivity : AppCompatActivity() {
                 "catId" to catId,
                 "categoryName" to catName,
                 "itemName" to name,
-                "uploadImage" to image,
                 "dateCreated" to date,
                 "amountSpent" to amountSpent,
                 "details" to description,
                 "emailAssociated" to emailAssociated
             )
 
+            if (image != null) {
+                expense["uploadImage"] = image
+            }
+
             firestore.collection("Expenses")
                 .add(expense)
                 .addOnSuccessListener { documentReference ->
                     val documentId = documentReference.id
                     Toast.makeText(this, "Expense Logged Successfully.", Toast.LENGTH_SHORT).show()
-
 
                     val updateData = hashMapOf("id" to documentId)
                     documentReference.update(updateData as Map<String, Any>)
@@ -240,8 +236,6 @@ class ExpenseActivity : AppCompatActivity() {
                     Toast.makeText(this, "Error Making Category.", Toast.LENGTH_SHORT)
                         .show()
                 }
-            }
         }
     }
-
-
+}
