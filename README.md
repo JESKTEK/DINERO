@@ -163,7 +163,7 @@ Through charming design, simple functionality, and encouraging feedback, Dinero 
 
 Android Developers, 2019. ProgressBar  |  Android Developers. [online] Available at: <https://developer.android.com/reference/android/widget/ProgressBar> [Accessed 1 May 2025].
 Android Developers, 2025. AppCompatButton  |  API reference  |  Android Developers. [online] Available at: <https://developer.android.com/reference/androidx/appcompat/widget/AppCompatButton> [Accessed 18 April 2025].
-GeeksforGeeks, 2019. SeekBar in Kotlin. [online] GeeksforGeeks. Available at: <https://www.geeksforgeeks.org/seekbar-in-kotlin>[Accessed 22 April 2025].
+GeeksforGeeks, 2019. SeekBar in Kotlin. [online] Available at: <https://www.geeksforgeeks.org/seekbar-in-kotlin>[Accessed 22 April 2025].
 Montalto, P., 2017. Android: underlined text in a TextView - Paolo Montalto - Medium. [online] Available at: <https://xabaras.medium.com/android-underlined-text-in-a-textview-ff647d427bab>[Accessed 20 April 2025].
 Suman, A., 2024. How to Implement DatePickerDialog in Android Using Kotlin. [online] Available at: <https://medium.com/%40abhisheksuman413/how-to-implement-datepickerdialog-in-android-using-kotlin-45c413e47464>Accessed 22 April 2025].
 
