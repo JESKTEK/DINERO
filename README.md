@@ -1,4 +1,7 @@
 # Dinero - Personal Budgeting App
+
+<img src="https://github.com/user-attachments/assets/1af88c1d-63b0-4aef-a787-4e952d35ce7b" width="400"/>
+
 > Created by JESKTEK.
 >
 > 
@@ -9,10 +12,6 @@
 > KIAN JOSE LIMA CAMPBELL – ST10252440
 > 
 > EMMA MAE ATKINSON – ST10258496
-
-
-<img src="https://github.com/user-attachments/assets/1af88c1d-63b0-4aef-a787-4e952d35ce7b" width="400"/>
-
 
 > *Dinero* — Grow your finances steadily, like an avocado tree.
 
