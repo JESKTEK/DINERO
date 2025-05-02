@@ -35,6 +35,7 @@ Dinero is not just an app — it is a *financial companion*, helping users nurtu
 ## Overview
 
 - *Name:* Dinero ("Money" in Spanish, inspired by "Denarius")
+- *Tech Stack:* Developed using Kotlin for the backend logic and XML for the user interface design. The app was built entirely in Android Studio, ensuring native performance and seamless integration with Android services.
 - *Mascot:* Avocado — symbolizing growth, patience, and financial maturity.
 - *Platform:* Android Application
 - *Core Mission:* Empower users with simple, comforting tools for effective budgeting and financial tracking.
