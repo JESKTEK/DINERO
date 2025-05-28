@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.firestore
 import kotlinx.coroutines.launch
 import vcmsa.projects.assignment2_prog7313.databinding.ActivityCategoryViewBinding
@@ -27,11 +28,13 @@ class CategoryView : AppCompatActivity() {
     private var filteredCategories: List<Category> = emptyList()
 
     //private lateinit var database: AppDatabase
+    private lateinit var auth: FirebaseAuth
     private val firestore = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        auth = FirebaseAuth.getInstance()
         binding = ActivityCategoryViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
         //database = AppDatabase.getInstance(this)
@@ -63,12 +66,16 @@ class CategoryView : AppCompatActivity() {
 
             val datePicker = DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
                 binding.fromDateSel.setText("$selectedDay/${selectedMonth + 1}/$selectedYear")
+                var cat = filterCategoriesAccount()
                 if (datesInput1 && datesInput2) {
-                    filterCategoriesDate(
+                    cat = filterCategoriesDate(
                         binding.fromDateSel.text.toString(),
-                        binding.toDateSel.text.toString()
+                        binding.toDateSel.text.toString(),
+                        cat
                     )
                 }
+                filteredCategories = cat
+                categoryAdapter.updateData(cat)
             }, year, month, day)
 
             datePicker.show()
@@ -84,12 +91,16 @@ class CategoryView : AppCompatActivity() {
             val datePicker = DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
                 binding.toDateSel.setText("$selectedDay/${selectedMonth + 1}/$selectedYear")
                 datesInput2 = true
+                var cat = filterCategoriesAccount()
                 if (datesInput1 && datesInput2) {
-                    filterCategoriesDate(
+                    cat = filterCategoriesDate(
                         binding.fromDateSel.text.toString(),
-                        binding.toDateSel.text.toString()
+                        binding.toDateSel.text.toString(),
+                        cat
                     )
                 }
+                filteredCategories = cat
+                categoryAdapter.updateData(cat)
             }, year, month, day)
 
             datePicker.show()
@@ -140,20 +151,35 @@ class CategoryView : AppCompatActivity() {
         }
 
     }
-    private fun filterCategoriesDate(fromDateS: String, toDateS: String){
+    private fun filterCategoriesDate(fromDateS: String, toDateS: String, categoryList: List<Category> = unfilteredCategories) : List<Category> {
 
 
         val fromDate = convertStringDate(fromDateS)
         val toDate = convertStringDate(toDateS)
 
-        filteredCategories = unfilteredCategories.filter { category ->
+        val catList = categoryList.filter { category ->
             val expenseDate : Date = convertStringDate(category.dateCreated)
             expenseDate.after(fromDate) && expenseDate.before(toDate)
 
         }
+        return catList
 
-        categoryAdapter.updateData(filteredCategories)
+        //categoryAdapter.updateData(filteredCategories)
     }
+
+
+    private fun filterCategoriesAccount() : List<Category> {
+
+
+        val cat = unfilteredCategories.filter { category ->
+            val userEmail = auth.currentUser?.email.toString()
+            userEmail.equals(category.emailAssociated)
+
+        }
+        return cat
+        //categoryAdapter.updateData(filteredCategories)
+    }
+
 
     private fun convertStringDate(dateString: String): Date {
         val dateFormat = SimpleDateFormat("dd/MM/yyyy", java.util.Locale.getDefault())
@@ -190,7 +216,8 @@ class CategoryView : AppCompatActivity() {
                     )
                 }
                 unfilteredCategories = categories
-                categoryAdapter.updateData(categories)
+                val cat = filterCategoriesAccount()
+                categoryAdapter.updateData(cat)
             }
             .addOnFailureListener {
                 Toast.makeText(this, "Error fetching data from Firestore", Toast.LENGTH_SHORT)

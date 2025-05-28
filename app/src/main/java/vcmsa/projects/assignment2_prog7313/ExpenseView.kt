@@ -21,6 +21,7 @@ import androidx.core.net.ParseException
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.firestore
 import kotlinx.coroutines.launch
 import vcmsa.projects.assignment2_prog7313.databinding.ActivityExpenseViewBinding
@@ -47,6 +48,7 @@ class ExpenseView : AppCompatActivity() {
     private var monthlyBudgetMin: Double = 0.0
     private var monthlyBudgetMax: Double = 100000.0
 
+    private lateinit var auth: FirebaseAuth
     private var selectedCategory: String? = null
     private var fromDateS: String? = null
     private var toDateS: String? = null
@@ -56,6 +58,7 @@ class ExpenseView : AppCompatActivity() {
         binding = ActivityExpenseViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        auth = FirebaseAuth.getInstance()
         val prefs = getSharedPreferences("prefs", Context.MODE_PRIVATE)
         monthlyBudgetMin = prefs.getFloat("monthlyBudgetMin", 0f).toDouble()
         monthlyBudgetMax = prefs.getFloat("monthlyBudgetMax", 100000f).toDouble()
@@ -145,13 +148,27 @@ class ExpenseView : AppCompatActivity() {
 
 
     private fun filterExpenses() {
-        filteredExpenses = unfilteredExpenses.filter { expense ->
+        val expList = filterExpensesAccount()
+        filteredExpenses = expList.filter { expense ->
             val categoryMatch = selectedCategory == null || expense.categoryName == selectedCategory || selectedCategory == "All Categories"
             val dateMatch = (fromDateS == null || toDateS == null) || filterExpensesDate(expense)
 
             categoryMatch && dateMatch
         }
         expenseAdapter.updateData(filteredExpenses)
+    }
+
+
+    private fun filterExpensesAccount() : List<Expense> {
+
+
+        val exp = unfilteredExpenses.filter { category ->
+            val userEmail = auth.currentUser?.email.toString()
+            userEmail.equals(category.emailAssociated)
+
+        }
+        return exp
+        //categoryAdapter.updateData(filteredCategories)
     }
 
 
