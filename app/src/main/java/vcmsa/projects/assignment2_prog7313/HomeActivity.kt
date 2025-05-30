@@ -21,24 +21,30 @@ class HomeActivity : AppCompatActivity() {
         }
 
         val btnBudgetPlan = findViewById<Button>(R.id.btnBudgetPlan)
+        val btnMyGoals = findViewById<Button>(R.id.btnMyGoals)
+        val btnDashboard = findViewById<Button>(R.id.btnDashboard)
+        val plusSign = findViewById<TextView>(R.id.plusSign)
+
+        // Navigate to Budget Page
         btnBudgetPlan.setOnClickListener {
             val intent = Intent(this, BudgetHomePageActivity::class.java)
             startActivity(intent)
         }
 
-        val plusSign = findViewById<TextView>(R.id.plusSign)
+        // Navigate to Dashboard Page
+        btnDashboard.setOnClickListener {
+            val intent = Intent(this, DashboardActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Coming soon for Goals
+        btnMyGoals.setOnClickListener {
+            Toast.makeText(this, "Feature coming soon", Toast.LENGTH_SHORT).show()
+        }
+
+        // Coming soon for +
         plusSign.setOnClickListener {
             Toast.makeText(this, "Feature coming soon", Toast.LENGTH_SHORT).show()
-
-            val btnMyGoals = findViewById<TextView>(R.id.btnMyGoals)
-            btnMyGoals.setOnClickListener {
-                Toast.makeText(this, "Feature coming soon", Toast.LENGTH_SHORT).show()
-
-                val btnDashboard = findViewById<TextView>(R.id.btnDashboard)
-                btnDashboard.setOnClickListener {
-                    Toast.makeText(this, "Feature coming soon", Toast.LENGTH_SHORT).show()
-                }
-            }
         }
     }
 }
