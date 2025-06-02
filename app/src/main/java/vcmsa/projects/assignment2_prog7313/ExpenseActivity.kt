@@ -15,60 +15,24 @@ import android.widget.*
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.firestore
+import com.google.firebase.firestore.FirebaseFirestore
 import java.io.ByteArrayOutputStream
 import java.util.*
 
 class ExpenseActivity : AppCompatActivity() {
 
-    private val firestore = Firebase.firestore
+    private val firestore = FirebaseFirestore.getInstance()
     private var catId: String? = null
     private var catName: String? = null
 
     private lateinit var camLauncher: ActivityResultLauncher<Void?>
-    private var chosenImageUri: Uri? = null
     private var chosenImageBitmap: Bitmap? = null
-
-    private val pickImage =
-        registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri: Uri? ->
-            if (uri != null) {
-                chosenImageUri = uri
-                findViewById<ImageButton>(R.id.imageInput).setImageURI(uri)
-                Toast.makeText(this, "Image selected!", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "No image selected", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-    private fun pickImageFromGallery() {
-        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(intent, REQUEST_CODE_IMAGE_PICKER)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CODE_IMAGE_PICKER && resultCode == RESULT_OK) {
-            chosenImageUri = data?.data!!
-            findViewById<ImageButton>(R.id.imageInput).setImageURI(chosenImageUri)
-        }
-    }
 
     companion object {
         private const val REQUEST_CODE_IMAGE_PICKER = 100
-    }
-
-    private fun convertImageToBase64(imageButton: android.widget.ImageButton): String? {
-        val drawable = imageButton.drawable ?: return null
-        val bitmap = (drawable as BitmapDrawable).bitmap
-        val stream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 10, stream)
-        val byteArray = stream.toByteArray()
-        return Base64.encodeToString(byteArray, Base64.DEFAULT)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,7 +43,6 @@ class ExpenseActivity : AppCompatActivity() {
             if (bitmap != null) {
                 chosenImageBitmap = bitmap
                 findViewById<ImageButton>(R.id.imageInput).setImageBitmap(bitmap)
-                chosenImageUri = null
             }
         }
 
@@ -104,43 +67,23 @@ class ExpenseActivity : AppCompatActivity() {
         val btnBack = findViewById<ImageButton>(R.id.btnBack)
 
         btnBack.setOnClickListener {
-            val intent = Intent(this, CategoryView::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, CategoryView::class.java))
             finish()
         }
 
-        /*****
-        Title: SeekBar in Kotlin
-        Author: GeeksforGeeks
-        Date: 18 April 2025
-        Availability: https://www.geeksforgeeks.org/seekbar-in-kotlin/
-         *****/
-        // Set default SeekBar value
         labelLimitValue.text = "R${seekBar.progress}.00"
-
-        // Amount changes as seek bar moves
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, value: Int, fromUser: Boolean) {
                 labelLimitValue.text = "R$value.00"
-                // Clear custom amount if user uses SeekBar
             }
-
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
 
-        findViewById<ImageButton>(R.id.imageInput).setOnClickListener {
-            //pickImage.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+        imageInput.setOnClickListener {
             camLauncher.launch(null)
         }
 
-        /*****
-        Title: How to Implement DatePickerDialog in Android Using Kotlin
-        Author: Abhishek Suman
-        Date: 22 April 2025
-        Availability: https://medium.com/%40abhisheksuman413/how-to-implement-datepickerdialog-in-android-using-kotlin-45c413e47464
-         *****/
-        // Calender functionality
         inputDate.setOnClickListener {
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
@@ -154,89 +97,97 @@ class ExpenseActivity : AppCompatActivity() {
             datePicker.show()
         }
 
-        // Description character counter
         inputDescription.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 labelCharCount.text = "${s?.length ?: 0}/250"
             }
-
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
 
-        fun getCurrentUserEmail(): String? {
-            val user = FirebaseAuth.getInstance().currentUser
-            return user?.email
-        }
-
-        // gather all info
         btnAddExpense.setOnClickListener {
             val name = inputName.text.toString().trim()
             val date = inputDate.text.toString().trim()
-            val emailAssociated = getCurrentUserEmail()
-            val amountSpent = (labelLimitValue.text.toString().substring(1)).trim().toDouble()
             val description = inputDescription.text.toString().trim()
+            val amountSpent = (labelLimitValue.text.toString().substring(1)).trim().toDouble()
+            val email = FirebaseAuth.getInstance().currentUser?.email ?: return@setOnClickListener
 
-            // error - nothing filled in
-            if (name.isEmpty() || date.isEmpty() || description.isEmpty() || amountSpent == 0.00) {
-                Toast.makeText(
-                    this,
-                    "Please fill in all fields, and set an expense above R0.00",
-                    Toast.LENGTH_SHORT
-                ).show()
+            if (name.isEmpty() || date.isEmpty() || description.isEmpty() || amountSpent <= 0.0) {
+                Toast.makeText(this, "Please fill in all fields and set a valid amount", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // image is now optional
-            val image = if (chosenImageBitmap != null) {
-                convertImageToBase64(findViewById<ImageButton>(R.id.imageInput))
-            } else {
-                null
-            }
+            val userRef = firestore.collection("Users").document(email)
+            userRef.get().addOnSuccessListener { userDoc ->
+                val walletId = userDoc.getString("walletId") ?: return@addOnSuccessListener
+                val walletRef = firestore.collection("Wallets").document(walletId)
 
-            if (catId != null){
-                firestore.collection("Categories").document(catId!!).get()
-                    .addOnSuccessListener {
-                            document -> if (document.exists()) {
-                        val currentAmtSpent = document.getDouble("amountSpent") ?: 0.0
-                        val newAmtSpent = currentAmtSpent + amountSpent
-                        firestore.collection("Categories").document(catId!!).update("amountSpent", newAmtSpent)
-                            .addOnSuccessListener { d -> Log.d("Category", "Amount spent updated successfully.") }
-                            .addOnFailureListener { e -> Log.w("Category", "Error updating amount spent.", e) }
+                walletRef.get().addOnSuccessListener { walletDoc ->
+                    val currentBalance = walletDoc.getDouble("balance") ?: 0.0
+
+                    if (amountSpent > currentBalance) {
+                        Toast.makeText(this, "Insufficient wallet balance!", Toast.LENGTH_SHORT).show()
+                        return@addOnSuccessListener
                     }
+
+                    // Proceed with logging the expense
+                    val image = if (chosenImageBitmap != null) convertImageToBase64(imageInput) else null
+
+                    if (catId != null) {
+                        firestore.collection("Categories").document(catId!!).get()
+                            .addOnSuccessListener { document ->
+                                if (document.exists()) {
+                                    val currentAmtSpent = document.getDouble("amountSpent") ?: 0.0
+                                    val newAmtSpent = currentAmtSpent + amountSpent
+                                    firestore.collection("Categories").document(catId!!).update("amountSpent", newAmtSpent)
+                                }
+                            }
                     }
-            }
 
-            val expense = hashMapOf(
-                "catId" to catId,
-                "categoryName" to catName,
-                "itemName" to name,
-                "dateCreated" to date,
-                "amountSpent" to amountSpent,
-                "details" to description,
-                "emailAssociated" to emailAssociated
-            )
+                    val expense = hashMapOf(
+                        "catId" to catId,
+                        "categoryName" to catName,
+                        "itemName" to name,
+                        "dateCreated" to date,
+                        "amountSpent" to amountSpent,
+                        "details" to description,
+                        "emailAssociated" to email
+                    )
+                    if (image != null) expense["uploadImage"] = image
 
-            if (image != null) {
-                expense["uploadImage"] = image
-            }
+                    firestore.collection("Expenses")
+                        .add(expense)
+                        .addOnSuccessListener { documentReference ->
+                            val updateData = hashMapOf("id" to documentReference.id)
+                            documentReference.update(updateData as Map<String, Any>)
 
-            firestore.collection("Expenses")
-                .add(expense)
-                .addOnSuccessListener { documentReference ->
-                    val documentId = documentReference.id
-                    Toast.makeText(this, "Expense Logged Successfully.", Toast.LENGTH_SHORT).show()
+                            // Deduct from wallet
+                            val newBalance = currentBalance - amountSpent
+                            walletRef.update("balance", newBalance)
 
-                    val updateData = hashMapOf("id" to documentId)
-                    documentReference.update(updateData as Map<String, Any>)
+                            Toast.makeText(this, "Expense logged & wallet updated!", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(this, BudgetHomePageActivity::class.java))
+                        }
+                        .addOnFailureListener {
+                            Toast.makeText(this, "Failed to log expense.", Toast.LENGTH_SHORT).show()
+                        }
 
-                    val intent = Intent(this, BudgetHomePageActivity::class.java)
-                    startActivity(intent)
+                }.addOnFailureListener {
+                    Toast.makeText(this, "Failed to load wallet.", Toast.LENGTH_SHORT).show()
                 }
-                .addOnFailureListener {
-                    Toast.makeText(this, "Error Making Category.", Toast.LENGTH_SHORT)
-                        .show()
-                }
+
+            }.addOnFailureListener {
+                Toast.makeText(this, "Failed to fetch user wallet info.", Toast.LENGTH_SHORT).show()
+            }
         }
+    }
+
+    private fun convertImageToBase64(imageButton: ImageButton): String? {
+        val drawable = imageButton.drawable ?: return null
+        val bitmap = (drawable as BitmapDrawable).bitmap
+        val stream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 10, stream)
+        val byteArray = stream.toByteArray()
+        return Base64.encodeToString(byteArray, Base64.DEFAULT)
     }
 }

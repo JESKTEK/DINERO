@@ -58,6 +58,8 @@ dependencies {
     implementation(libs.firebase.firestore)
     implementation("com.google.firebase:firebase-auth:22.0.0")
     implementation(libs.androidx.ui.text.android)
+    implementation ("com.google.code.gson:gson:2.10.1")
+
     //implementation(libs.firebase.storage)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

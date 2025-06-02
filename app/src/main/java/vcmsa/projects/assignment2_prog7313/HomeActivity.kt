@@ -8,8 +8,16 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class HomeActivity : AppCompatActivity() {
+
+    private lateinit var walletValueTextView: TextView
+
+    private val firestore = FirebaseFirestore.getInstance()
+    private val userEmail get() = FirebaseAuth.getInstance().currentUser?.email ?: ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -24,27 +32,57 @@ class HomeActivity : AppCompatActivity() {
         val btnMyGoals = findViewById<Button>(R.id.btnMyGoals)
         val btnDashboard = findViewById<Button>(R.id.btnDashboard)
         val plusSign = findViewById<TextView>(R.id.plusSign)
+        walletValueTextView = findViewById(R.id.walletValue)
 
-        // Navigate to Budget Page
         btnBudgetPlan.setOnClickListener {
-            val intent = Intent(this, BudgetHomePageActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, BudgetHomePageActivity::class.java))
         }
 
-        // Navigate to Dashboard Page
         btnDashboard.setOnClickListener {
-            val intent = Intent(this, DashboardActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, DashboardActivity::class.java))
         }
 
-        // Coming soon for Goals
         btnMyGoals.setOnClickListener {
             Toast.makeText(this, "Feature coming soon", Toast.LENGTH_SHORT).show()
         }
 
-        // Coming soon for +
         plusSign.setOnClickListener {
-            Toast.makeText(this, "Feature coming soon", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, WalletActivity::class.java))
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadWalletBalanceFromFirebase()
+    }
+
+    private fun loadWalletBalanceFromFirebase() {
+        if (userEmail.isEmpty()) {
+            walletValueTextView.text = "R0.00"
+            return
+        }
+
+        firestore.collection("Users").document(userEmail).get()
+            .addOnSuccessListener { userDoc ->
+                val walletId = userDoc.getString("walletId")
+
+                if (walletId != null) {
+                    firestore.collection("Wallets").document(walletId).get()
+                        .addOnSuccessListener { walletDoc ->
+                            val balance = walletDoc.getDouble("balance") ?: 0.0
+                            walletValueTextView.text = "R%.2f".format(balance)
+                        }
+                        .addOnFailureListener {
+                            walletValueTextView.text = "R0.00"
+                            Toast.makeText(this, "Could not fetch wallet", Toast.LENGTH_SHORT).show()
+                        }
+                } else {
+                    walletValueTextView.text = "R0.00"
+                }
+            }
+            .addOnFailureListener {
+                walletValueTextView.text = "R0.00"
+                Toast.makeText(this, "User wallet not found", Toast.LENGTH_SHORT).show()
+            }
     }
 }
