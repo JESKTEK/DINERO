@@ -123,7 +123,7 @@ class WalletActivity : AppCompatActivity() {
                 for (doc in snapshot) {
                     val amount = doc.getDouble("amount") ?: 0.0
                     val type = doc.getString("type") ?: " "
-                    transactionList.add("$type: R%.2f".format(amount))
+                    transactionList.add("R%.2f".format(amount))
                 }
                 adapter.notifyDataSetChanged()
             }
@@ -131,4 +131,4 @@ class WalletActivity : AppCompatActivity() {
                 Toast.makeText(this, "Could not load transactions", Toast.LENGTH_SHORT).show()
             }
     }
-}
+} 
