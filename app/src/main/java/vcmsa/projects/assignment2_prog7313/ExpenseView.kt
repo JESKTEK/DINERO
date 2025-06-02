@@ -256,7 +256,8 @@ class ExpenseView : AppCompatActivity() {
                 expenseAdapter.updateData(expenses)
                 updateCatSpinner()
 
-                val totalSpent = expenses.sumOf { it.amountSpent }
+                val filteredExpenses = filterExpensesAccount()
+                val totalSpent = filteredExpenses.sumOf { it.amountSpent }
                 val percentUsed = if (monthlyBudgetMax > 0)
                     ((totalSpent / monthlyBudgetMax) * 100).toInt().coerceAtMost(100)
                 else 0
