@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#b1d9b7"
-    android:padding="16dp">
+    android:padding="1dp">
 
 
     <!-- Main title -->
@@ -57,7 +64,7 @@
         <LinearLayout
             android:id="@+id/btnCreateCategory"
             android:layout_width="350dp"
-            android:layout_height="200dp"
+            android:layout_height="170dp"
             android:layout_marginBottom="24dp"
             android:background="@drawable/btn_createcategory_background"
             android:clickable="true"
@@ -84,7 +91,7 @@
         <LinearLayout
             android:id="@+id/btnViewBudget"
             android:layout_width="350dp"
-            android:layout_height="200dp"
+            android:layout_height="170dp"
             android:layout_marginBottom="24dp"
             android:background="@drawable/btn_view_budget"
             android:clickable="true"
@@ -111,7 +118,7 @@
         <LinearLayout
             android:id="@+id/btnViewExpense"
             android:layout_width="350dp"
-            android:layout_height="200dp"
+            android:layout_height="170dp"
             android:background="@drawable/btn_view_expense"
             android:clickable="true"
             android:focusable="true"
@@ -135,3 +142,14 @@
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="bottom"
+        app:menu="@menu/navigation_menu"
+        android:scrollIndicators="left"/>
+
+
+</FrameLayout>

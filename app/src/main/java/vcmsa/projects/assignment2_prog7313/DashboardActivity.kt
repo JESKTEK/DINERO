@@ -1,5 +1,6 @@
 package vcmsa.projects.assignment2_prog7313
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
@@ -11,6 +12,7 @@ import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.*
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.utils.ColorTemplate
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -43,6 +45,41 @@ class DashboardActivity : AppCompatActivity() {
         }
 
         showPieChart() // Show by default
+
+
+
+
+
+
+
+
+
+
+
+        val navBar = findViewById<BottomNavigationView>(R.id.bottomNav)
+        navBar.selectedItemId = R.id.dashboard
+        navBar.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.budget -> {
+                    val intent = Intent(this, BudgetHomePageActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                R.id.goals -> {
+                    val intent = Intent(this, Goals::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                R.id.dashboard -> {
+                    true
+                }
+                else -> {false}
+            }
+        }
+
+
     }
 
     private fun getEntries(): List<Entry> = listOf(
@@ -118,4 +155,14 @@ class DashboardActivity : AppCompatActivity() {
 
         lineChart.invalidate()
     }
+
+
+
+
+
+
+
+
+
+
 }
