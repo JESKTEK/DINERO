@@ -17,6 +17,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.io.ByteArrayOutputStream
@@ -180,6 +181,40 @@ class ExpenseActivity : AppCompatActivity() {
                 Toast.makeText(this, "Failed to fetch user wallet info.", Toast.LENGTH_SHORT).show()
             }
         }
+
+
+
+
+        val navBar = findViewById<BottomNavigationView>(R.id.bottomNav)
+        navBar.selectedItemId = R.id.budget
+        navBar.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.budget -> {
+                    val intent = Intent(this, BudgetHomePageActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                R.id.goals -> {
+                    val intent = Intent(this, Goals::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                R.id.dashboard -> {
+                    val intent = Intent(this, DashboardActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                else -> {false}
+            }
+        }
+
+
+
+
+
     }
 
     private fun convertImageToBase64(imageButton: ImageButton): String? {

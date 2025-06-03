@@ -9,6 +9,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.firestore
@@ -147,6 +148,38 @@ class CategoryActivity : AppCompatActivity() {
                 }
 
             }
+
+
+
+        val navBar = findViewById<BottomNavigationView>(R.id.bottomNav)
+        navBar.selectedItemId = R.id.budget
+        navBar.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.budget -> {
+                    val intent = Intent(this, BudgetHomePageActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                R.id.goals -> {
+                    val intent = Intent(this, Goals::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                R.id.dashboard -> {
+                    val intent = Intent(this, DashboardActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                else -> {false}
+            }
         }
+
+
+
+        }
+
     }
 

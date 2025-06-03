@@ -4,9 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 
 class BudgetHomePageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,5 +47,31 @@ class BudgetHomePageActivity : AppCompatActivity() {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
+
+
+
+        val navBar = findViewById<BottomNavigationView>(R.id.bottomNav)
+        navBar.selectedItemId = R.id.budget
+        navBar.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.budget -> {
+                    true
+                }
+                R.id.goals -> {
+                    val intent = Intent(this, Goals::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                R.id.dashboard -> {
+                    val intent = Intent(this, DashboardActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                else -> {false}
+            }
+        }
+
     }
 }

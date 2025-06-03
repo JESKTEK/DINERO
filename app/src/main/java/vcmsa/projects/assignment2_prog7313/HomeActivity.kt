@@ -43,7 +43,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         btnMyGoals.setOnClickListener {
-            Toast.makeText(this, "Feature coming soon", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, Goals::class.java))
         }
 
         plusSign.setOnClickListener {

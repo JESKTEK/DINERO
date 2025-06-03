@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.ParseException
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.firestore
@@ -335,6 +336,37 @@ class ExpenseView : AppCompatActivity() {
             }
             .setNegativeButton("Cancel", null)
             .show()
+
+
+
+
+
+        binding.bottomNav.selectedItemId = vcmsa.projects.assignment2_prog7313.R.id.budget
+        binding.bottomNav.setOnItemSelectedListener {
+            when (it.itemId) {
+                vcmsa.projects.assignment2_prog7313.R.id.budget -> {
+                    val intent = Intent(this, BudgetHomePageActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                vcmsa.projects.assignment2_prog7313.R.id.goals -> {
+                    val intent = Intent(this, Goals::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                vcmsa.projects.assignment2_prog7313.R.id.dashboard -> {
+                    val intent = Intent(this, DashboardActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                else -> {false}
+            }
+        }
+
+
 
     }
 
