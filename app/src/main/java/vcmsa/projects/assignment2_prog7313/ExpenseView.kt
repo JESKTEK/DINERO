@@ -341,11 +341,11 @@ class ExpenseView : AppCompatActivity() {
 
 
 
-        binding.bottomNav.selectedItemId = vcmsa.projects.assignment2_prog7313.R.id.budget
+        binding.bottomNav.selectedItemId = vcmsa.projects.assignment2_prog7313.R.id.home
         binding.bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
-                vcmsa.projects.assignment2_prog7313.R.id.budget -> {
-                    val intent = Intent(this, BudgetHomePageActivity::class.java)
+                vcmsa.projects.assignment2_prog7313.R.id.home -> {
+                    val intent = Intent(this, HomeActivity::class.java)
                     startActivity(intent)
                     finish()
                     true
