@@ -185,32 +185,6 @@ class ExpenseActivity : AppCompatActivity() {
 
 
 
-        val navBar = findViewById<BottomNavigationView>(R.id.bottomNav)
-        navBar.selectedItemId = R.id.budget
-        navBar.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.budget -> {
-                    val intent = Intent(this, BudgetHomePageActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                    true
-                }
-                R.id.goals -> {
-                    val intent = Intent(this, Goals::class.java)
-                    startActivity(intent)
-                    finish()
-                    true
-                }
-                R.id.dashboard -> {
-                    val intent = Intent(this, DashboardActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                    true
-                }
-                else -> {false}
-            }
-        }
-
 
 
 

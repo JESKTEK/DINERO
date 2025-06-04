@@ -60,8 +60,8 @@ class DashboardActivity : AppCompatActivity() {
         navBar.selectedItemId = R.id.dashboard
         navBar.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.budget -> {
-                    val intent = Intent(this, BudgetHomePageActivity::class.java)
+                R.id.home -> {
+                    val intent = Intent(this, HomeActivity::class.java)
                     startActivity(intent)
                     finish()
                     true

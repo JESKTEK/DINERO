@@ -238,11 +238,11 @@ class CategoryView : AppCompatActivity() {
 
 
         val navBar = findViewById<BottomNavigationView>(R.id.bottomNav)
-        navBar.selectedItemId = R.id.budget
+        navBar.selectedItemId = R.id.home
         navBar.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.budget -> {
-                    val intent = Intent(this, BudgetHomePageActivity::class.java)
+                R.id.home -> {
+                    val intent = Intent(this, HomeActivity::class.java)
                     startActivity(intent)
                     finish()
                     true
