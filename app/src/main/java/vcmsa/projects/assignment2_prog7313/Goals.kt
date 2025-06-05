@@ -2,14 +2,41 @@ package vcmsa.projects.assignment2_prog7313
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.CheckBox
+import android.widget.Checkable
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.firestore
+import vcmsa.projects.assignment2_prog7313.databinding.ActivityExpenseViewBinding
+import java.util.Calendar
 
 class Goals : AppCompatActivity() {
+
+    private val firestore = Firebase.firestore
+    private lateinit var auth: FirebaseAuth
+
+    private lateinit var goal1Title: TextView
+    private lateinit var goal1Desc: TextView
+    private lateinit var goal1Status: CheckBox
+
+    private lateinit var goal2Title: TextView
+    private lateinit var goal2Desc: TextView
+    private lateinit var goal2Status: CheckBox
+
+    private lateinit var goal3Title: TextView
+    private lateinit var goal3Desc: TextView
+    private lateinit var goal3Status: CheckBox
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_goals)
@@ -18,6 +45,7 @@ class Goals : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
 
 
 
@@ -47,5 +75,64 @@ class Goals : AppCompatActivity() {
 
 
 
+        goal1Title = findViewById(R.id.Goal1Title)
+        goal1Desc = findViewById(R.id.Goal1Description)
+        goal1Status = findViewById(R.id.Goal1Status)
+
+        goal2Title = findViewById(R.id.Goal2Title)
+        goal2Desc = findViewById(R.id.Goal2Description)
+        goal2Status = findViewById(R.id.Goal2Status)
+
+        goal3Title = findViewById(R.id.Goal3Title)
+        goal3Desc = findViewById(R.id.Goal3Description)
+        goal3Status = findViewById(R.id.Goal3Status)
+        updateCurrentGoals()
+
+
+
+
+
     }
+
+    fun getCurrentWeekId(): String {
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val week = calendar.get(Calendar.WEEK_OF_YEAR)
+        return "Year_$year-Week_$week"
+    }
+
+
+    fun updateCurrentGoals() {
+        val userEmail = FirebaseAuth.getInstance().currentUser?.email ?: return
+        val weekId = getCurrentWeekId()
+
+        val docRef = firestore
+            .collection("Users").document(userEmail)
+            .collection("weeklyGoals").document(weekId)
+
+        docRef.get().addOnSuccessListener { document ->
+            if (document.exists()) {
+                val goals = document["goals"] as? List<Map<String, Any>>
+                if (goals != null && goals.size >= 3) {
+
+                    goal1Title.text = goals[0]["goalName"]?.toString()?: "Placeholder"
+                    goal1Desc.text = goals[0]["goalDescription"]?.toString()?: "Placeholder 2"
+                    goal1Status.isChecked = (goals[0]["goalCompleted"] as Boolean)
+
+                    goal2Title.text = goals[1]["goalName"]?.toString()?: "Placeholder"
+                    goal2Desc.text = goals[1]["goalDescription"]?.toString()?: "Placeholder 2"
+                    goal2Status.isChecked = (goals[1]["goalCompleted"] as Boolean)
+
+                    goal3Title.text = goals[2]["goalName"]?.toString()?: "Placeholder"
+                    goal3Desc.text = goals[2]["goalDescription"]?.toString()?: "Placeholder 2"
+                    goal3Status.isChecked = (goals[2]["goalCompleted"] as Boolean)
+                }
+            } else {
+                Log.d("Goals", "Error fetching weekly goals for this week. ")
+            }
+        }.addOnFailureListener {
+            Log.e("Goals", "Error fetching weekly goals for this week. ", it)
+        }
+    }
+
 }
