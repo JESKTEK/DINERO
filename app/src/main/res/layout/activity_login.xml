@@ -29,7 +29,7 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <!-- LOGIN Field -->
+        <!-- LOGIN Title -->
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
@@ -40,13 +40,13 @@
             android:textSize="40sp"
             android:textStyle="bold" />
 
+        <!-- Email Field -->
         <LinearLayout
             android:layout_width="350sp"
             android:layout_height="50sp"
             android:gravity="center"
             android:orientation="horizontal">
 
-            <!-- EMAIL Field -->
             <EditText
                 android:id="@+id/editTextEmailAddress"
                 android:layout_width="250sp"
@@ -59,13 +59,13 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
+        <!-- Password Field -->
         <LinearLayout
             android:layout_width="350sp"
             android:layout_height="50sp"
             android:gravity="center"
             android:orientation="horizontal">
 
-            <!-- PASSWORD Field -->
             <EditText
                 android:id="@+id/editTextPassword"
                 android:layout_width="250sp"
@@ -76,13 +76,8 @@
                 android:textSize="23dp"
                 android:textStyle="bold" />
         </LinearLayout>
-        <!--
-        Title: AppCompatButton, API, reference, Android Developers
-        Author: Android Developers
-        Date: 18 April 2025
-        Availability: https://developer.android.com/reference/androidx/appcompat/widget/AppCompatButton
-        -->
-        <!-- LOGIN Button -->
+
+        <!-- Login Button -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/loginButton"
             android:layout_width="240dp"
@@ -96,7 +91,20 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <!-- Back Button to Register -->
+        <!-- Face Login Button -->
+        <Button
+        android:id="@+id/quickLogin"
+        android:layout_width="240dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#4CAF50"
+        android:text="Secure Login"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+
+        <!-- Back to Register Button -->
         <Button
             android:id="@+id/registerTransitButton"
             android:layout_width="wrap_content"
