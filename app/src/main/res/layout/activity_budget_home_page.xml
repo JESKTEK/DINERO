@@ -148,6 +148,8 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_gravity="bottom"
+        app:labelVisibilityMode="labeled"
+        android:background="#709051"
         app:menu="@menu/navigation_menu"
         android:scrollIndicators="left"/>
 
