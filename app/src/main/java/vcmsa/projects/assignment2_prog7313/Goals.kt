@@ -6,26 +6,39 @@ import android.content.res.ColorStateList
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.os.Bundle
+
+
+import android.view.View
+import android.widget.ImageView
+import android.widget.PopupMenu
+import android.widget.Toast
+
 import android.util.AttributeSet
 import android.util.Log
-import android.view.View
 import android.widget.CheckBox
 import android.widget.Checkable
 import android.widget.ProgressBar
 import android.widget.TextView
+
+
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import android.graphics.Color
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
+
+import vcmsa.projects.assignment2_prog7313.databinding.ActivityGoalsBinding
+
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.firestore
-import vcmsa.projects.assignment2_prog7313.databinding.ActivityExpenseViewBinding
 import java.util.Calendar
 
 class Goals : AppCompatActivity() {
+  
+    private lateinit var binding: ActivityGoalsBinding
+    private lateinit var ivDineroLogo: ImageView
 
     private val firestore = Firebase.firestore
     private lateinit var auth: FirebaseAuth
@@ -47,20 +60,34 @@ class Goals : AppCompatActivity() {
     private lateinit var levelBar: ProgressBar
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_goals)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+
+        binding = ActivityGoalsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
+        auth = FirebaseAuth.getInstance()
 
+        ivDineroLogo = binding.ivDineroLogo
+        ivDineroLogo.setOnClickListener { view ->
+            showLogoutPopupMenu(view)
+        }
 
+        binding.btnBack.setOnClickListener {
+            val intent = Intent(this, BudgetHomePageActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
 
         val navBar = findViewById<BottomNavigationView>(R.id.bottomNav)
@@ -85,9 +112,33 @@ class Goals : AppCompatActivity() {
                 else -> {false}
             }
         }
+    }
 
+    // Show the logout popup menu
+    private fun showLogoutPopupMenu(view: View) {
+        val popup = PopupMenu(this, view)
+        popup.menuInflater.inflate(R.menu.logout_menu, popup.menu)
 
+        popup.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.action_logout -> {
+                    // Sign out the user
+                    auth.signOut()
+                    Toast.makeText(this, "Logging out...", Toast.LENGTH_SHORT).show()
 
+                    val intent = Intent(this, LoginActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                else -> false
+            }
+        }
+        popup.show()
+
+        
+        
         levelRank = findViewById(R.id.rankText)
         levelScore = findViewById(R.id.scoreText)
         levelBar = findViewById(R.id.levelProgressBar)

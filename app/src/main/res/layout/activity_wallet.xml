@@ -3,11 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#CDE4C4"
+        android:background="#b1d9b7"
         android:padding="16dp">
 
         <LinearLayout
@@ -28,8 +28,7 @@
                     android:src="@drawable/btn_back"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    app:tint="#4A8C2C"
-                    />
+                    app:tint="#4A8C2C" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -40,7 +39,19 @@
                     android:textColor="#4A8C2C"
                     android:layout_centerInParent="true" />
 
-            </RelativeLayout>
+                <ImageView
+                    android:id="@+id/ivDineroLogo"
+                    android:layout_width="100dp"
+                    android:layout_height="120dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="5dp"
+                    android:padding="10dp"
+                    android:src="@mipmap/dinero_logo"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Dinero Logo - Tap to Logout" /> </RelativeLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -60,15 +71,15 @@
                     android:id="@+id/currentBalance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="R0.00"
+                    android:text="R30000.00"
                     android:textSize="24sp"
                     android:textColor="#32A852"
                     android:textStyle="bold"
                     android:layout_centerVertical="true" />
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:src="@mipmap/avocado_happy_foreground"
                     android:layout_toRightOf="@id/currentBalance"
                     android:layout_marginLeft="8dp"

@@ -4,9 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,14 +20,12 @@
             android:paddingEnd="16dp"
             android:paddingBottom="20dp">
 
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="24dp"
                 android:paddingEnd="16dp">
 
-                <!-- DINERO Title centered -->
                 <TextView
                     android:id="@+id/appTitle"
                     android:layout_width="wrap_content"
@@ -42,7 +38,6 @@
                     android:textStyle="bold"
                     android:layout_centerHorizontal="true" />
 
-                <!-- Back button -->
                 <ImageButton
                     android:id="@+id/btnBack"
                     android:layout_width="48dp"
@@ -55,7 +50,6 @@
                     android:contentDescription="Back"
                     android:src="@drawable/btn_back" />
 
-                <!-- Dinero Logo in top right -->
                 <ImageView
                     android:id="@+id/ivDineroLogo"
                     android:layout_width="100dp"
@@ -64,11 +58,10 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="-15dp"
                     android:layout_marginEnd="-30dp"
-                    android:src="@mipmap/dinero_logo" />
-            </RelativeLayout>
+                    android:src="@mipmap/dinero_logo"
+                    android:clickable="true"           android:focusable="true"           android:background="?attr/selectableItemBackgroundBorderless" android:contentDescription="Dinero Logo - Tap to Logout" /> </RelativeLayout>
+        </LinearLayout>
 
-    </LinearLayout>
-        <!-- Monthly Budget Progress Section -->
         <LinearLayout
             android:id="@+id/budgetBarLayout"
             android:layout_width="match_parent"
@@ -89,6 +82,7 @@
                 android:textStyle="bold"
                 android:textSize="25dp"
                 android:textColor="#000" />
+
 
             <TextView
                 android:id="@+id/rankText"
@@ -337,4 +331,3 @@
         android:scrollIndicators="left"/>
 
 </FrameLayout>
-

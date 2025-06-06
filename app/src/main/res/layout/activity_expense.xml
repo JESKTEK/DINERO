@@ -37,6 +37,20 @@
         android:background="@android:color/transparent"
         android:contentDescription="Back"
         android:src="@drawable/btn_back" />
+<!-- dinero logo for logout menu -->
+    <ImageView
+        android:id="@+id/ivDineroLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-20dp"
+        android:layout_marginEnd="-30dp"
+        android:src="@mipmap/dinero_logo"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Dinero Logo - Tap to Logout" />
 
     <!-- ADD RECEIPT Field -->
     <TextView

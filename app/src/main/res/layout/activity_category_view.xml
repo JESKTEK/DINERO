@@ -4,112 +4,102 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#b1d9b7"
-    android:orientation="vertical">
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="20dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="24dp"
-            android:paddingEnd="16dp">
-
-            <!-- DINERO Title centered -->
-            <TextView
-                android:id="@+id/appTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="DINERO"
-                android:gravity="center"
-                android:textColor="#81b522"
-                android:fontFamily="sans-serif-black"
-                android:textSize="40sp"
-                android:textStyle="bold"
-                android:layout_centerHorizontal="true" />
-
-            <!-- Back button -->
-            <ImageButton
-                android:id="@+id/btnBack"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"
-                android:background="@android:color/transparent"
-                android:contentDescription="Back"
-                android:src="@drawable/btn_back" />
-
-            <!-- Dinero Logo in top right -->
-            <ImageView
-                android:id="@+id/ivDineroLogo"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="-20dp"
-                android:layout_marginEnd="-30dp"
-                android:src="@mipmap/dinero_logo" />
-        </RelativeLayout>
-        <!--
-        Title: AppCompatButton, API, reference, Android Developers
-        Author: Android Developers
-        Date: 18 April 2025
-        Availability: https://developer.android.com/reference/androidx/appcompat/widget/AppCompatButton
-        -->
-        <!-- select date button added -->
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/fromDateSel"
-                android:layout_width="100dp"
-                android:layout_height="65dp"
-                android:minHeight="50dp"
-                android:hint="From:"
-                android:inputType="none"
-                android:drawableEnd="@android:drawable/ic_menu_my_calendar"
-                android:backgroundTint="#000000"
-                android:layout_marginTop="16dp"
-                />
-
-            <EditText
-                android:id="@+id/toDateSel"
-                android:layout_width="100dp"
-                android:layout_height="65dp"
-                android:minHeight="48dp"
-                android:hint="To:"
-                android:inputType="none"
-                android:drawableEnd="@android:drawable/ic_menu_my_calendar"
-                android:backgroundTint="#000000"
-                android:layout_marginTop="16dp" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <!-- Recycler View to view categories -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity" />
+        android:background="#b1d9b7"
+        android:orientation="vertical">
 
-</LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="24dp"
+                android:paddingEnd="16dp">
+
+                <TextView
+                    android:id="@+id/appTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DINERO"
+                    android:gravity="center"
+                    android:textColor="#81b522"
+                    android:fontFamily="sans-serif-black"
+                    android:textSize="40sp"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true" />
+
+                <ImageButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Back"
+                    android:src="@drawable/btn_back" />
+
+                <ImageView
+                    android:id="@+id/ivDineroLogo"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:src="@mipmap/dinero_logo"
+                    android:clickable="true"  android:focusable="true"   android:background="?attr/selectableItemBackgroundBorderless" android:contentDescription="Dinero Logo - Tap to Logout" /> </RelativeLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/fromDateSel"
+                    android:layout_width="100dp"
+                    android:layout_height="65dp"
+                    android:minHeight="50dp"
+                    android:hint="From:"
+                    android:inputType="none"
+                    android:drawableEnd="@android:drawable/ic_menu_my_calendar"
+                    android:backgroundTint="#000000"
+                    android:layout_marginTop="16dp"
+                    />
+
+                <EditText
+                    android:id="@+id/toDateSel"
+                    android:layout_width="100dp"
+                    android:layout_height="65dp"
+                    android:minHeight="48dp"
+                    android:hint="To:"
+                    android:inputType="none"
+                    android:drawableEnd="@android:drawable/ic_menu_my_calendar"
+                    android:backgroundTint="#000000"
+                    android:layout_marginTop="16dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".MainActivity" />
+
+    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"

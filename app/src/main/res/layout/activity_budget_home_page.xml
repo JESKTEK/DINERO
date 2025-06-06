@@ -1,147 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#b1d9b7"
-    android:padding="1dp">
-
-
-    <!-- Main title -->
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:text="DINERO"
-        android:textColor="#73AD00"
-        android:textSize="60sp"
-        android:textStyle="bold" />
-
-    <!-- Dinero Logo -->
-    <ImageView
-        android:id="@+id/ivDineroLogo"
-        android:layout_width="100dp"
-        android:layout_height="120dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="5dp"
-        android:padding="10dp"
-        android:src="@mipmap/dinero_logo" />
-
-    <!-- Back button -->
-    <ImageButton
-        android:id="@+id/btnBack"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        android:background="@android:color/transparent"
-        android:contentDescription="Back"
-        android:src="@drawable/btn_back" />
-
-    <!-- Buttons Container -->
-    <LinearLayout
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvTitle"
-        android:layout_marginTop="48dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:background="#b1d9b7"
+        android:padding="1dp">
 
-        <!-- Button "CREATE CATEGORY" -->
-        <LinearLayout
-            android:id="@+id/btnCreateCategory"
-            android:layout_width="350dp"
-            android:layout_height="170dp"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/btn_createcategory_background"
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="DINERO"
+            android:textColor="#73AD00"
+            android:textSize="60sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/ivDineroLogo"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:src="@mipmap/dinero_logo"
             android:clickable="true"
             android:focusable="true"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Dinero Logo - Tap to Logout" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:text="CREATE CATEGORY"
-                android:textColor="#FFFFFF"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Back"
+            android:src="@drawable/btn_back" />
 
-            <ImageView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:src="@mipmap/avocado_cool_foreground" />
-        </LinearLayout>
-
-        <!--Button "VIEW BUDGET" -->
         <LinearLayout
-            android:id="@+id/btnViewBudget"
-            android:layout_width="350dp"
-            android:layout_height="170dp"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/btn_view_budget"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvTitle"
+            android:layout_marginTop="48dp"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:text="VIEW BUDGET"
-                android:textColor="#FFFFFF"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+            <LinearLayout
+                android:id="@+id/btnCreateCategory"
+                android:layout_width="350dp"
+                android:layout_height="170dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/btn_createcategory_background"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="110dp"
-                android:src="@mipmap/avocado_happy_foreground" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="CREATE CATEGORY"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:src="@mipmap/avocado_cool_foreground" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btnViewBudget"
+                android:layout_width="350dp"
+                android:layout_height="170dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/btn_view_budget"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="VIEW BUDGET"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="110dp"
+                    android:src="@mipmap/avocado_happy_foreground" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btnViewExpense"
+                android:layout_width="350dp"
+                android:layout_height="170dp"
+                android:background="@drawable/btn_view_expense"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="VIEW EXPENSE"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@mipmap/avocado_sad_foreground" />
+            </LinearLayout>
         </LinearLayout>
-
-        <!-- Button "VIEW EXPENSE" -->
-        <LinearLayout
-            android:id="@+id/btnViewExpense"
-            android:layout_width="350dp"
-            android:layout_height="170dp"
-            android:background="@drawable/btn_view_expense"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:text="VIEW EXPENSE"
-                android:textColor="#FFFFFF"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:layout_width="72dp"
-                android:layout_height="72dp"
-                android:layout_marginTop="15dp"
-                android:src="@mipmap/avocado_sad_foreground" />
-        </LinearLayout>
-    </LinearLayout>
-</RelativeLayout>
+    </RelativeLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
@@ -152,6 +146,5 @@
         android:background="#709051"
         app:menu="@menu/navigation_menu"
         android:scrollIndicators="left"/>
-
 
 </FrameLayout>

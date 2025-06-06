@@ -1,23 +1,21 @@
 package vcmsa.projects.assignment2_prog7313
 
-import android.R
 import android.app.DatePickerDialog
-import android.graphics.BitmapFactory
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.PopupMenu
 import android.widget.Spinner
-import android.widget.SpinnerAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.net.ParseException
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -26,14 +24,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.firestore
 import kotlinx.coroutines.launch
 import vcmsa.projects.assignment2_prog7313.databinding.ActivityExpenseViewBinding
-import java.io.ByteArrayInputStream
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.time.format.DateTimeParseException
 import java.util.Calendar
 import java.util.Date
-import kotlin.io.encoding.Base64
 import java.util.Locale
 
 class ExpenseView : AppCompatActivity() {
@@ -42,7 +35,6 @@ class ExpenseView : AppCompatActivity() {
     private lateinit var expenseAdapter: ExpenseAdapter
     private val firestore = Firebase.firestore
 
-
     private var unfilteredExpenses: List<Expense> = emptyList()
     private var filteredExpenses: List<Expense> = emptyList()
 
@@ -50,6 +42,7 @@ class ExpenseView : AppCompatActivity() {
     private var monthlyBudgetMax: Double = 100000.0
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var ivDineroLogo: ImageView
     private var selectedCategory: String? = null
     private var fromDateS: String? = null
     private var toDateS: String? = null
@@ -73,6 +66,10 @@ class ExpenseView : AppCompatActivity() {
             loadExpenses()
         }
 
+        ivDineroLogo = findViewById(vcmsa.projects.assignment2_prog7313.R.id.ivDineroLogo)
+        ivDineroLogo.setOnClickListener { view ->
+            showLogoutPopupMenu(view)
+        }
 
         binding.btnSetBudget.setOnClickListener {
             Toast.makeText(this, "Set Budget", Toast.LENGTH_SHORT).show()
@@ -104,8 +101,8 @@ class ExpenseView : AppCompatActivity() {
 
             datePicker.show()
             datesInput1 = true
-
         }
+
         binding.toDate.setOnClickListener {
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
@@ -123,9 +120,7 @@ class ExpenseView : AppCompatActivity() {
             }, year, month, day)
 
             datePicker.show()
-
         }
-
 
         val categorySpinner: Spinner = binding.categorySpinner
         categorySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -139,208 +134,14 @@ class ExpenseView : AppCompatActivity() {
                 filterExpenses()
             }
         }
+
         binding.btnBack.setOnClickListener {
             val intent = Intent(this, BudgetHomePageActivity::class.java)
             startActivity(intent)
             finish()
         }
 
-    }
-
-
-    private fun filterExpenses() {
-        val expList = filterExpensesAccount()
-        filteredExpenses = expList.filter { expense ->
-            val categoryMatch = selectedCategory == null || expense.categoryName == selectedCategory || selectedCategory == "All Categories"
-            val dateMatch = (fromDateS == null || toDateS == null) || filterExpensesDate(expense)
-
-            categoryMatch && dateMatch
-        }
-        expenseAdapter.updateData(filteredExpenses)
-    }
-
-
-    private fun filterExpensesAccount() : List<Expense> {
-
-
-        val exp = unfilteredExpenses.filter { category ->
-            val userEmail = auth.currentUser?.email.toString()
-            userEmail.equals(category.emailAssociated)
-
-        }
-        return exp
-        //categoryAdapter.updateData(filteredCategories)
-    }
-
-
-    private fun filterExpensesDate(expense: Expense): Boolean {
-        val fromDate = convertStringDate(fromDateS!!)
-        val toDate = convertStringDate(toDateS!!)
-        val expenseDate: Date = convertStringDate(expense.dateCreated)
-        return expenseDate.after(fromDate) && expenseDate.before(toDate)
-    }
-
-    private fun convertStringDate(dateString: String): Date {
-        val dateFormat = SimpleDateFormat("dd/MM/yyyy", java.util.Locale.getDefault())
-        val fromDate: Date = try {
-            dateFormat.parse(dateString)
-        } catch (e: Exception) {
-            Toast.makeText(this, "Invalid From Date format", Toast.LENGTH_SHORT).show()
-            return Date()
-        }
-        return fromDate
-    }
-
-
-    private val addExpenseResultLaunch = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    )
-    { result ->
-        if (result.resultCode == RESULT_OK) {
-
-            val id = result.data?.getStringExtra("id") ?: return@registerForActivityResult
-            val parentId =
-                result.data?.getStringExtra("parentId") ?: return@registerForActivityResult
-            val categoryName =
-                result.data?.getStringExtra("categoryName") ?: return@registerForActivityResult
-            val itemName =
-                result.data?.getStringExtra("itemName") ?: return@registerForActivityResult
-            val amountSpent =
-                result.data?.getDoubleExtra("amountSpent", 0.0) ?: return@registerForActivityResult
-            val dateCreated =
-                result.data?.getStringExtra("dateCreated") ?: return@registerForActivityResult
-            val uploadImage =
-                result.data?.getStringExtra("uploadImage") ?: return@registerForActivityResult
-            val details = result.data?.getStringExtra("details") ?: return@registerForActivityResult
-            val emailAssociated =
-                result.data?.getStringExtra("emailAssociated") ?: return@registerForActivityResult
-
-            lifecycleScope.launch {
-                val expense = Expense(
-                    id = id,
-                    parentId = parentId,
-                    categoryName = categoryName,
-                    itemName = itemName,
-                    amountSpent = amountSpent,
-                    dateCreated = dateCreated,
-                    uploadImage = uploadImage,
-                    details = details,
-                    emailAssociated = emailAssociated
-                )
-                //database.postDao().insertPost(newPost)
-                loadExpenses()
-            }
-        }
-
-
-
-    }
-
-    private suspend fun loadExpenses() {
-        firestore.collection("Expenses").get()
-            .addOnSuccessListener { snapshot ->
-                val expenses = snapshot.documents.map { doc ->
-                    Expense(
-                        id = doc.getString("id") ?: "",
-                        parentId = doc.getString("parentId") ?: "",
-                        categoryName = doc.getString("categoryName") ?: "",
-                        itemName = doc.getString("itemName") ?: "",
-                        amountSpent = doc.getLong("amountSpent")?.toDouble() ?: 0.0,
-                        dateCreated = doc.getString("dateCreated") ?: "",
-                        uploadImage = doc.getString("uploadImage") ?: "",
-                        emailAssociated = doc.getString("emailAssociated") ?: "",
-                        details = doc.getString("details") ?: "",
-                    )
-                }
-
-                unfilteredExpenses = expenses
-                expenseAdapter.updateData(expenses)
-                updateCatSpinner()
-
-                val filteredExpenses = filterExpensesAccount()
-                val totalSpent = filteredExpenses.sumOf { it.amountSpent }
-                val percentUsed = if (monthlyBudgetMax > 0)
-                    ((totalSpent / monthlyBudgetMax) * 100).toInt().coerceAtMost(100)
-                else 0
-                /******
-                • Title: ProgressBar | Android Developers
-                • Author: Android Developers
-                • Date: 2019
-                • Code version: Not specified
-                • Availability: https://developer.android.com/reference/android/widget/ProgressBar
-                • Accessed: 1 May 2025
-                *****/
-                binding.budgetProgressBar.progress = percentUsed
-                binding.amountSpentText.text = "R${"%.2f".format(totalSpent)} spent"
-                binding.budgetText.text = "Monthly Budget: R${"%.2f".format(monthlyBudgetMin)} - R${"%.2f".format(monthlyBudgetMax)}"
-            }
-            .addOnFailureListener {
-                Toast.makeText(this, "Error fetching data from Firestore", Toast.LENGTH_SHORT).show()
-            }
-    }
-
-    private fun updateCatSpinner() {
-        val uniqueCategories = unfilteredExpenses.map { it.categoryName }.distinct().toMutableList()
-        uniqueCategories.add(0, "All Categories")
-
-        val categorySpinner: Spinner = binding.categorySpinner
-        val adapter = ArrayAdapter(this, R.layout.simple_spinner_item, uniqueCategories)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        categorySpinner.adapter = adapter
-    }
-
-
-
-    private fun showSetBudgetDialog() {
-        val layout = LinearLayout(this).apply {
-            orientation = LinearLayout.VERTICAL
-            setPadding(40, 20, 40, 10)
-        }
-
-        val inputMin = EditText(this).apply {
-            hint = "Minimum budget (e.g. 2000)"
-            inputType = android.text.InputType.TYPE_CLASS_NUMBER
-        }
-
-        val inputMax = EditText(this).apply {
-            hint = "Maximum budget (e.g. 100000)"
-            inputType = android.text.InputType.TYPE_CLASS_NUMBER
-        }
-
-        layout.addView(inputMin)
-        layout.addView(inputMax)
-
-        AlertDialog.Builder(this)
-            .setTitle("Set Monthly Budget Range")
-            .setView(layout)
-            .setPositiveButton("Save") { _, _ ->
-                val min = inputMin.text.toString().toDoubleOrNull()
-                val max = inputMax.text.toString().toDoubleOrNull()
-
-                if (min != null && max != null && min < max) {
-                    monthlyBudgetMin = min
-                    monthlyBudgetMax = max
-
-                    getSharedPreferences("prefs", Context.MODE_PRIVATE).edit()
-                        .putFloat("monthlyBudgetMin", min.toFloat())
-                        .putFloat("monthlyBudgetMax", max.toFloat())
-                        .apply()
-
-                    lifecycleScope.launch {
-                        loadExpenses()
-                    }
-                } else {
-                    Toast.makeText(this, "Please enter a valid min < max", Toast.LENGTH_SHORT).show()
-                }
-
-            }
-            .setNegativeButton("Cancel", null)
-            .show()
-
-
-
-
-
+        // Bottom Navigation Bar setup
         binding.bottomNav.selectedItemId = vcmsa.projects.assignment2_prog7313.R.id.home
         binding.bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
@@ -365,10 +166,174 @@ class ExpenseView : AppCompatActivity() {
                 else -> {false}
             }
         }
-
-
-
     }
 
-}
 
+    private fun filterExpenses() {
+        val expList = filterExpensesAccount()
+        filteredExpenses = expList.filter { expense ->
+            val categoryMatch = selectedCategory == null || expense.categoryName == selectedCategory || selectedCategory == "All Categories"
+            val dateMatch = (fromDateS == null || toDateS == null) || filterExpensesDate(expense)
+
+            categoryMatch && dateMatch
+        }
+        expenseAdapter.updateData(filteredExpenses)
+    }
+
+
+    private fun filterExpensesAccount() : List<Expense> {
+        val userEmail = auth.currentUser?.email.toString()
+        val exp = unfilteredExpenses.filter { category ->
+            userEmail.equals(category.emailAssociated)
+        }
+        return exp
+    }
+
+
+    private fun filterExpensesDate(expense: Expense): Boolean {
+        // Ensure fromDateS and toDateS are not null before parsing
+        if (fromDateS == null || toDateS == null) return false
+
+        val fromDate = convertStringDate(fromDateS!!)
+        val toDate = convertStringDate(toDateS!!)
+        val expenseDate: Date = convertStringDate(expense.dateCreated)
+
+        // Check if expenseDate is within the range [fromDate, toDate] inclusive
+        return !expenseDate.before(fromDate) && !expenseDate.after(toDate)
+    }
+
+    private fun convertStringDate(dateString: String): Date {
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val date: Date = try {
+            dateFormat.parse(dateString) ?: Date() // Provide a default if parsing fails
+        } catch (e: Exception) {
+            Log.e("ExpenseView", "Error parsing date: $dateString", e)
+            Toast.makeText(this, "Invalid Date format encountered.", Toast.LENGTH_SHORT).show()
+            Date() // Return current date on error
+        }
+        return date
+    }
+
+    private suspend fun loadExpenses() {
+        firestore.collection("Expenses").get()
+            .addOnSuccessListener { snapshot ->
+                val expenses = snapshot.documents.map { doc ->
+                    Expense(
+                        id = doc.getString("id") ?: "",
+                        parentId = doc.getString("parentId") ?: "",
+                        categoryName = doc.getString("categoryName") ?: "",
+                        itemName = doc.getString("itemName") ?: "",
+                        amountSpent = doc.getDouble("amountSpent") ?: 0.0, // Use getDouble directly
+                        dateCreated = doc.getString("dateCreated") ?: "",
+                        uploadImage = doc.getString("uploadImage") ?: "",
+                        emailAssociated = doc.getString("emailAssociated") ?: "",
+                        details = doc.getString("details") ?: "",
+                    )
+                }
+
+                unfilteredExpenses = expenses
+                filterExpenses() // Apply filters after loading all expenses
+                updateCatSpinner()
+
+                val currentUsersExpenses = filterExpensesAccount()
+                val totalSpent = currentUsersExpenses.sumOf { it.amountSpent }
+                val percentUsed = if (monthlyBudgetMax > 0)
+                    ((totalSpent / monthlyBudgetMax) * 100).toInt().coerceAtMost(100)
+                else 0
+                binding.budgetProgressBar.progress = percentUsed
+                binding.amountSpentText.text = "R${"%.2f".format(totalSpent)} spent"
+                binding.budgetText.text = "Monthly Budget: R${"%.2f".format(monthlyBudgetMin)} - R${"%.2f".format(monthlyBudgetMax)}"
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Error fetching data from Firestore", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun updateCatSpinner() {
+        val uniqueCategories = unfilteredExpenses
+            .filter { it.emailAssociated == auth.currentUser?.email } // Filter categories by current user
+            .map { it.categoryName }
+            .distinct()
+            .toMutableList()
+        uniqueCategories.add(0, "All Categories")
+
+        val categorySpinner: Spinner = binding.categorySpinner
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, uniqueCategories) // Use android.R.layout for default spinner item
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        categorySpinner.adapter = adapter
+    }
+
+    private fun showSetBudgetDialog() {
+        val layout = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            setPadding(40, 20, 40, 10)
+        }
+
+        val inputMin = EditText(this).apply {
+            hint = "Minimum budget (e.g. 2000)"
+            inputType = android.text.InputType.TYPE_CLASS_NUMBER or android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL
+            setText(monthlyBudgetMin.toString()) // Pre-fill with current min budget
+        }
+
+        val inputMax = EditText(this).apply {
+            hint = "Maximum budget (e.g. 100000)"
+            inputType = android.text.InputType.TYPE_CLASS_NUMBER or android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL
+            setText(monthlyBudgetMax.toString()) // Pre-fill with current max budget
+        }
+
+        layout.addView(inputMin)
+        layout.addView(inputMax)
+
+        AlertDialog.Builder(this)
+            .setTitle("Set Monthly Budget Range")
+            .setView(layout)
+            .setPositiveButton("Save") { _, _ ->
+                val min = inputMin.text.toString().toDoubleOrNull()
+                val max = inputMax.text.toString().toDoubleOrNull()
+
+                if (min != null && max != null && min <= max) { // Changed to min <= max
+                    monthlyBudgetMin = min
+                    monthlyBudgetMax = max
+
+                    getSharedPreferences("prefs", Context.MODE_PRIVATE).edit()
+                        .putFloat("monthlyBudgetMin", min.toFloat())
+                        .putFloat("monthlyBudgetMax", max.toFloat())
+                        .apply()
+
+                    lifecycleScope.launch {
+                        loadExpenses() // Reload expenses and update UI
+                    }
+                } else {
+                    Toast.makeText(this, "Please enter valid numbers where Minimum <= Maximum", Toast.LENGTH_SHORT).show()
+                }
+
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
+    // Show the logout popup menu
+    private fun showLogoutPopupMenu(view: View) {
+        val popup = PopupMenu(this, view)
+        popup.menuInflater.inflate(R.menu.logout_menu, popup.menu)
+
+        popup.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.action_logout -> {
+                    // Sign out the user
+                    auth.signOut()
+                    Toast.makeText(this, "Logging out...", Toast.LENGTH_SHORT).show()
+
+                    // Redirect to LoginActivity and clear activity stack
+                    val intent = Intent(this, LoginActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                else -> false
+            }
+        }
+        popup.show()
+    }
+}

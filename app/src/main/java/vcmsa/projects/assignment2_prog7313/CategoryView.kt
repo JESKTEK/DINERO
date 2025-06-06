@@ -4,7 +4,10 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -32,6 +35,8 @@ class CategoryView : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private val firestore = Firebase.firestore
 
+    private lateinit var ivDineroLogo: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -43,6 +48,10 @@ class CategoryView : AppCompatActivity() {
 
         categoryAdapter = CategoryAdapter(emptyList())
 
+        ivDineroLogo = binding.root.findViewById(R.id.ivDineroLogo)
+        ivDineroLogo.setOnClickListener { view ->
+            showLogoutPopupMenu(view)
+        }
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = categoryAdapter
@@ -115,6 +124,38 @@ class CategoryView : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }*/
+
+        val btnBack = findViewById<ImageButton>(R.id.btnBack)
+        btnBack.setOnClickListener {
+            val intent = Intent(this, BudgetHomePageActivity::class.java)
+            startActivity(intent)
+        }
+
+        val navBar = findViewById<BottomNavigationView>(R.id.bottomNav)
+        navBar.selectedItemId = R.id.home
+        navBar.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.home -> {
+                    val intent = Intent(this, HomeActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                R.id.goals -> {
+                    val intent = Intent(this, Goals::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                R.id.dashboard -> {
+                    val intent = Intent(this, DashboardActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                else -> {false}
+            }
+        }
     }
 
 
@@ -160,6 +201,7 @@ class CategoryView : AppCompatActivity() {
 
         val catList = categoryList.filter { category ->
             val expenseDate : Date = convertStringDate(category.dateCreated)
+            // Use logical AND for date range filtering
             expenseDate.after(fromDate) && expenseDate.before(toDate)
 
         }
@@ -188,7 +230,8 @@ class CategoryView : AppCompatActivity() {
             dateFormat.parse(dateString)
         } catch (e: Exception) {
             Toast.makeText(this, "Invalid From Date format", Toast.LENGTH_SHORT).show()
-            return Date()
+            Log.e("CategoryView", "Date parsing error: ${e.message}") // Log the error
+            return Date() // Return current date as fallback or throw an error
         }
         return fromDate
     }
@@ -220,50 +263,35 @@ class CategoryView : AppCompatActivity() {
                 val cat = filterCategoriesAccount()
                 categoryAdapter.updateData(cat)
             }
-            .addOnFailureListener {
-                Toast.makeText(this, "Error fetching data from Firestore", Toast.LENGTH_SHORT)
+            .addOnFailureListener { e -> // Catch the exception for logging
+                Toast.makeText(this, "Error fetching data from Firestore: ${e.message}", Toast.LENGTH_SHORT)
                     .show()
+                Log.e("CategoryView", "Error fetching Firestore categories", e) // Log the error
             }
-
-        //val userDao = database.userDao()
-        //val users = userDao.getAllUsers()
-        //userAdapter.updateData(users)
-        val btnBack = findViewById<ImageButton>(R.id.btnBack)
-        btnBack.setOnClickListener {
-            val intent = Intent(this, BudgetHomePageActivity::class.java)
-            startActivity(intent)
-        }
-
-
-
-
-        val navBar = findViewById<BottomNavigationView>(R.id.bottomNav)
-        navBar.selectedItemId = R.id.home
-        navBar.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.home -> {
-                    val intent = Intent(this, HomeActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                    true
-                }
-                R.id.goals -> {
-                    val intent = Intent(this, Goals::class.java)
-                    startActivity(intent)
-                    finish()
-                    true
-                }
-                R.id.dashboard -> {
-                    val intent = Intent(this, DashboardActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                    true
-                }
-                else -> {false}
-            }
-        }
-
-
     }
 
+    // Show the logout popup menu
+    private fun showLogoutPopupMenu(view: View) {
+        val popup = PopupMenu(this, view)
+        popup.menuInflater.inflate(R.menu.logout_menu, popup.menu)
+
+        popup.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.action_logout -> {
+                    // Sign out the user
+                    auth.signOut()
+                    Toast.makeText(this, "Logging out...", Toast.LENGTH_SHORT).show()
+
+                    // Redirect to LoginActivity and clear activity stack
+                    val intent = Intent(this, LoginActivity::class.java) // Assuming LoginActivity is your login screen
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK) // Clears back stack
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                else -> false
+            }
+        }
+        popup.show()
+    }
 }
