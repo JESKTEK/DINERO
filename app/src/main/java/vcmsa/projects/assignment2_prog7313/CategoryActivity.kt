@@ -135,6 +135,7 @@ class CategoryActivity : AppCompatActivity() {
                     val documentId = documentReference.id
                     Toast.makeText(this, "Category Made Successfully.", Toast.LENGTH_SHORT).show()
 
+                    completeGoalIfMatch(this, "Add a Category")
 
                     val updateData = hashMapOf("id" to documentId)
                     documentReference.update(updateData as Map<String, Any>)

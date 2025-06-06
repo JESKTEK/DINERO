@@ -110,7 +110,7 @@
             -->
 
             <ProgressBar
-                android:id="@+id/budgetProgressBar"
+                android:id="@+id/levelProgressBar"
                 style="@android:style/Widget.ProgressBar.Horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
@@ -121,7 +121,7 @@
                 android:layout_marginTop="8dp" />
 
             <TextView
-                android:id="@+id/amountSpentText"
+                android:id="@+id/scoreText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="3 Tasks to Level Up"
@@ -185,6 +185,9 @@
                 </LinearLayout>
 
                 <CheckBox
+                    android:buttonTint="#81b522"
+                    android:clickable="false"
+                    android:focusable="false"
                     android:id="@+id/Goal1Status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -227,6 +230,9 @@
                 </LinearLayout>
 
                 <CheckBox
+                    android:buttonTint="#81b522"
+                    android:clickable="false"
+                    android:focusable="false"
                     android:id="@+id/Goal2Status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -269,6 +275,9 @@
                 </LinearLayout>
 
                 <CheckBox
+                    android:buttonTint="#81b522"
+                    android:clickable="false"
+                    android:focusable="false"
                     android:id="@+id/Goal3Status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
