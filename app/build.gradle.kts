@@ -59,6 +59,9 @@ dependencies {
     implementation("com.google.firebase:firebase-auth:22.0.0")
     implementation(libs.androidx.ui.text.android)
     implementation ("com.google.code.gson:gson:2.10.1")
+    implementation ("androidx.security:security-crypto:1.1.0-alpha06")
+    implementation ("androidx.biometric:biometric:1.2.0-alpha04")
+
 
     //implementation(libs.firebase.storage)
     testImplementation(libs.junit)
