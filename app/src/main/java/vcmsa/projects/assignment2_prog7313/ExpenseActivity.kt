@@ -178,6 +178,8 @@ class ExpenseActivity : AppCompatActivity() {
                             val newBalance = currentBalance - amountSpent
                             walletRef.update("balance", newBalance)
 
+                            completeGoalIfMatch(this, "Add an Expense")
+
                             Toast.makeText(this, "Expense logged & wallet updated!", Toast.LENGTH_SHORT).show()
                             startActivity(Intent(this, BudgetHomePageActivity::class.java))
                             finish()

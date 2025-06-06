@@ -135,7 +135,8 @@ class WalletActivity : AppCompatActivity() {
 
                     transactionsRef.add(transactionData)
                         .addOnSuccessListener {
-                            transactionList.add(0,"R%.2f".format(amount)) // Add new transaction at the top
+                            completeGoalIfMatch(this, "Fill your Wallet")
+                            transactionList.add(0,"R%.2f".format(amount))
                             adapter.notifyDataSetChanged()
                         }
                         .addOnFailureListener {

@@ -65,48 +65,268 @@
         <LinearLayout
             android:id="@+id/budgetBarLayout"
             android:layout_width="match_parent"
+            android:background="@drawable/goal_box"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="5dp"
+            android:layout_marginBottom="30dp">
 
+
+            <!-- RankInfo -->
             <TextView
                 android:id="@+id/budgetText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Your Rank - 5"
-                android:layout_gravity="center"
+                android:text="Your Rank"
+                android:layout_gravity="left"
                 android:textStyle="bold"
-                android:textSize="16sp"
+                android:textSize="25dp"
                 android:textColor="#000" />
 
-            <ProgressBar
-                android:id="@+id/budgetProgressBar"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:progressDrawable="@drawable/progress_bar"
-                android:max="100"
-                android:progress="0"
-                android:layout_marginTop="8dp" />
 
             <TextView
-                android:id="@+id/amountSpentText"
+                android:id="@+id/rankText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="500 Budget Points to Level Up"
+                android:text="BRONZE"
+                android:layout_gravity="left"
+                android:textStyle="bold"
+                android:textSize="25dp"
+                android:textColor="#CD7F32" />
+
+            <!--
+                • Title: ProgressBar | Android Developers
+                • Author: Android Developers
+                • Date: 2019
+                • Code version: Not specified
+                • Availability: https://developer.android.com/reference/android/widget/ProgressBar
+                • Accessed: 1 May 2025
+            -->
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="8dp">
+
+                <!-- Actual ProgressBar -->
+                <ProgressBar
+                    android:id="@+id/levelProgressBar"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:progressDrawable="@drawable/progress_bar"
+                    android:max="100"
+                    android:progress="50" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="75dp"
+                    android:background="#BDBDBD" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="150dp"
+                    android:background="#BDBDBD" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="225dp"
+                    android:background="#BDBDBD" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="300dp"
+                    android:background="#BDBDBD" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/scoreText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3 Tasks to Level Up"
                 android:layout_gravity="center"
                 android:textStyle="bold"
                 android:textSize="14sp"
                 android:textColor="#000"
                 android:layout_marginTop="4dp" />
         </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Goals"
+            android:layout_gravity="center"
+            android:textSize="40dp"
+            android:textStyle="bold"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/goal_box"
+                android:padding="16dp"
+                android:layout_marginBottom="25dp"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingEnd="8dp">
+
+                    <TextView
+                        android:id="@+id/Goal1Title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Goal 1 - Name"
+                        android:textStyle="bold"
+                        android:textSize="20sp"/>
+
+                    <TextView
+                        android:id="@+id/Goal1Description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Make one new budget category"
+                        android:textSize="16sp"
+                        android:maxLines="2"
+                        android:ellipsize="end"/>
+                </LinearLayout>
+
+                <CheckBox
+                    android:buttonTint="#81b522"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:id="@+id/Goal1Status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/goal_box"
+                android:padding="16dp"
+                android:layout_marginBottom="25dp"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingEnd="8dp">
+
+                    <TextView
+                        android:id="@+id/Goal2Title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Goal 2 - Name"
+                        android:textStyle="bold"
+                        android:textSize="20sp"/>
+
+                    <TextView
+                        android:id="@+id/Goal2Description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Make one new budget category"
+                        android:textSize="16sp"
+                        android:maxLines="2"
+                        android:ellipsize="end"/>
+                </LinearLayout>
+
+                <CheckBox
+                    android:buttonTint="#81b522"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:id="@+id/Goal2Status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/goal_box"
+                android:padding="16dp"
+                android:layout_marginBottom="25dp"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingEnd="8dp">
+
+                    <TextView
+                        android:id="@+id/Goal3Title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Goal 3 - Name"
+                        android:textStyle="bold"
+                        android:textSize="20sp"/>
+
+                    <TextView
+                        android:id="@+id/Goal3Description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Make one new budget category"
+                        android:textSize="16sp"
+                        android:maxLines="2"
+                        android:ellipsize="end"/>
+                </LinearLayout>
+
+                <CheckBox
+                    android:buttonTint="#81b522"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:id="@+id/Goal3Status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"/>
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        app:labelVisibilityMode="labeled"
         android:layout_gravity="bottom"
+        android:background="#709051"
         app:menu="@menu/navigation_menu"
         android:scrollIndicators="left"/>
 

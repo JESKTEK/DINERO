@@ -2,18 +2,28 @@ package vcmsa.projects.assignment2_prog7313
 
 import android.content.Intent
 import android.os.Bundle
+
 import android.view.View
+
+import android.util.Log
+
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import java.util.Locale
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+
 import vcmsa.projects.assignment2_prog7313.databinding.ActivityHomeBinding
 import android.widget.TextView
+
+import java.util.Calendar
+import java.text.SimpleDateFormat
+
 
 class HomeActivity : AppCompatActivity() {
 
@@ -27,6 +37,8 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -39,6 +51,10 @@ class HomeActivity : AppCompatActivity() {
         val btnMyGoals = findViewById<Button>(R.id.btnMyGoals)
         val btnDashboard = findViewById<Button>(R.id.btnDashboard)
         val plusSign = findViewById<TextView>(R.id.plusSign)
+        val btnChatbot = findViewById<Button>(R.id.btnChatbot)
+        btnChatbot.setOnClickListener {
+            startActivity(Intent(this, ChatbotActivity::class.java)) // Replace with your chatbot class name
+        }
         walletValueTextView = findViewById(R.id.walletValue)
         val dineroLogoLogoutIcon = findViewById<ImageView>(R.id.dineroLogoClickable)
 
@@ -61,7 +77,71 @@ class HomeActivity : AppCompatActivity() {
         plusSign.setOnClickListener {
             startActivity(Intent(this, WalletActivity::class.java))
         }
+
+        btnChatbot.setOnClickListener {
+            startActivity(Intent(this, ChatbotActivity::class.java))
+        }
+
+
+
+
+        generateWeeklyGoals(userEmail, getCurrentWeekId())
+
     }
+
+    //Goals Code - It needs to be here in case the user skips the goal page.
+    //NOTE - WE NEED TO ADD GOAL 5 WHEN REVIEW BUDGET IS ADDED
+
+    val allGoals = listOf(
+        Goal("1", "Add an Expense", "Track a new expense: we won't judge.", false),
+        Goal("2", "Check your Dashboard", "View your dashboard to make sure you're on track!", false),
+        Goal("3", "Add a Category", "Create a new category to enhance your budgeting!", false),
+        Goal("4", "Fill your Wallet", "Add some money to your wallet!", false),
+        Goal("5", "Review your Week", "Review your weekly summary to make sure you're on track.", false)
+    )
+
+    fun generateWeeklyGoals(userId: String, weekId: String) {
+        val weeklyGoalsCollection = FirebaseFirestore.getInstance()
+            .collection("Users").document(userId)
+            .collection("weeklyGoals")
+
+        val currentWeekStartDate = getCurrentWeekStart()
+
+        weeklyGoalsCollection.document(weekId).get()
+            .addOnSuccessListener { documentSnapshot ->
+                if (!documentSnapshot.exists()) {
+                    val selectedGoals = allGoals.shuffled().take(3)
+                    val weeklyGoalsData = WeeklyGoals(selectedGoals, currentWeekStartDate)
+
+                    weeklyGoalsCollection.document(weekId)
+                        .set(weeklyGoalsData)
+                        .addOnSuccessListener {
+                            Log.d("Firestore", "Goals set successfully for the new week.")
+                        }
+                        .addOnFailureListener { e ->
+                            Log.e("Firestore", "Failed to set goals for the week.", e)
+                        }
+                } else {
+                    Log.d(
+                        "Firestore",
+                        "Weekly goals already exist, no new goals generated."
+                    )
+                }
+            }.addOnFailureListener { e ->
+                Log.e("Firestore", "Failed to check for existing weekly goals.", e)
+            }
+    }
+
+
+    fun getCurrentWeekStart(): String {
+        val calendar = Calendar.getInstance()
+        calendar.set(Calendar.DAY_OF_WEEK, calendar.firstDayOfWeek)
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        return sdf.format(calendar.time)
+    }
+
+    //End of Goal Code
+
 
     override fun onResume() {
         super.onResume()

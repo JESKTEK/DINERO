@@ -170,7 +170,9 @@
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:background="#709051"
         android:layout_gravity="bottom"
+        app:labelVisibilityMode="labeled"
         app:menu="@menu/navigation_menu"
         android:scrollIndicators="left"/>
 
