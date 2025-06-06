@@ -62,6 +62,7 @@
                     android:layout_marginEnd="-30dp"
                     android:src="@mipmap/dinero_logo"
                     android:clickable="true"  android:focusable="true"   android:background="?attr/selectableItemBackgroundBorderless" android:contentDescription="Dinero Logo - Tap to Logout" /> </RelativeLayout>
+
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
