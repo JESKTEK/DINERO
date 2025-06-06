@@ -15,9 +15,11 @@ import androidx.appcompat.app.AppCompatActivity
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.*
 import com.github.mikephil.charting.data.*
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -33,7 +35,6 @@ class DashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
-        // initialise Firebase Auth
         auth = FirebaseAuth.getInstance()
 
         pieChart = findViewById(R.id.pieChart)
@@ -42,12 +43,12 @@ class DashboardActivity : AppCompatActivity() {
         ivDineroLogo = findViewById(R.id.ivDineroLogo)
         btnBack = findViewById(R.id.btnBack)
 
-        // Set OnClickListener for Dinero Logo to show logout menu
+        // OnClickListener for Dinero Logo to show logout menu
         ivDineroLogo.setOnClickListener { view ->
             showLogoutPopupMenu(view)
         }
 
-        // Set OnClickListener for back button
+        // OnClickListener for back button
         btnBack.setOnClickListener {
             val intent = Intent(this, BudgetHomePageActivity::class.java)
             startActivity(intent)
@@ -55,7 +56,7 @@ class DashboardActivity : AppCompatActivity() {
         }
 
         val spinner: Spinner = findViewById(R.id.chartTypeSpinner)
-        val chartTypes = listOf("Pie", "Bar", "Line")
+        val chartTypes = listOf("Budget Breakdown", "Monthly Expenses")
 
         completeGoalIfMatch(this, "Check your Dashboard")
 
@@ -64,8 +65,8 @@ class DashboardActivity : AppCompatActivity() {
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 when (chartTypes[position]) {
-                    "Pie" -> showPieChart()
-                    "Bar" -> showBarChart()
+                    "Budget Breakdown" -> showPieChart()
+                    "Monthly Expenses" -> showBarChart()
                     "Line" -> showLineChart()
                 }
             }
@@ -106,53 +107,129 @@ class DashboardActivity : AppCompatActivity() {
         Entry(3f, 15f)
     )
 
+/*
+Title: Android Tutorial for Beginners: Create a Pie Chart With XML
+Author: Ivanna Kacevica
+Date: 17 August 2018
+Availability: https://medium.com/@0xKartik/create-barchart-in-android-studio-14943339a211
+*/
     private fun showPieChart() {
         pieChart.visibility = View.VISIBLE
         barChart.visibility = View.GONE
         lineChart.visibility = View.GONE
 
-        val entries = listOf(
-            PieEntry(40f, "Food"),
-            PieEntry(25f, "Transport"),
-            PieEntry(20f, "Entertainment"),
-            PieEntry(15f, "Other")
-        )
+        val currentUser = FirebaseAuth.getInstance().currentUser ?: return
+        val userEmail = currentUser.email ?: return
 
-        val dataSet = PieDataSet(entries, "Expenses")
-        dataSet.setColors(ColorTemplate.MATERIAL_COLORS.toList())
-        pieChart.data = PieData(dataSet)
+        FirebaseFirestore.getInstance().collection("Categories")
+            .whereEqualTo("emailAssociated", userEmail)
+            .get()
+            .addOnSuccessListener { documents ->
+                val entries = mutableListOf<PieEntry>()
+                for (doc in documents) {
+                    val name = doc.getString("catName") ?: "Unknown"
+                    val spent = doc.getDouble("amountSpent") ?: 0.0
+                    if (spent > 0) entries.add(PieEntry(spent.toFloat(), name))
+                }
 
-        pieChart.centerText = "Spending"
-        pieChart.description.text = "Pie Chart"
-        pieChart.setEntryLabelColor(Color.BLACK)
-
-        pieChart.animateY(1000, Easing.EaseInOutQuad)
-
-        pieChart.invalidate()
+                val dataSet = PieDataSet(entries, " ")
+                dataSet.setColors(ColorTemplate.MATERIAL_COLORS.toList())
+                pieChart.data = PieData(dataSet)
+                pieChart.centerText = "Budget Breakdown"
+                pieChart.description.text = " "
+                pieChart.setEntryLabelColor(Color.BLACK)
+                pieChart.animateY(1500, Easing.EaseInOutCirc)
+                pieChart.invalidate()
+            }
     }
+
+
+/*
+Title: Create Barchart in Android Studio
+Author: Kartik
+Date: 21 June 2019
+Availability: https://medium.com/@0xKartik/create-barchart-in-android-studio-14943339a211
+*/
 
     private fun showBarChart() {
         pieChart.visibility = View.GONE
         barChart.visibility = View.VISIBLE
         lineChart.visibility = View.GONE
 
-        val entries = listOf(
-            BarEntry(0f, 40f),
-            BarEntry(1f, 25f),
-            BarEntry(2f, 20f),
-            BarEntry(3f, 15f)
-        )
+        val currentUser = FirebaseAuth.getInstance().currentUser ?: return
+        val userEmail = currentUser.email ?: return
 
-        val dataSet = BarDataSet(entries, "Expenses")
-        dataSet.setColors(ColorTemplate.MATERIAL_COLORS.toList())
-        barChart.data = BarData(dataSet)
+        FirebaseFirestore.getInstance().collection("Expenses")
+            .whereEqualTo("emailAssociated", userEmail)
+            .get()
+            .addOnSuccessListener { documents ->
+                val monthTotals = linkedMapOf<String, Float>()
+                val sdf = java.text.SimpleDateFormat("d/M/yyyy", java.util.Locale.getDefault())
+                val cal = java.util.Calendar.getInstance()
 
-        barChart.description.text = "Bar Chart"
+                val monthsToShow = (-2..2)
+                //Maybe should change range if can't see in future? idk.
+                val monthLabels = mutableListOf<String>()
+                val monthKeys = mutableListOf<Pair<Int, Int>>()
 
-        barChart.animateY(1000, Easing.EaseOutBounce)
+                for (offset in monthsToShow) {
+                    val tempCal = cal.clone() as java.util.Calendar
+                    tempCal.add(java.util.Calendar.MONTH, offset)
 
-        barChart.invalidate()
+                    val year = tempCal.get(java.util.Calendar.YEAR)
+                    val month = tempCal.get(java.util.Calendar.MONTH)
+                    val label = tempCal.getDisplayName(java.util.Calendar.MONTH, java.util.Calendar.SHORT, java.util.Locale.getDefault()) ?: "?"
+
+                    monthLabels.add(label)
+                    monthKeys.add(Pair(year, month))
+                    monthTotals["$year-$month"] = 0f
+                }
+
+
+                for (doc in documents) {
+                    val dateString = doc.getString("dateCreated") ?: continue
+                    val amt = doc.getDouble("amountSpent")?.toFloat() ?: continue
+                    if (amt < 0) continue
+
+                    val date = try { sdf.parse(dateString) } catch (e: Exception) { null } ?: continue
+                    val expCal = java.util.Calendar.getInstance().apply { time = date }
+
+                    val year = expCal.get(java.util.Calendar.YEAR)
+                    val month = expCal.get(java.util.Calendar.MONTH)
+                    val key = "$year-$month"
+
+                    if (monthTotals.containsKey(key)) {
+                        monthTotals[key] = (monthTotals[key] ?: 0f) + amt
+                    }
+                }
+                val entries = monthKeys.mapIndexed { index, (year, month) ->
+                    val key = "$year-$month"
+                    BarEntry(index.toFloat(), monthTotals[key] ?: 0f)
+                }
+
+                val dataSet = BarDataSet(entries, " ")
+                dataSet.setColors(ColorTemplate.MATERIAL_COLORS.toList())
+                dataSet.valueTextColor = Color.BLACK
+                dataSet.valueTextSize = 14f
+
+                val barData = BarData(dataSet)
+                barData.barWidth = 0.9f
+
+                barChart.data = barData
+                barChart.setFitBars(true)
+                barChart.xAxis.valueFormatter = IndexAxisValueFormatter(monthLabels)
+                barChart.xAxis.granularity = 1f
+                barChart.description.text = ""
+                barChart.xAxis.isGranularityEnabled = true
+                barChart.axisLeft.axisMinimum = 0f
+                barChart.axisRight.axisMinimum = 0f
+                barChart.animateY(1500, Easing.EaseOutCirc)
+                barChart.invalidate()
+            }
     }
+
+
+
 
     private fun showLineChart() {
         pieChart.visibility = View.GONE
