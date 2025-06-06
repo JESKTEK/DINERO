@@ -133,6 +133,8 @@ class WalletActivity : AppCompatActivity() {
 
                     transactionsRef.add(transactionData)
                         .addOnSuccessListener {
+                            completeGoalIfMatch(this, "Fill your Wallet")
+
                             transactionList.add(0,"R%.2f".format(amount))
                             adapter.notifyDataSetChanged()
                         }

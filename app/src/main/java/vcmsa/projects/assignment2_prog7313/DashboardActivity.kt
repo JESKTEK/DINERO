@@ -30,6 +30,9 @@ class DashboardActivity : AppCompatActivity() {
 
         val spinner: Spinner = findViewById(R.id.chartTypeSpinner)
         val chartTypes = listOf("Pie", "Bar", "Line")
+
+        completeGoalIfMatch(this, "Check your Dashboard")
+
         spinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, chartTypes)
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {

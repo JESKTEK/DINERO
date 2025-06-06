@@ -3,84 +3,127 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#CDE4C4"
-    android:padding="16dp">
-
-    <LinearLayout
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:layout_height="match_parent"
+        android:background="#CDE4C4"
+        android:padding="16dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="MY WALLET"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:textColor="#4A8C2C"
-            android:layout_marginBottom="16dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CURRENT:"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="#4A8C2C" />
-
-        <TextView
-            android:id="@+id/currentBalance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="R0.00"
-            android:textSize="24sp"
-            android:textColor="#32A852"
-            android:textStyle="bold"
-            android:layout_marginBottom="16dp" />
-
-        <EditText
-            android:id="@+id/amountEditText"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Please add to your current value"
-            android:inputType="numberDecimal"
-            android:padding="12dp"
-            android:layout_marginBottom="12dp"
-            android:background="@android:drawable/editbox_background" />
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
 
-        <Button
-            android:id="@+id/addButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ADD"
-            android:backgroundTint="#6A994E"
-            android:textColor="#FFFFFF"
-            android:layout_marginBottom="20dp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TRANSACTION HISTORY:"
-            android:textStyle="bold"
-            android:textColor="#FFFFFF"
-            android:background="#4B6043"
-            android:padding="10dp"
-            android:layout_marginBottom="8dp" />
+                <ImageView
+                    android:id="@+id/backButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/btn_back"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    app:tint="#4A8C2C"
+                    />
 
-        <ListView
-            android:id="@+id/transactionListView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:divider="#555"
-            android:dividerHeight="1dp"
-            android:background="#E2EED6" />
-    </LinearLayout>
-</ScrollView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MY WALLET"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="#4A8C2C"
+                    android:layout_centerInParent="true" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CURRENT:"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#4A8C2C"
+                android:layout_marginTop="16dp" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:id="@+id/currentBalance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="R0.00"
+                    android:textSize="24sp"
+                    android:textColor="#32A852"
+                    android:textStyle="bold"
+                    android:layout_centerVertical="true" />
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/avocado_happy_foreground"
+                    android:layout_toRightOf="@id/currentBalance"
+                    android:layout_marginLeft="8dp"
+                    android:layout_centerVertical="true" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="16dp">
+
+                <EditText
+                    android:id="@+id/amountEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Please add to your current value"
+                    android:inputType="numberDecimal"
+                    android:padding="12dp"
+                    android:background="@android:drawable/editbox_background" />
+
+                <Button
+                    android:id="@+id/addButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ADD"
+                    android:backgroundTint="#6A994E"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginLeft="8dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TRANSACTION HISTORY:"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:background="#4B6043"
+                android:padding="10dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center_vertical|left" />
+
+            <ListView
+                android:id="@+id/transactionListView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="#555"
+                android:dividerHeight="1dp"
+                android:background="#E2EED6" />
+        </LinearLayout>
+    </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
