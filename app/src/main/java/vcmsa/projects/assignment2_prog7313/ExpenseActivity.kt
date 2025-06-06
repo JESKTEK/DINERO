@@ -11,6 +11,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Base64
 import android.util.Log
+import android.view.View
 import android.widget.*
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -32,6 +33,9 @@ class ExpenseActivity : AppCompatActivity() {
     private lateinit var camLauncher: ActivityResultLauncher<Void?>
     private var chosenImageBitmap: Bitmap? = null
 
+    private lateinit var ivDineroLogo: ImageView
+    private lateinit var auth: FirebaseAuth
+
     companion object {
         private const val REQUEST_CODE_IMAGE_PICKER = 100
     }
@@ -39,6 +43,9 @@ class ExpenseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_expense)
+
+        // Initialise Firebase Auth
+        auth = FirebaseAuth.getInstance()
 
         camLauncher = registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { bitmap ->
             if (bitmap != null) {
@@ -66,6 +73,11 @@ class ExpenseActivity : AppCompatActivity() {
         val imageInput = findViewById<ImageButton>(R.id.imageInput)
         val btnAddExpense = findViewById<Button>(R.id.AddExpenseBtn)
         val btnBack = findViewById<ImageButton>(R.id.btnBack)
+        ivDineroLogo = findViewById(R.id.ivDineroLogo)
+
+        ivDineroLogo.setOnClickListener { view -> // ADDED
+            showLogoutPopupMenu(view)
+        }
 
         btnBack.setOnClickListener {
             startActivity(Intent(this, CategoryView::class.java))
@@ -168,6 +180,7 @@ class ExpenseActivity : AppCompatActivity() {
 
                             Toast.makeText(this, "Expense logged & wallet updated!", Toast.LENGTH_SHORT).show()
                             startActivity(Intent(this, BudgetHomePageActivity::class.java))
+                            finish()
                         }
                         .addOnFailureListener {
                             Toast.makeText(this, "Failed to log expense.", Toast.LENGTH_SHORT).show()
@@ -181,14 +194,6 @@ class ExpenseActivity : AppCompatActivity() {
                 Toast.makeText(this, "Failed to fetch user wallet info.", Toast.LENGTH_SHORT).show()
             }
         }
-
-
-
-
-
-
-
-
     }
 
     private fun convertImageToBase64(imageButton: ImageButton): String? {
@@ -198,5 +203,30 @@ class ExpenseActivity : AppCompatActivity() {
         bitmap.compress(Bitmap.CompressFormat.JPEG, 10, stream)
         val byteArray = stream.toByteArray()
         return Base64.encodeToString(byteArray, Base64.DEFAULT)
+    }
+
+    // Show the logout popup menu
+    private fun showLogoutPopupMenu(view: View) { // ADDED
+        val popup = PopupMenu(this, view)
+        popup.menuInflater.inflate(R.menu.logout_menu, popup.menu) // Make sure logout_menu.xml exists in res/menu/
+
+        popup.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.action_logout -> {
+                    // Sign out the user
+                    auth.signOut()
+                    Toast.makeText(this, "Logging out...", Toast.LENGTH_SHORT).show()
+
+                    // Redirect to LoginActivity and clear activity stack
+                    val intent = Intent(this, LoginActivity::class.java) // Assuming LoginActivity is your login screen
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK) // Clears back stack
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                else -> false
+            }
+        }
+        popup.show()
     }
 }

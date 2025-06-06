@@ -6,13 +6,18 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.*
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -20,13 +25,34 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var barChart: BarChart
     private lateinit var lineChart: LineChart
 
+    private lateinit var ivDineroLogo: ImageView
+    private lateinit var btnBack: ImageButton
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
+        // initialise Firebase Auth
+        auth = FirebaseAuth.getInstance()
+
         pieChart = findViewById(R.id.pieChart)
         barChart = findViewById(R.id.barChart)
         lineChart = findViewById(R.id.lineChart)
+        ivDineroLogo = findViewById(R.id.ivDineroLogo)
+        btnBack = findViewById(R.id.btnBack)
+
+        // Set OnClickListener for Dinero Logo to show logout menu
+        ivDineroLogo.setOnClickListener { view ->
+            showLogoutPopupMenu(view)
+        }
+
+        // Set OnClickListener for back button
+        btnBack.setOnClickListener {
+            val intent = Intent(this, BudgetHomePageActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         val spinner: Spinner = findViewById(R.id.chartTypeSpinner)
         val chartTypes = listOf("Pie", "Bar", "Line")
@@ -45,16 +71,6 @@ class DashboardActivity : AppCompatActivity() {
         }
 
         showPieChart() // Show by default
-
-
-
-
-
-
-
-
-
-
 
         val navBar = findViewById<BottomNavigationView>(R.id.bottomNav)
         navBar.selectedItemId = R.id.dashboard
@@ -78,8 +94,6 @@ class DashboardActivity : AppCompatActivity() {
                 else -> {false}
             }
         }
-
-
     }
 
     private fun getEntries(): List<Entry> = listOf(
@@ -156,13 +170,28 @@ class DashboardActivity : AppCompatActivity() {
         lineChart.invalidate()
     }
 
+    // Show the logout popup menu
+    private fun showLogoutPopupMenu(view: View) {
+        val popup = PopupMenu(this, view)
+        popup.menuInflater.inflate(R.menu.logout_menu, popup.menu)
 
+        popup.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.action_logout -> {
+                    // Sign out the user
+                    auth.signOut()
+                    Toast.makeText(this, "Logging out...", Toast.LENGTH_SHORT).show()
 
-
-
-
-
-
-
-
+                    // Redirect to LoginActivity and clear activity stack
+                    val intent = Intent(this, LoginActivity::class.java) // Assuming LoginActivity is your login screen
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK) // Clears back stack
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                else -> false
+            }
+        }
+        popup.show()
+    }
 }

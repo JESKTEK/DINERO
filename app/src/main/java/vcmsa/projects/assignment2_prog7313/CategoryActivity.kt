@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -18,6 +19,8 @@ import java.util.*
 class CategoryActivity : AppCompatActivity() {
 
     private val firestore = Firebase.firestore
+    private lateinit var ivDineroLogo: ImageView
+    private val auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +30,12 @@ class CategoryActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        ivDineroLogo = findViewById(R.id.ivDineroLogo)
+
+        ivDineroLogo.setOnClickListener { view ->
+            showLogoutPopupMenu(view)
         }
 
         val inputName = findViewById<EditText>(R.id.inputName)
@@ -103,8 +112,8 @@ class CategoryActivity : AppCompatActivity() {
         btnAddBudget.setOnClickListener {
             val name = inputName.text.toString().trim()
             val date = inputDate.text.toString().trim()
-            val emailAssociated = getCurrentUserEmail()
-            val amountSpent = 0.00;
+            val emailAssociated = auth.currentUser?.email // Directly use auth.currentUser?.email
+            val amountSpent = 0.00; // Initialize amountSpent to 0.00
             val description = inputDescription.text.toString().trim()
             val customAmount = inputCustomAmount.text.toString().trim()
 
@@ -135,22 +144,42 @@ class CategoryActivity : AppCompatActivity() {
                     val documentId = documentReference.id
                     Toast.makeText(this, "Category Made Successfully.", Toast.LENGTH_SHORT).show()
 
-
                     val updateData = hashMapOf("id" to documentId)
                     documentReference.update(updateData as Map<String, Any>)
 
                     val intent = Intent(this, BudgetHomePageActivity::class.java)
                     startActivity(intent)
+                    finish()
                 }
                 .addOnFailureListener {
                     Toast.makeText(this, "Error Making Category.", Toast.LENGTH_SHORT)
                         .show()
                 }
-
-            }
-
-
         }
-
     }
 
+    // Show the logout popup menu
+    private fun showLogoutPopupMenu(view: View) {
+        val popup = PopupMenu(this, view)
+        popup.menuInflater.inflate(R.menu.logout_menu, popup.menu) // Make sure logout_menu.xml exists in res/menu/
+
+        popup.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.action_logout -> {
+                    // Sign out the user
+                    auth.signOut()
+                    Toast.makeText(this, "Logging out...", Toast.LENGTH_SHORT).show()
+
+                    // Redirect to LoginActivity and clear activity stack
+                    val intent = Intent(this, LoginActivity::class.java) // Assuming LoginActivity is your login screen
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK) // Clears back stack
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                else -> false
+            }
+        }
+        popup.show()
+    }
+}

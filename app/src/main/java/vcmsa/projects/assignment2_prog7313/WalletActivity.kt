@@ -2,6 +2,7 @@ package vcmsa.projects.assignment2_prog7313
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -19,13 +20,15 @@ class WalletActivity : AppCompatActivity() {
     private lateinit var amountEditText: EditText
     private lateinit var addButton: Button
     private lateinit var transactionListView: ListView
+    private lateinit var ivDineroLogo: ImageView
 
     private var currentBalance = 0.0
     private val transactionList = mutableListOf<String>()
     private lateinit var adapter: ArrayAdapter<String>
 
     private val firestore = FirebaseFirestore.getInstance()
-    private val userEmail get() = FirebaseAuth.getInstance().currentUser?.email ?: ""
+    private val auth = FirebaseAuth.getInstance()
+    private val userEmail get() = auth.currentUser?.email ?: ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,15 +44,16 @@ class WalletActivity : AppCompatActivity() {
         amountEditText = findViewById(R.id.amountEditText)
         addButton = findViewById(R.id.addButton)
         transactionListView = findViewById(R.id.transactionListView)
+        ivDineroLogo = findViewById(R.id.ivDineroLogo)
 
         adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, transactionList)
         transactionListView.adapter = adapter
 
         getOrCreateWallet()
 
-
-
-
+        ivDineroLogo.setOnClickListener { view ->
+            showLogoutPopupMenu(view)
+        }
 
         val navBar = findViewById<BottomNavigationView>(R.id.bottomNav)
         navBar.selectedItemId = R.id.home
@@ -76,8 +80,6 @@ class WalletActivity : AppCompatActivity() {
                 else -> {false}
             }
         }
-
-
     }
 
     private fun getOrCreateWallet() {
@@ -128,12 +130,12 @@ class WalletActivity : AppCompatActivity() {
                     val transactionData = mapOf(
                         "amount" to amount,
                         "timestamp" to Timestamp.now(),
-                        "type" to " "
+                        "type" to ""
                     )
 
                     transactionsRef.add(transactionData)
                         .addOnSuccessListener {
-                            transactionList.add(0,"R%.2f".format(amount))
+                            transactionList.add(0,"R%.2f".format(amount)) // Add new transaction at the top
                             adapter.notifyDataSetChanged()
                         }
                         .addOnFailureListener {
@@ -156,7 +158,6 @@ class WalletActivity : AppCompatActivity() {
                 transactionList.clear()
                 for (doc in snapshot) {
                     val amount = doc.getDouble("amount") ?: 0.0
-                    val type = doc.getString("type") ?: " "
                     transactionList.add("R%.2f".format(amount))
                 }
                 adapter.notifyDataSetChanged()
@@ -165,4 +166,26 @@ class WalletActivity : AppCompatActivity() {
                 Toast.makeText(this, "Could not load transactions", Toast.LENGTH_SHORT).show()
             }
     }
-} 
+
+    private fun showLogoutPopupMenu(view: View) {
+        val popup = PopupMenu(this, view)
+        popup.menuInflater.inflate(R.menu.logout_menu, popup.menu)
+
+        popup.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.action_logout -> {
+                    auth.signOut()
+                    Toast.makeText(this, "Logging out...", Toast.LENGTH_SHORT).show()
+
+                    val intent = Intent(this, LoginActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK) // Clears back stack
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                else -> false
+            }
+        }
+        popup.show()
+    }
+}

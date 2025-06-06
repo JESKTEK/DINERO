@@ -2,18 +2,23 @@ package vcmsa.projects.assignment2_prog7313
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
-import android.widget.TextView
+import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import vcmsa.projects.assignment2_prog7313.databinding.ActivityHomeBinding
+import android.widget.TextView
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var walletValueTextView: TextView
+    private lateinit var auth: FirebaseAuth
 
     private val firestore = FirebaseFirestore.getInstance()
     private val userEmail get() = FirebaseAuth.getInstance().currentUser?.email ?: ""
@@ -28,11 +33,18 @@ class HomeActivity : AppCompatActivity() {
             insets
         }
 
+        auth = FirebaseAuth.getInstance()
+
         val btnBudgetPlan = findViewById<Button>(R.id.btnBudgetPlan)
         val btnMyGoals = findViewById<Button>(R.id.btnMyGoals)
         val btnDashboard = findViewById<Button>(R.id.btnDashboard)
         val plusSign = findViewById<TextView>(R.id.plusSign)
         walletValueTextView = findViewById(R.id.walletValue)
+        val dineroLogoLogoutIcon = findViewById<ImageView>(R.id.dineroLogoClickable)
+
+        dineroLogoLogoutIcon.setOnClickListener { view ->
+            showLogoutPopupMenu(view)
+        }
 
         btnBudgetPlan.setOnClickListener {
             startActivity(Intent(this, BudgetHomePageActivity::class.java))
@@ -84,5 +96,30 @@ class HomeActivity : AppCompatActivity() {
                 walletValueTextView.text = "R0.00"
                 Toast.makeText(this, "User wallet not found", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    // show the logout popup menu
+    private fun showLogoutPopupMenu(view: View) {
+        val popup = PopupMenu(this, view)
+        popup.menuInflater.inflate(R.menu.logout_menu, popup.menu)
+
+        popup.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.action_logout -> {
+                    // Sign out the user
+                    auth.signOut()
+                    Toast.makeText(this, "Logging out...", Toast.LENGTH_SHORT).show()
+
+                    // Redirect to LoginActivity and clear activity stack
+                    val intent = Intent(this, LoginActivity::class.java) // Assuming LoginActivity is your login screen
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK) // Clears back stack
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                else -> false
+            }
+        }
+        popup.show()
     }
 }
