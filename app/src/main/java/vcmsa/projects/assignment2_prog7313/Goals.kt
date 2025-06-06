@@ -139,7 +139,6 @@ class Goals : AppCompatActivity() {
             val (rankName, colorHex) = ranks[rankIndex]
             levelRank.text = rankName
             levelRank.setTextColor(android.graphics.Color.parseColor(colorHex))
-            levelBar.progressTintList = ColorStateList.valueOf(Color.parseColor(colorHex))
         }
     }
 
