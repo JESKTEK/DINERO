@@ -63,14 +63,14 @@ class HomeActivity : AppCompatActivity() {
     }
 
     //Goals Code - It needs to be here in case the user skips the goal page.
+    //NOTE - WE NEED TO ADD GOAL 5 WHEN REVIEW BUDGET IS ADDED
 
     val allGoals = listOf(
         Goal("1", "Add an Expense", "Track a new expense: we won't judge.", false),
         Goal("2", "Check your Dashboard", "View your dashboard to make sure you're on track!", false),
         Goal("3", "Add a Category", "Create a new category to enhance your budgeting!", false),
         Goal("4", "Fill your Wallet", "Add some money to your wallet!", false),
-        Goal("5", "Stay Under Budget", "Don't exceed ANY of your budgets this week.", false),
-        Goal("6", "Review your Week", "Review your weekly summary to make sure you're on track.", false)
+        Goal("5", "Review your Week", "Review your weekly summary to make sure you're on track.", false)
     )
 
     fun generateWeeklyGoals(userId: String, weekId: String) {
@@ -105,13 +105,6 @@ class HomeActivity : AppCompatActivity() {
             }
     }
 
-
-    fun getCurrentWeekId(): String {
-        val calendar = Calendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val week = calendar.get(Calendar.WEEK_OF_YEAR)
-        return "Year_$year-Week_$week"
-    }
 
     fun getCurrentWeekStart(): String {
         val calendar = Calendar.getInstance()

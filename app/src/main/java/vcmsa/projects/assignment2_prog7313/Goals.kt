@@ -1,13 +1,21 @@
 package vcmsa.projects.assignment2_prog7313
 
+import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import android.os.Bundle
+import android.util.AttributeSet
 import android.util.Log
+import android.view.View
 import android.widget.CheckBox
 import android.widget.Checkable
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Color
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -33,6 +41,11 @@ class Goals : AppCompatActivity() {
     private lateinit var goal3Title: TextView
     private lateinit var goal3Desc: TextView
     private lateinit var goal3Status: CheckBox
+
+    private lateinit var levelRank: TextView
+    private lateinit var levelScore: TextView
+    private lateinit var levelBar: ProgressBar
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -75,6 +88,10 @@ class Goals : AppCompatActivity() {
 
 
 
+        levelRank = findViewById(R.id.rankText)
+        levelScore = findViewById(R.id.scoreText)
+        levelBar = findViewById(R.id.levelProgressBar)
+
         goal1Title = findViewById(R.id.Goal1Title)
         goal1Desc = findViewById(R.id.Goal1Description)
         goal1Status = findViewById(R.id.Goal1Status)
@@ -83,22 +100,47 @@ class Goals : AppCompatActivity() {
         goal2Desc = findViewById(R.id.Goal2Description)
         goal2Status = findViewById(R.id.Goal2Status)
 
+
+        updateCurrentGoals()
+
         goal3Title = findViewById(R.id.Goal3Title)
         goal3Desc = findViewById(R.id.Goal3Description)
         goal3Status = findViewById(R.id.Goal3Status)
-        updateCurrentGoals()
-
+        updateScore()
 
 
 
 
     }
+    fun setGoalCompleted(titleView: TextView, descView: TextView) {
+        val greenColour = android.graphics.Color.parseColor("#19c219")
 
-    fun getCurrentWeekId(): String {
-        val calendar = Calendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val week = calendar.get(Calendar.WEEK_OF_YEAR)
-        return "Year_$year-Week_$week"
+        titleView.setTextColor(greenColour)
+        descView.setTextColor(greenColour)
+    }
+
+
+    fun updateScore() {
+        val userEmail = FirebaseAuth.getInstance().currentUser?.email ?: return
+        firestore.collection("Users").document(userEmail).get().addOnSuccessListener { document ->
+            val score = document.getLong("score")?.toInt() ?: 0
+            val level = score / 3
+            val quotient = score % 3
+
+            levelBar.max = 3
+            levelBar.progress = quotient
+
+            levelScore.text = "${3 - quotient} Tasks to Level Up"
+
+            val ranks = listOf("BRONZE" to "#CD7F32", "SILVER" to "#C0C0C0",
+                "GOLD" to "#FFD700", "PLATINUM" to "#F2FDFF", "EMERALD" to "#50C878",
+                "DIAMOND" to "#79D3E8")
+            val rankIndex = level.coerceAtMost(ranks.lastIndex)
+            val (rankName, colorHex) = ranks[rankIndex]
+            levelRank.text = rankName
+            levelRank.setTextColor(android.graphics.Color.parseColor(colorHex))
+            levelBar.progressTintList = ColorStateList.valueOf(Color.parseColor(colorHex))
+        }
     }
 
 
@@ -118,14 +160,23 @@ class Goals : AppCompatActivity() {
                     goal1Title.text = goals[0]["goalName"]?.toString()?: "Placeholder"
                     goal1Desc.text = goals[0]["goalDescription"]?.toString()?: "Placeholder 2"
                     goal1Status.isChecked = (goals[0]["goalCompleted"] as Boolean)
+                    if (goals[0]["goalCompleted"] as Boolean) {
+                        setGoalCompleted(goal1Title, goal1Desc)
+                    }
 
                     goal2Title.text = goals[1]["goalName"]?.toString()?: "Placeholder"
                     goal2Desc.text = goals[1]["goalDescription"]?.toString()?: "Placeholder 2"
                     goal2Status.isChecked = (goals[1]["goalCompleted"] as Boolean)
+                    if (goals[1]["goalCompleted"] as Boolean) {
+                        setGoalCompleted(goal2Title, goal2Desc)
+                    }
 
                     goal3Title.text = goals[2]["goalName"]?.toString()?: "Placeholder"
                     goal3Desc.text = goals[2]["goalDescription"]?.toString()?: "Placeholder 2"
                     goal3Status.isChecked = (goals[2]["goalCompleted"] as Boolean)
+                    if (goals[2]["goalCompleted"] as Boolean) {
+                        setGoalCompleted(goal3Title, goal3Desc)
+                    }
                 }
             } else {
                 Log.d("Goals", "Error fetching weekly goals for this week. ")
