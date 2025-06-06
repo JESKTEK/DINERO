@@ -3,6 +3,7 @@ package vcmsa.projects.assignment2_prog7313
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -76,53 +77,70 @@ class LoginActivity : AppCompatActivity() {
 
         quickLoginButton.setOnClickListener {
             val biometricManager = BiometricManager.from(this)
-            when (biometricManager.canAuthenticate(BiometricManager.Authenticators.DEVICE_CREDENTIAL)) {
-                BiometricManager.BIOMETRIC_SUCCESS -> showBiometricPrompt()
+            when (biometricManager.canAuthenticate(
+                BiometricManager.Authenticators.BIOMETRIC_STRONG or
+                        BiometricManager.Authenticators.DEVICE_CREDENTIAL)) {
+
+                BiometricManager.BIOMETRIC_SUCCESS -> {
+                    Log.d("BiometricPrompt", "Preparing to show biometric prompt")
+                    showBiometricPrompt()
+                }
+
                 BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE,
                 BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE,
                 BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
-                    Toast.makeText(this, "Device credentials not available. Set up screen lock.", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "No biometric credentials available. Set up fingerprint or screen lock.", Toast.LENGTH_LONG).show()
                 }
+
                 else -> Toast.makeText(this, "Biometric login not supported", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     private fun showBiometricPrompt() {
-        val executor = ContextCompat.getMainExecutor(this)
-        val biometricPrompt = BiometricPrompt(this, executor,
-            object : BiometricPrompt.AuthenticationCallback() {
-                override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
-                    super.onAuthenticationSucceeded(result)
+        try {
+            val executor = ContextCompat.getMainExecutor(this)
+            val biometricPrompt = BiometricPrompt(this, executor,
+                object : BiometricPrompt.AuthenticationCallback() {
+                    override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                        super.onAuthenticationSucceeded(result)
 
-                    val savedUID = getSavedUserUID()
-                    if (savedUID != null) {
-                        Toast.makeText(applicationContext, "Device login successful", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
-                        finish()
-                    } else {
-                        Toast.makeText(applicationContext, "No saved login. Please login with email first.", Toast.LENGTH_LONG).show()
+                        val savedUID = getSavedUserUID()
+                        if (savedUID != null) {
+                            Toast.makeText(applicationContext, "Login successful", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
+                            finish()
+                        } else {
+                            Toast.makeText(applicationContext, "No saved login. Please login with email first.", Toast.LENGTH_LONG).show()
+                        }
                     }
-                }
 
-                override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
-                    super.onAuthenticationError(errorCode, errString)
-                    Toast.makeText(applicationContext, "Authentication error: $errString", Toast.LENGTH_SHORT).show()
-                }
+                    override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+                        super.onAuthenticationError(errorCode, errString)
+                        Toast.makeText(applicationContext, "Authentication error: $errString", Toast.LENGTH_SHORT).show()
+                    }
 
-                override fun onAuthenticationFailed() {
-                    super.onAuthenticationFailed()
-                    Toast.makeText(applicationContext, "Authentication failed", Toast.LENGTH_SHORT).show()
-                }
-            })
+                    override fun onAuthenticationFailed() {
+                        super.onAuthenticationFailed()
+                        Toast.makeText(applicationContext, "Authentication failed", Toast.LENGTH_SHORT).show()
+                    }
+                })
 
-        val promptInfo = BiometricPrompt.PromptInfo.Builder()
-            .setTitle("Secure Login")
-            .setSubtitle("Use your device PIN, pattern, or password to log in")
-            .setAllowedAuthenticators(BiometricManager.Authenticators.DEVICE_CREDENTIAL)
-            .build()
+            val promptInfo = BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Secure Login")
+                .setSubtitle("Use fingerprint or device PIN to log in")
+                .setAllowedAuthenticators(
+                    BiometricManager.Authenticators.BIOMETRIC_STRONG or
+                            BiometricManager.Authenticators.DEVICE_CREDENTIAL
+                )
+                .build()
 
-        biometricPrompt.authenticate(promptInfo)
+            biometricPrompt.authenticate(promptInfo)
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Toast.makeText(this, "Biometric prompt failed: ${e.localizedMessage}", Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun saveUserUID(uid: String) {
