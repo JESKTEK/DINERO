@@ -1,34 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" />
+
     <ScrollView
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#b1d9b7"
-        android:padding="16dp">
+        android:padding="20dp"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:paddingBottom="120dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp">
+                android:layout_marginBottom="20dp">
 
                 <ImageView
                     android:id="@+id/backButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_alignParentStart="true"
                     android:src="@drawable/btn_back"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    app:tint="#4A8C2C" />
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:tint="#4A8C2C"
+                    android:padding="8dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -36,114 +45,144 @@
                     android:text="MY WALLET"
                     android:textSize="28sp"
                     android:textStyle="bold"
-                    android:textColor="#4A8C2C"
+                    android:textColor="#FFFFFF"
                     android:layout_centerInParent="true" />
 
                 <ImageView
                     android:id="@+id/ivDineroLogo"
-                    android:layout_width="100dp"
-                    android:layout_height="120dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="5dp"
-                    android:padding="10dp"
                     android:src="@mipmap/dinero_logo"
-                    android:clickable="true"
-                    android:focusable="true"
                     android:background="?attr/selectableItemBackgroundBorderless"
-                    android:contentDescription="Dinero Logo - Tap to Logout" /> </RelativeLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="CURRENT:"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="#4A8C2C"
-                android:layout_marginTop="16dp" />
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp">
-
-                <TextView
-                    android:id="@+id/currentBalance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="R30000.00"
-                    android:textSize="24sp"
-                    android:textColor="#32A852"
-                    android:textStyle="bold"
-                    android:layout_centerVertical="true" />
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@mipmap/avocado_happy_foreground"
-                    android:layout_toRightOf="@id/currentBalance"
-                    android:layout_marginLeft="8dp"
-                    android:layout_centerVertical="true" />
-
+                    android:contentDescription="Dinero Logo - Tap to Logout"
+                    android:padding="6dp" />
             </RelativeLayout>
 
+            <!-- CURRENT BALANCE CARD -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                android:padding="20dp"
+                android:elevation="6dp">
+
+                <TextView
+                    android:id="@+id/currentLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CURRENT:"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#2F432F"
+                    android:layout_gravity="center_horizontal" />
+
+                <!-- Text and Avocado side by side -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/currentBalance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="R130000.00"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        android:textColor="#32A852"
+                        android:layout_marginEnd="8dp"
+                        android:gravity="center_vertical" />
+
+                    <ImageView
+                        android:id="@+id/avocadoIcon"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:src="@mipmap/avocado_happy_foreground"
+                        android:contentDescription="Avocado Icon" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ADD TO WALLET AREA -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="20dp">
 
-                <EditText
-                    android:id="@+id/amountEditText"
+                <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="25sp"
                     android:layout_weight="1"
-                    android:hint="Please add to your current value"
-                    android:inputType="numberDecimal"
-                    android:padding="12dp"
-                    android:background="@android:drawable/editbox_background" />
+                    android:background="@drawable/rounded_card_background"
+                    android:elevation="5dp"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:gravity="center_vertical">
+
+                    <EditText
+                        android:id="@+id/amountEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:hint="Please add to your current value"
+                        android:textColor="#000000"
+                        android:textSize="14sp"
+                        android:background="@android:color/transparent" />
+                </LinearLayout>
 
                 <Button
                     android:id="@+id/addButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
                     android:text="ADD"
+                    android:layout_marginStart="10dp"
                     android:backgroundTint="#6A994E"
                     android:textColor="#FFFFFF"
-                    android:layout_marginLeft="8dp" />
-
+                    android:textStyle="bold"
+                    android:paddingHorizontal="16dp" />
             </LinearLayout>
 
+            <!-- TRANSACTION HISTORY -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TRANSACTION HISTORY:"
                 android:textStyle="bold"
-                android:textColor="#FFFFFF"
-                android:background="#4B6043"
-                android:padding="10dp"
-                android:layout_marginBottom="8dp"
-                android:gravity="center_vertical|left" />
+                android:textSize="18sp"
+                android:textColor="#FFEFF0"
+                android:padding="14dp"
+                android:gravity="center"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif-condensed" />
 
             <ListView
                 android:id="@+id/transactionListView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:divider="#555"
-                android:dividerHeight="1dp"
-                android:background="#E2EED6" />
+                android:background="@drawable/rounded_listview"
+                android:divider="#000000"
+                android:dividerHeight="2dp"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="10dp"
+                android:elevation="4dp" />
         </LinearLayout>
     </ScrollView>
 
+    <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_gravity="bottom"
-        app:labelVisibilityMode="labeled"
         android:background="#709051"
-        app:menu="@menu/navigation_menu"
-        android:scrollIndicators="left"/>
-
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/navigation_menu" />
 </FrameLayout>

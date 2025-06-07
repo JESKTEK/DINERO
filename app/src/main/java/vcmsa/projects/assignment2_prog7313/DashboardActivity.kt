@@ -50,7 +50,7 @@ class DashboardActivity : AppCompatActivity() {
 
         // OnClickListener for back button
         btnBack.setOnClickListener {
-            val intent = Intent(this, BudgetHomePageActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
             finish()
         }
