@@ -135,16 +135,19 @@
                         android:background="@android:color/transparent" />
                 </LinearLayout>
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/addButton"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:text="ADD"
                     android:layout_marginStart="10dp"
-                    android:backgroundTint="#6A994E"
+                    android:background="@drawable/add_button_background"
                     android:textColor="#FFFFFF"
                     android:textStyle="bold"
-                    android:paddingHorizontal="16dp" />
+                    android:paddingHorizontal="20sp"
+                    android:fontFamily="sans-serif"
+                    android:textSize="14sp" />
+
             </LinearLayout>
 
             <!-- TRANSACTION HISTORY -->
