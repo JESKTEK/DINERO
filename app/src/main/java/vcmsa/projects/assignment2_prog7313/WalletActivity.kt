@@ -174,6 +174,11 @@ class WalletActivity : AppCompatActivity() {
 
         popup.setOnMenuItemClickListener { item ->
             when (item.itemId) {
+                R.id.action_chatbot -> {
+                    val intent = Intent(this, ChatbotActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
                 R.id.action_logout -> {
                     auth.signOut()
                     Toast.makeText(this, "Logging out...", Toast.LENGTH_SHORT).show()

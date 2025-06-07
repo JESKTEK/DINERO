@@ -281,6 +281,11 @@ Availability: https://medium.com/@0xKartik/create-barchart-in-android-studio-149
 
         popup.setOnMenuItemClickListener { item ->
             when (item.itemId) {
+                R.id.action_chatbot -> {
+                    val intent = Intent(this, ChatbotActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
                 R.id.action_logout -> {
                     // Sign out the user
                     auth.signOut()

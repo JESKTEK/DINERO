@@ -51,10 +51,7 @@ class HomeActivity : AppCompatActivity() {
         val btnMyGoals = findViewById<Button>(R.id.btnMyGoals)
         val btnDashboard = findViewById<Button>(R.id.btnDashboard)
         val plusSign = findViewById<TextView>(R.id.plusSign)
-        val btnChatbot = findViewById<Button>(R.id.btnChatbot)
-        btnChatbot.setOnClickListener {
-            startActivity(Intent(this, ChatbotActivity::class.java)) // Replace with your chatbot class name
-        }
+
         walletValueTextView = findViewById(R.id.walletValue)
         val dineroLogoLogoutIcon = findViewById<ImageView>(R.id.dineroLogoClickable)
 
@@ -77,13 +74,6 @@ class HomeActivity : AppCompatActivity() {
         plusSign.setOnClickListener {
             startActivity(Intent(this, WalletActivity::class.java))
         }
-
-        btnChatbot.setOnClickListener {
-            startActivity(Intent(this, ChatbotActivity::class.java))
-        }
-
-
-
 
         generateWeeklyGoals(userEmail, getCurrentWeekId())
 
@@ -185,6 +175,11 @@ class HomeActivity : AppCompatActivity() {
 
         popup.setOnMenuItemClickListener { item ->
             when (item.itemId) {
+                R.id.action_chatbot -> {
+                    val intent = Intent(this, ChatbotActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
                 R.id.action_logout -> {
                     // Sign out the user
                     auth.signOut()
