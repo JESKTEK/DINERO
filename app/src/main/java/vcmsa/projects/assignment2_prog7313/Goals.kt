@@ -112,6 +112,29 @@ class Goals : AppCompatActivity() {
                 else -> {false}
             }
         }
+
+
+        levelRank = findViewById(R.id.rankText)
+        levelScore = findViewById(R.id.scoreText)
+        levelBar = findViewById(R.id.levelProgressBar)
+
+        goal1Title = findViewById(R.id.Goal1Title)
+        goal1Desc = findViewById(R.id.Goal1Description)
+        goal1Status = findViewById(R.id.Goal1Status)
+
+        goal2Title = findViewById(R.id.Goal2Title)
+        goal2Desc = findViewById(R.id.Goal2Description)
+        goal2Status = findViewById(R.id.Goal2Status)
+
+
+        updateCurrentGoals()
+
+        goal3Title = findViewById(R.id.Goal3Title)
+        goal3Desc = findViewById(R.id.Goal3Description)
+        goal3Status = findViewById(R.id.Goal3Status)
+        updateScore()
+
+
     }
 
     // Show the logout popup menu
@@ -136,33 +159,10 @@ class Goals : AppCompatActivity() {
             }
         }
         popup.show()
-
-        
-        
-        levelRank = findViewById(R.id.rankText)
-        levelScore = findViewById(R.id.scoreText)
-        levelBar = findViewById(R.id.levelProgressBar)
-
-        goal1Title = findViewById(R.id.Goal1Title)
-        goal1Desc = findViewById(R.id.Goal1Description)
-        goal1Status = findViewById(R.id.Goal1Status)
-
-        goal2Title = findViewById(R.id.Goal2Title)
-        goal2Desc = findViewById(R.id.Goal2Description)
-        goal2Status = findViewById(R.id.Goal2Status)
-
-
-        updateCurrentGoals()
-
-        goal3Title = findViewById(R.id.Goal3Title)
-        goal3Desc = findViewById(R.id.Goal3Description)
-        goal3Status = findViewById(R.id.Goal3Status)
-        updateScore()
-
-
-
-
     }
+
+
+
     fun setGoalCompleted(titleView: TextView, descView: TextView) {
         val greenColour = android.graphics.Color.parseColor("#19c219")
 

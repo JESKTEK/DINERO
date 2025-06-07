@@ -1,5 +1,6 @@
 package vcmsa.projects.assignment2_prog7313
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -14,6 +15,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.*
+import com.github.mikephil.charting.components.LimitLine
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
@@ -225,6 +227,28 @@ Availability: https://medium.com/@0xKartik/create-barchart-in-android-studio-149
                 barChart.axisRight.axisMinimum = 0f
                 barChart.animateY(1500, Easing.EaseOutCirc)
                 barChart.invalidate()
+                val prefs = getSharedPreferences("prefs", Context.MODE_PRIVATE)
+                val monthlyBudgetMin = prefs.getFloat("monthlyBudgetMin", 0f)
+                val monthlyBudgetMax = prefs.getFloat("monthlyBudgetMax", 100000f)
+
+                val leftAxis = barChart.axisLeft
+                leftAxis.removeAllLimitLines()
+
+                val minLine = LimitLine(monthlyBudgetMin, "Min Budget")
+                minLine.lineColor = Color.GREEN
+                minLine.lineWidth = 2f
+                minLine.textColor = Color.DKGRAY
+                minLine.textSize = 12f
+
+                val maxLine = LimitLine(monthlyBudgetMax, "Max Budget")
+                maxLine.lineColor = Color.RED
+                maxLine.lineWidth = 2f
+                maxLine.textColor = Color.DKGRAY
+                maxLine.textSize = 12f
+
+                leftAxis.addLimitLine(minLine)
+                leftAxis.addLimitLine(maxLine)
+
             }
     }
 
