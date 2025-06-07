@@ -277,6 +277,11 @@ class CategoryView : AppCompatActivity() {
 
         popup.setOnMenuItemClickListener { item ->
             when (item.itemId) {
+                R.id.action_chatbot -> {
+                    val intent = Intent(this, ChatbotActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
                 R.id.action_logout -> {
                     // Sign out the user
                     auth.signOut()
