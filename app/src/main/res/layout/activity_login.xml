@@ -92,16 +92,16 @@
             android:textStyle="bold" />
 
         <!-- Face Login Button -->
-        <Button
-        android:id="@+id/quickLogin"
-        android:layout_width="240dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#4CAF50"
-        android:text="Secure Login"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/quickLogin"
+            android:layout_width="240dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/btn_secure_login"
+            android:text="Secure Login"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
 
         <!-- Back to Register Button -->
