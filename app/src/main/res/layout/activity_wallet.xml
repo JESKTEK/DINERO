@@ -100,9 +100,12 @@
 
                     <ImageView
                         android:id="@+id/avocadoIcon"
-                        android:layout_width="65dp"
-                        android:layout_height="65dp"
-                        android:src="@mipmap/avocado_happy_foreground"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="-5dp"
+                        android:layout_marginEnd="-10dp"
+                        android:src="@mipmap/money_avocado_foreground"
                         android:contentDescription="Avocado Icon" />
                 </LinearLayout>
             </LinearLayout>
