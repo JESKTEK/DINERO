@@ -4,6 +4,10 @@
         android:id="@+id/action_chatbot"
         android:title="Chatbot" />
     <item
+        android:id="@+id/calculator_layout"
+        android:title="Calculator"
+        />
+    <item
         android:id="@+id/action_logout"
         android:title="Logout"
         />

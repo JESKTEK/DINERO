@@ -179,6 +179,11 @@ class WalletActivity : AppCompatActivity() {
                     startActivity(intent)
                     true
                 }
+                R.id.calculator_layout -> {
+                    val intent = Intent(this, activity_calculator::class.java)
+                    startActivity(intent)
+                    true
+                }
                 R.id.action_logout -> {
                     auth.signOut()
                     Toast.makeText(this, "Logging out...", Toast.LENGTH_SHORT).show()

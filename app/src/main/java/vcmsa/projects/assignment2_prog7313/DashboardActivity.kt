@@ -286,6 +286,11 @@ Availability: https://medium.com/@0xKartik/create-barchart-in-android-studio-149
                     startActivity(intent)
                     true
                 }
+                R.id.calculator_layout -> {
+                    val intent = Intent(this, activity_calculator::class.java)
+                    startActivity(intent)
+                    true
+                }
                 R.id.action_logout -> {
                     // Sign out the user
                     auth.signOut()
