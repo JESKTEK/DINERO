@@ -174,6 +174,7 @@ Key Screens Include:
   <img src="https://github.com/user-attachments/assets/41e96dd1-00de-4083-a7b9-d1b4314c6e6e" alt="Image 2" width="200" style="margin-right: 10px;">
 </p>
 
+
 - **Monthly Budget**
  ![image](https://github.com/user-attachments/assets/54d0d75a-a484-4f1e-acce-6fa9d40c737b)
 
