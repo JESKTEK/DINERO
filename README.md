@@ -37,7 +37,9 @@ Figma Prototype Design Link: <https://www.figma.com/design/v5kfxf10eg3DvDHpyX49U
 
 Github Repo Source Code Link: <https://github.com/JESKTEK/DINERO.git> 
 
-YouTube video tutorial Link: <https://youtu.be/dbIvylC07t8?si=SXxgn5JAmHXFtL_5> 
+YouTube video tutorial on emulator Link: <https://youtu.be/dbIvylC07t8?si=SXxgn5JAmHXFtL_5> 
+
+YouTube video tutorial for mobile device: <https://youtu.be/3HuIho6aYkM> 
 
 Gantt Chart Project Plan on Canva: <https://www.canva.com/design/DAGhnUT7HrQ/i7ujLOtXladlzXBWEcBf3w/edit?utm_content=DAGhnUT7HrQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton>
 
@@ -165,6 +167,15 @@ Key Screens Include:
 <img src="https://github.com/user-attachments/assets/ee57997e-81ba-4a9d-951c-0de3efaa1fb3" width="400"/>
 
 - **Gamified Goals Progress**  
+<img src="https://github.com/user-attachments/assets/c9a61c41-757f-4fe4-9918-44a3f0b840b0" width="400"/>
+
+- **Wallet**  
+<img src="https://github.com/user-attachments/assets/c9a61c41-757f-4fe4-9918-44a3f0b840b0" width="400"/>
+
+- **Calculator**  
+<img src="https://github.com/user-attachments/assets/c9a61c41-757f-4fe4-9918-44a3f0b840b0" width="400"/>
+
+- **Chatbot**  
 <img src="https://github.com/user-attachments/assets/c9a61c41-757f-4fe4-9918-44a3f0b840b0" width="400"/>
 
 ---
