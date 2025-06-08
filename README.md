@@ -64,14 +64,34 @@ Dinero’s design focuses on *usability, security, and accessibility*, creating 
 
 ## Features
 
-- *User Registration and Login* (with Firebase authentication)
-- *Create Expense Categories* ("Envelopes" system)
-- *Add Expenses and Income* (with receipt image uploads)
-- *Monthly and Category Limits* (with visual progress bars)
-- *Budget Analytics Dashboard* (track spending trends)
-- *Gamified Goals and Rankings* (encouraging savings habits)
-- *Multi-device Synchronization* (Firebase Cloud)
-- *Tutorials and Guidance* (led by mascot Dinero)
+- **User Registration and Login** (with Firebase authentication)  
+- **Create Expense Categories** ("Envelopes" system)  
+- **Add Expenses and Income** (with receipt image uploads)  
+- **Monthly and Category Limits** (with visual progress bars)  
+- **Budget Analytics Dashboard**  
+  - Pie chart showing amount spent per category  
+  - Bar graph comparing spending per category  
+- **Gamified Goals Page**  
+  - Set and track financial goals with progress meters  
+  - Receive encouragement and visual achievements from Dinero the Avocado  
+- **Multi-device Synchronization** (via Firebase Cloud)  
+- **Tutorials and Guidance** (led by mascot Dinero)
+
+---
+
+## Additional Features
+
+These added tools enhance usability, motivation, and budgeting convenience:
+
+1. **Built-in Calculator**  
+   A quick-access calculator is integrated within the app, enabling users to make calculations on the fly while budgeting or reviewing expenses.
+
+2. **Help Chatbot**  
+   A lightweight, rule-based chatbot provides system assistance, directing users to features and answering common questions — especially useful for first-time users.
+
+3. **Wallet Page**  
+   A dedicated section that allows users to input and manage their wallet balance. This acts as a quick reference to available cash and supplements the primary budget tracking system.
+
 
 ---
 
