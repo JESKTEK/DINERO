@@ -154,8 +154,11 @@ Key Screens Include:
 - **Welcome Page (Register/Login)**  
 <img src="https://github.com/user-attachments/assets/7bcff721-e795-4caa-98b5-685fee89aa6a" width="400"/>
 
-![image](https://github.com/user-attachments/assets/f16232a9-327d-405f-bdae-6dad266af656)
-
+<p align="left">
+  <img src="https://github.com/user-attachments/assets/f16232a9-327d-405f-bdae-6dad266af656" alt="Image 1" width="200" style="margin-right: 10px;">
+  <img src="https://github.com/user-attachments/assets/67b56716-d34d-49a4-a9d1-43341f7f2f5c" alt="Image 2" width="200" style="margin-right: 10px;">
+  <img src="https://github.com/user-attachments/assets/f7b23cf8-5e49-463d-8efb-3e5c97dbfdea" alt="Image 3" width="200">
+</p>
 
 - **Home Dashboard**  
 <img src="https://github.com/user-attachments/assets/965f86f4-e610-49aa-8218-52849dddc8a1" width="400"/>
