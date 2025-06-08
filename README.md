@@ -154,6 +154,9 @@ Key Screens Include:
 - **Welcome Page (Register/Login)**  
 <img src="https://github.com/user-attachments/assets/7bcff721-e795-4caa-98b5-685fee89aa6a" width="400"/>
 
+![image](https://github.com/user-attachments/assets/f16232a9-327d-405f-bdae-6dad266af656)
+
+
 - **Home Dashboard**  
 <img src="https://github.com/user-attachments/assets/965f86f4-e610-49aa-8218-52849dddc8a1" width="400"/>
 
