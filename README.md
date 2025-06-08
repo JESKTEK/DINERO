@@ -157,7 +157,7 @@ Key Screens Include:
 </p>
 
 - **Home Dashboard**  
-![image](https://github.com/user-attachments/assets/6bcc18bb-fb2d-4bfa-878f-c79e7dea6ffb)
+ <img src="https://github.com/user-attachments/assets/6bcc18bb-fb2d-4bfa-878f-c79e7dea6ffb" alt="Image 3" width="200">
 
 - **Budget Creation & Tracking**  
 <p align="left">
@@ -189,7 +189,7 @@ Key Screens Include:
 </p>
 
 - **Wallet**  
-![image](https://github.com/user-attachments/assets/a41b0ab5-e84a-4b6c-af09-3e811d30adde)
+<img src="https://github.com/user-attachments/assets/a41b0ab5-e84a-4b6c-af09-3e811d30adde" alt="Image 3" width="200">
 
 - **Calculator**
 <p align="left">
