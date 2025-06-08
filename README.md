@@ -174,8 +174,7 @@ Key Screens Include:
 
 
 - **Monthly Budget**
-![image](https://github.com/user-attachments/assets/54d0d75a-a484-4f1e-acce-6fa9d40c737b)
-
+<img src="https://github.com/user-attachments/assets/54d0d75a-a484-4f1e-acce-6fa9d40c737b" alt="Image 2" width="200" style="margin-right: 10px;">
 
 - **Spending Analytics and Reports**  
 <p align="left">
@@ -203,6 +202,7 @@ Key Screens Include:
   <img src="https://github.com/user-attachments/assets/c1dd151e-2803-4e52-a132-7086e8c33d19" alt="Image 1" width="200" style="margin-right: 10px;">
   <img src="https://github.com/user-attachments/assets/33037237-1d11-4818-917d-ea26cd5c2c4d" alt="Image 2" width="200" style="margin-right: 10px;">
 </p>
+
 ---
 
 ## Project Plan
