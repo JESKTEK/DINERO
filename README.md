@@ -42,10 +42,11 @@ YouTube video tutorial Link: <https://youtu.be/dbIvylC07t8?si=SXxgn5JAmHXFtL_5>
 Gantt Chart Project Plan on Canva: <https://www.canva.com/design/DAGhnUT7HrQ/i7ujLOtXladlzXBWEcBf3w/edit?utm_content=DAGhnUT7HrQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton>
 
 ---
+
 ## Introduction
 
 Dinero is a personal finance application designed to make budgeting warm, simple, and motivating.  
-Our app combines intuitive design, helpful analytics, and gamification to create a supportive space for users to manage their finances without stress.
+Our app combines intuitive design, helpful analytics, and gamification to create a supportive space for users to manage their finances without stress.  
 Dinero is not just an app — it is a *financial companion*, helping users nurture their budget like the growth of an avocado tree: slow, steady, and rewarding.
 
 ---
@@ -72,16 +73,14 @@ Dinero’s design focuses on *usability, security, and accessibility*, creating 
   - Pie chart showing amount spent per category  
   - Bar graph comparing spending per category  
 - **Gamified Goals Page**  
-  - Set and track financial goals with progress meters  
-  - Receive encouragement and visual achievements from Dinero the Avocado  
-- **Multi-device Synchronization** (via Firebase Cloud)  
-- **Tutorials and Guidance** (led by mascot Dinero)
+  - Set and track financial goals with progress meters   
+- **Multi-device Synchronization** (via Firebase Cloud)
 
 ---
 
 ## Additional Features
 
-These added tools enhance usability, motivation, and budgeting convenience:
+These added tools enhance usability and budgeting convenience:
 
 1. **Built-in Calculator**  
    A quick-access calculator is integrated within the app, enabling users to make calculations on the fly while budgeting or reviewing expenses.
@@ -92,6 +91,8 @@ These added tools enhance usability, motivation, and budgeting convenience:
 3. **Wallet Page**  
    A dedicated section that allows users to input and manage their wallet balance. This acts as a quick reference to available cash and supplements the primary budget tracking system.
 
+4. **Biometric Login Support**  
+   Users can log in securely using biometric methods such as fingerprint authentication, enhancing both security and convenience.
 
 ---
 
@@ -127,13 +128,13 @@ Dinero’s visual identity is built around:
 - **Color Palette:** Shades of green representing growth, money, and positivity.  
 <img src="https://github.com/user-attachments/assets/add5696b-8c82-4fc2-9749-069d25a590a2" width="600" height="150"/>
 
-- *Mascot:* "Dinero" the Avocado — a friendly guide for users.
+- *Mascot:* "Dinero" the Avocado — a friendly guide for users.  
 <img src="https://github.com/user-attachments/assets/f5c55441-afee-4334-9475-ab2fe62b6b7a" width="200"/>
 
 - *Typography:* Clear, bold, and easily readable fonts.
 - *Icons:* Avocado-themed icons used for navigation and feedback.
-- *Feedback System:* 
-  - Green progress bars for staying within budget.
+- *Feedback System:*  
+  - Green progress bars for staying within budget.  
   - Red progress bars for overspending warnings.
 - *Gamified Experience:* Progress bars, tier rankings, and visual achievements to motivate users.
 
@@ -199,10 +200,10 @@ Through charming design, simple functionality, and encouraging feedback, Dinero 
 
 ## Reference List
 
-Android Developers, 2019. ProgressBar  |  Android Developers. [online] Available at: <https://developer.android.com/reference/android/widget/ProgressBar> [Accessed 1 May 2025].
-Android Developers, 2025. AppCompatButton  |  API reference  |  Android Developers. [online] Available at: <https://developer.android.com/reference/androidx/appcompat/widget/AppCompatButton> [Accessed 18 April 2025].
-GeeksforGeeks, 2019. SeekBar in Kotlin. [online] Available at: <https://www.geeksforgeeks.org/seekbar-in-kotlin>[Accessed 22 April 2025].
-Montalto, P., 2017. Android: underlined text in a TextView - Paolo Montalto - Medium. [online] Available at: <https://xabaras.medium.com/android-underlined-text-in-a-textview-ff647d427bab>[Accessed 20 April 2025].
+Android Developers, 2019. ProgressBar  |  Android Developers. [online] Available at: <https://developer.android.com/reference/android/widget/ProgressBar> [Accessed 1 May 2025].  
+Android Developers, 2025. AppCompatButton  |  API reference  |  Android Developers. [online] Available at: <https://developer.android.com/reference/androidx/appcompat/widget/AppCompatButton> [Accessed 18 April 2025].  
+GeeksforGeeks, 2019. SeekBar in Kotlin. [online] Available at: <https://www.geeksforgeeks.org/seekbar-in-kotlin>[Accessed 22 April 2025].  
+Montalto, P., 2017. Android: underlined text in a TextView - Paolo Montalto - Medium. [online] Available at: <https://xabaras.medium.com/android-underlined-text-in-a-textview-ff647d427bab>[Accessed 20 April 2025].  
 Suman, A., 2024. How to Implement DatePickerDialog in Android Using Kotlin. [online] Available at: <https://medium.com/%40abhisheksuman413/how-to-implement-datepickerdialog-in-android-using-kotlin-45c413e47464>Accessed 22 April 2025].
 
 > *Dinero* — Grow your finances steadily, like an avocado tree.
@@ -210,4 +211,3 @@ Suman, A., 2024. How to Implement DatePickerDialog in Android Using Kotlin. [onl
 <img src="https://github.com/user-attachments/assets/1af88c1d-63b0-4aef-a787-4e952d35ce7b" width="400"/>
 
 > Manage your money. Grow your future. The Dinero way.
-
