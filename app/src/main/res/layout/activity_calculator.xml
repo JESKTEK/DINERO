@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/calculator_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#b1d9b7"
+    android:padding="16dp"
+    android:gravity="top|center_horizontal">
+
+    <!-- Header with title and logo -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/appTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:layout_marginLeft="90dp"
+            android:text="DINERO"
+            android:textColor="#81b522"
+            android:textSize="55sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/ivDineroLogo"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@mipmap/dinero_logo"
+            android:layout_marginLeft="1dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:importantForAccessibility="no"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+    </LinearLayout>
+
+    <!-- Expression shown above result -->
+    <TextView
+        android:id="@+id/expressionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="24sp"
+        android:gravity="end"
+        android:padding="12dp"
+        android:textColor="#666666"
+        android:layout_marginTop="16dp" />
+
+    <!-- Main result display -->
+    <TextView
+        android:id="@+id/resultText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="36sp"
+        android:layout_marginTop="10dp"
+        android:gravity="end"
+        android:padding="24dp"
+        android:background="#E0E0E0" />
+
+    <!-- Button grid -->
+    <GridLayout
+        android:id="@+id/buttonGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="4"
+        android:rowCount="5"
+        android:layout_marginTop="16dp">
+
+        <!-- Row 1 -->
+        <Button android:text="7" style="@style/CalcButton"/>
+        <Button android:text="8" style="@style/CalcButton"/>
+        <Button android:text="9" style="@style/CalcButton"/>
+        <Button android:text="÷" style="@style/CalcButton"/>
+
+        <!-- Row 2 -->
+        <Button android:text="4" style="@style/CalcButton"/>
+        <Button android:text="5" style="@style/CalcButton"/>
+        <Button android:text="6" style="@style/CalcButton"/>
+        <Button android:text="×" style="@style/CalcButton"/>
+
+        <!-- Row 3 -->
+        <Button android:text="1" style="@style/CalcButton"/>
+        <Button android:text="2" style="@style/CalcButton"/>
+        <Button android:text="3" style="@style/CalcButton"/>
+        <Button android:text="−" style="@style/CalcButton"/>
+
+        <!-- Row 4 -->
+        <Button android:text="0" style="@style/CalcButton"/>
+        <Button android:text="C" style="@style/CalcButton"/>
+        <Button android:text="=" style="@style/CalcButton"/>
+        <Button android:text="+" style="@style/CalcButton"/>
+    </GridLayout>
+</LinearLayout>

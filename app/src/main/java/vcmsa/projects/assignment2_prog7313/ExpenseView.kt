@@ -324,6 +324,11 @@ class ExpenseView : AppCompatActivity() {
                     startActivity(intent)
                     true
                 }
+                R.id.calculator_layout -> {
+                    val intent = Intent(this, activity_calculator::class.java)
+                    startActivity(intent)
+                    true
+                }
                 R.id.action_logout -> {
                     // Sign out the user
                     auth.signOut()
