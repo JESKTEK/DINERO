@@ -89,7 +89,7 @@ class BudgetHomePageActivity : AppCompatActivity() {
         }
     }
 
-    // Show the logout popup menu
+    // Shows the logout popup menu
     private fun showLogoutPopupMenu(view: View) {
         val popup = PopupMenu(this, view)
         popup.menuInflater.inflate(R.menu.logout_menu, popup.menu) // Make sure logout_menu.xml exists in res/menu/

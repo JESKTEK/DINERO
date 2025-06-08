@@ -76,7 +76,7 @@ class DashboardActivity : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
 
-        showPieChart() // Show by default
+        showPieChart()
 
         val navBar = findViewById<BottomNavigationView>(R.id.bottomNav)
         navBar.selectedItemId = R.id.dashboard
@@ -296,7 +296,7 @@ Availability: https://medium.com/@0xKartik/create-barchart-in-android-studio-149
                     auth.signOut()
                     Toast.makeText(this, "Logging out...", Toast.LENGTH_SHORT).show()
 
-                    // Redirect to LoginActivity and clear activity stack
+
                     val intent = Intent(this, LoginActivity::class.java) // Assuming LoginActivity is your login screen
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK) // Clears back stack
                     startActivity(intent)

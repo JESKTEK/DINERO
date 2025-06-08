@@ -21,11 +21,9 @@ class WalletActivity : AppCompatActivity() {
     private lateinit var addButton: Button
     private lateinit var transactionListView: ListView
     private lateinit var ivDineroLogo: ImageView
-
     private var currentBalance = 0.0
     private val transactionList = mutableListOf<String>()
     private lateinit var adapter: ArrayAdapter<String>
-
     private val firestore = FirebaseFirestore.getInstance()
     private val auth = FirebaseAuth.getInstance()
     private val userEmail get() = auth.currentUser?.email ?: ""
@@ -106,7 +104,7 @@ class WalletActivity : AppCompatActivity() {
             Toast.makeText(this, "Failed to get user.", Toast.LENGTH_SHORT).show()
         }
     }
-
+//Loads wallet with money
     private fun loadWallet(walletId: String) {
         val walletRef = firestore.collection("Wallets").document(walletId)
         val transactionsRef = walletRef.collection("Transactions")
@@ -151,7 +149,7 @@ class WalletActivity : AppCompatActivity() {
             Toast.makeText(this, "Failed to load wallet.", Toast.LENGTH_SHORT).show()
         }
     }
-
+//Shows previous transactions that users inputted
     private fun loadTransactionHistory(transactionsRef: com.google.firebase.firestore.CollectionReference) {
         transactionsRef.orderBy("timestamp", Query.Direction.DESCENDING)
             .get()

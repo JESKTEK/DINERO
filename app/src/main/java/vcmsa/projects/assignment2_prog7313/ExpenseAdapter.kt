@@ -34,9 +34,6 @@ class ExpenseAdapter(private var expenseList: List<Expense>) :
         val binding =
             RecyclerExpenseLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return expenseViewHolder(binding)
-        //val view = LayoutInflater.from(parent.context)
-        //    .inflate(R.layout.recycler_item_layout, parent, false)
-        //return UserViewHolder(view)
     }
 
     @OptIn(ExperimentalEncodingApi::class)
@@ -70,9 +67,6 @@ class ExpenseAdapter(private var expenseList: List<Expense>) :
             holder.binding.tvReceiptImage.setImageResource(R.drawable.ic_launcher_foreground)
         }
 
-        //val imageBytes = Base64.decode(expense.uploadImage)
-        //val decodedImage = BitmapFactory.decodeStream(ByteArrayInputStream(imageBytes))
-        //holder.binding.tvReceiptImage.setImageBitmap(decodedImage)
     }
 
     override fun getItemCount() = expenseList.size

@@ -80,7 +80,6 @@
                     android:textColor="#20782c"
                     android:layout_gravity="center_horizontal" />
 
-                <!-- Text and Avocado side by side -->
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -110,7 +109,6 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- ADD TO WALLET AREA -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -138,6 +136,12 @@
                         android:background="@android:color/transparent" />
                 </LinearLayout>
 
+                <!--
+        Title: AppCompatButton, API, reference, Android Developers
+        Author: Android Developers
+        Date: 18 April 2025
+        Availability: https://developer.android.com/reference/androidx/appcompat/widget/AppCompatButton
+        -->
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/addButton"
                     android:layout_width="wrap_content"
@@ -153,7 +157,6 @@
 
             </LinearLayout>
 
-            <!-- TRANSACTION HISTORY -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -166,7 +169,7 @@
                 android:layout_marginBottom="0dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="sans-serif-condensed" />
-
+            <!-- Lists transaction history -->
             <ListView
                 android:id="@+id/transactionListView"
                 android:layout_width="match_parent"

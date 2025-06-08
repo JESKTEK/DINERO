@@ -75,7 +75,7 @@ class ExpenseActivity : AppCompatActivity() {
         val btnBack = findViewById<ImageButton>(R.id.btnBack)
         ivDineroLogo = findViewById(R.id.ivDineroLogo)
 
-        ivDineroLogo.setOnClickListener { view -> // ADDED
+        ivDineroLogo.setOnClickListener { view ->
             showLogoutPopupMenu(view)
         }
 

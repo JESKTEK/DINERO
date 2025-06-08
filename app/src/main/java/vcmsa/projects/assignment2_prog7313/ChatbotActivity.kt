@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
+
 class ChatbotActivity : AppCompatActivity() {
 
     private lateinit var chatContainer: LinearLayout
@@ -19,7 +20,7 @@ class ChatbotActivity : AppCompatActivity() {
     private lateinit var inputSection: LinearLayout
     private lateinit var inputEditText: EditText
     private lateinit var sendButton: Button
-    private var firstInteraction = true  // <-- flag to track first greeting
+    private var firstInteraction = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
