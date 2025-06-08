@@ -1,5 +1,3 @@
-![image](https://github.com/user-attachments/assets/c1bddca4-4f3f-448c-b3cc-5d443c5e032b)# Dinero - Personal Budgeting App
-
 <img src="https://github.com/user-attachments/assets/1af88c1d-63b0-4aef-a787-4e952d35ce7b" width="400"/>
 
 > Created by JESKTEK.
