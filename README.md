@@ -1,4 +1,4 @@
-# Dinero - Personal Budgeting App
+![image](https://github.com/user-attachments/assets/c1bddca4-4f3f-448c-b3cc-5d443c5e032b)# Dinero - Personal Budgeting App
 
 <img src="https://github.com/user-attachments/assets/1af88c1d-63b0-4aef-a787-4e952d35ce7b" width="400"/>
 
@@ -152,8 +152,6 @@ Dinero’s visual identity is built around:
 Key Screens Include:
 
 - **Welcome Page (Register/Login)**  
-<img src="https://github.com/user-attachments/assets/7bcff721-e795-4caa-98b5-685fee89aa6a" width="400"/>
-
 <p align="left">
   <img src="https://github.com/user-attachments/assets/f16232a9-327d-405f-bdae-6dad266af656" alt="Image 1" width="200" style="margin-right: 10px;">
   <img src="https://github.com/user-attachments/assets/67b56716-d34d-49a4-a9d1-43341f7f2f5c" alt="Image 2" width="200" style="margin-right: 10px;">
@@ -161,29 +159,51 @@ Key Screens Include:
 </p>
 
 - **Home Dashboard**  
-<img src="https://github.com/user-attachments/assets/965f86f4-e610-49aa-8218-52849dddc8a1" width="400"/>
+![image](https://github.com/user-attachments/assets/6bcc18bb-fb2d-4bfa-878f-c79e7dea6ffb)
 
 - **Budget Creation & Tracking**  
-<img src="https://github.com/user-attachments/assets/e6936710-e159-48c8-b206-a1b4add15bb5" width="400"/>
+<p align="left">
+  <img src="https://github.com/user-attachments/assets/8abe592a-9406-4e9e-80b9-ea7353a3b095" alt="Image 1" width="200" style="margin-right: 10px;">
+  <img src="https://github.com/user-attachments/assets/1e3cc704-1fc8-4dc0-b766-e5a41b3442fe" alt="Image 2" width="200" style="margin-right: 10px;">
+  <img src="https://github.com/user-attachments/assets/c0e866bb-7bb1-4e04-9d54-f3b7be0b1b3e" alt="Image 3" width="200">
+</p>
 
-- **Expense Entry with Receipt Uploads**  
-<img src="https://github.com/user-attachments/assets/2002fa79-5f98-4c48-a14f-924881eb75ce" width="400"/>
+- **Expense Entry with Receipt Uploads**
+<p align="left">
+  <img src="https://github.com/user-attachments/assets/79a81bc0-459a-4700-aa91-f0b876b3b96a" alt="Image 1" width="200" style="margin-right: 10px;">
+  <img src="https://github.com/user-attachments/assets/41e96dd1-00de-4083-a7b9-d1b4314c6e6e" alt="Image 2" width="200" style="margin-right: 10px;">
+</p>
+
+- **Monthly Budget**
+ ![image](https://github.com/user-attachments/assets/54d0d75a-a484-4f1e-acce-6fa9d40c737b)
+
 
 - **Spending Analytics and Reports**  
-<img src="https://github.com/user-attachments/assets/ee57997e-81ba-4a9d-951c-0de3efaa1fb3" width="400"/>
+<p align="left">
+  <img src="https://github.com/user-attachments/assets/8d4481c5-2c29-4be3-9e41-599f31456afa" alt="Image 1" width="200" style="margin-right: 10px;">
+  <img src="https://github.com/user-attachments/assets/6df490a0-7ff3-489f-8d77-2f328a3cc9d1" alt="Image 2" width="200" style="margin-right: 10px;">
+</p>
 
-- **Gamified Goals Progress**  
-<img src="https://github.com/user-attachments/assets/c9a61c41-757f-4fe4-9918-44a3f0b840b0" width="400"/>
+- **Gamified Goals Progress**
+<p align="left">
+  <img src="https://github.com/user-attachments/assets/8804fa8e-d733-45a7-95fa-48be5c7ce973" alt="Image 1" width="200" style="margin-right: 10px;">
+  <img src="https://github.com/user-attachments/assets/bab0f715-7039-46ab-b9ea-0b84d0578e07" alt="Image 2" width="200" style="margin-right: 10px;">
+</p>
 
 - **Wallet**  
-<img src="https://github.com/user-attachments/assets/c9a61c41-757f-4fe4-9918-44a3f0b840b0" width="400"/>
+![image](https://github.com/user-attachments/assets/a41b0ab5-e84a-4b6c-af09-3e811d30adde)
 
-- **Calculator**  
-<img src="https://github.com/user-attachments/assets/c9a61c41-757f-4fe4-9918-44a3f0b840b0" width="400"/>
+- **Calculator**
+<p align="left">
+  <img src="https://github.com/user-attachments/assets/c1dd151e-2803-4e52-a132-7086e8c33d19" alt="Image 1" width="200" style="margin-right: 10px;">
+  <img src="https://github.com/user-attachments/assets/3f9b400f-b250-4077-96a5-5ea0036cdc56" alt="Image 2" width="200" style="margin-right: 10px;">
+</p>
 
 - **Chatbot**  
-<img src="https://github.com/user-attachments/assets/c9a61c41-757f-4fe4-9918-44a3f0b840b0" width="400"/>
-
+<p align="left">
+  <img src="https://github.com/user-attachments/assets/c1dd151e-2803-4e52-a132-7086e8c33d19" alt="Image 1" width="200" style="margin-right: 10px;">
+  <img src="https://github.com/user-attachments/assets/33037237-1d11-4818-917d-ea26cd5c2c4d" alt="Image 2" width="200" style="margin-right: 10px;">
+</p>
 ---
 
 ## Project Plan
