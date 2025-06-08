@@ -174,7 +174,7 @@ Key Screens Include:
 
 
 - **Monthly Budget**
- ![image](https://github.com/user-attachments/assets/54d0d75a-a484-4f1e-acce-6fa9d40c737b)
+![image](https://github.com/user-attachments/assets/54d0d75a-a484-4f1e-acce-6fa9d40c737b)
 
 
 - **Spending Analytics and Reports**  
