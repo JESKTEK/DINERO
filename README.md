@@ -150,7 +150,7 @@ Dinero’s visual identity is built around:
 Key Screens Include:
 
 - **App icon**
-<img src="https://github.com/user-attachments/assets/a7799848-a584-4fbc-9c31-54dc6aacc741" alt="Image 1" style="width:1000px; float:left; margin-right:20px;" />
+<img src="https://github.com/user-attachments/assets/a7799848-a584-4fbc-9c31-54dc6aacc741" alt="Image 1" style="width:400px; float:left; margin-right:20px;" />
 
 - **Welcome Page (Register/Login)**  
 <p align="left">
